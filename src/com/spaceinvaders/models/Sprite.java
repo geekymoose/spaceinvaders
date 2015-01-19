@@ -9,7 +9,9 @@ package com.spaceinvaders.models;
 
 import com.spaceinvaders.behaviors.MoveType;
 import com.spaceinvaders.behaviors.ShootType;
+import com.spaceinvaders.constants.Commons;
 import java.awt.Image;
+import java.awt.Rectangle;
 
 
 
@@ -25,7 +27,7 @@ import java.awt.Image;
  *
  * @author Constantin MASSON
  */
-public abstract class Sprite {
+public abstract class Sprite implements Commons{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -33,6 +35,10 @@ public abstract class Sprite {
     protected   ShootType       shootType;
     
     protected   boolean         isAlive;
+    private     int             posX;
+    private     int             posY;
+    protected   int             width;
+    protected   int             height;
     protected   Image           img;
     
     
@@ -43,8 +49,13 @@ public abstract class Sprite {
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public Sprite(){
+    public Sprite(int pX, int pY, int pWidth, int pHeight){
         this.isAlive    = true;
+        this.img        = null;
+        this.posX       = pX;
+        this.posY       = pY;
+        this.width      = pWidth;
+        this.height     = pHeight;
     }
     
     
@@ -68,5 +79,19 @@ public abstract class Sprite {
     //**************************************************************************
     // Getters - Setters
     //**************************************************************************
-    public boolean getIsAlive(){ return this.isAlive; }
+    /**
+     * Check if is alive
+     * @return true if alive, otherwise, return false
+     */
+    public boolean isAlive(){
+        return this.isAlive; 
+    }
+    
+    /**
+     * Return the projectile bounds
+     * @return Rectangle
+     */
+    public Rectangle getBounds(){
+        return new Rectangle(posX, posY, width, height);
+    }
 }

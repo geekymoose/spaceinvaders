@@ -34,8 +34,13 @@ public class Player extends Sprite{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public Player(){
-    
+    /**
+     * Create a Player at position x, y
+     * @param pX x coordinate
+     * @param pY y coordinate
+     */
+    protected Player(int pX, int pY){
+        super(pX, pY, PLAYER_WIDTH, PLAYER_HEIGHT);
     }
     
     

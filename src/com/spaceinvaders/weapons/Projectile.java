@@ -45,7 +45,7 @@ public abstract class Projectile implements Commons{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public Projectile(int pX, int pY, int pWidth, int pHeight){
+    protected Projectile(int pX, int pY, int pWidth, int pHeight){
         this.img    = null;
         this.x      = pX;
         this.y      = pY;
