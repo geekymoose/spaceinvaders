@@ -1,27 +1,32 @@
 /*
- * Class :      Character
+ * Class :      ViewGame
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.models.characters;
+package com.spaceinvaders.views;
+
+import com.spaceinvaders.constants.Commons;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.JPanel;
 
 
 
 
 
 /**
- * <h1>Character</h1>
- * <p>public abstract class Character</p>
- * 
+ * <h1>ViewGame</h1>
  * <p>
- * Data for all characters
+ * public class ViewGame<br/>
+ * extends JPanel<br/>
+ * implements Commons
  * </p>
  *
  * @author Constantin MASSON
  */
-public abstract class Character {
+public class ViewGame extends JPanel implements Commons{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -34,8 +39,9 @@ public abstract class Character {
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public Character(){
-    
+    public ViewGame(){
+        this.setLayout(new BorderLayout());
+        this.setBackground(Color.BLACK);
     }
     
     

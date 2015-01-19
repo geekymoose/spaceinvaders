@@ -5,9 +5,9 @@
  * 
  */
 
-package com.main;
+package com.spaceinvaders.main;
 
-import com.views.ViewApplication;
+import com.spaceinvaders.views.ViewApplication;
 import java.awt.EventQueue;
 
 

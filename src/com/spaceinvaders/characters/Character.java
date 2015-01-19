@@ -1,0 +1,60 @@
+/*
+ * Class :      Character
+ * Creation:    Jan 19, 2015
+ * Author :     Constantin MASSON
+ * 
+ */
+
+package com.spaceinvaders.characters;
+
+
+
+
+
+/**
+ * <h1>Character</h1>
+ * <p>public abstract class Character</p>
+ * 
+ * <p>
+ * Data for all characters
+ * </p>
+ *
+ * @author Constantin MASSON
+ */
+public abstract class Character {
+    //**************************************************************************
+    // Constants - Variables
+    //**************************************************************************
+    protected   MoveType        moveType;
+    protected   ShootType       shootType;
+    
+    
+    
+    
+    
+
+    //**************************************************************************
+    // Constructor - Initialization
+    //**************************************************************************
+    public Character(){
+    
+    }
+    
+    
+    
+    
+    
+
+    //**************************************************************************
+    // Functions
+    //**************************************************************************
+    
+    
+    
+    
+    
+
+    //**************************************************************************
+    // Getters - Setters
+    //**************************************************************************
+}
