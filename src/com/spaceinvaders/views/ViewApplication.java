@@ -71,9 +71,10 @@ public class ViewApplication extends JFrame implements Commons{
     private void initComponents(){
         ModelGame           m   = new ModelGame();
         ControllerGame      c   = new ControllerGame(m);
+        ControllerToolsBar  c2  = new ControllerToolsBar(m);
         ViewGame            v   = new ViewGame(c);
         
-        ControllerToolsBar  c2  = new ControllerToolsBar(m);
+        m.addObserver(v);
         
         this.mainContent        = new JPanel();
         this.panTop             = new ViewToolsBar(c2);
@@ -89,22 +90,4 @@ public class ViewApplication extends JFrame implements Commons{
         
         this.setContentPane(this.mainContent);
     }
-    
-    
-    
-    
-    
-
-    //**************************************************************************
-    // Functions
-    //**************************************************************************
-    
-    
-    
-    
-    
-
-    //**************************************************************************
-    // Getters - Setters
-    //**************************************************************************
 }

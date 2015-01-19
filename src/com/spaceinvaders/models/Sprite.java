@@ -66,9 +66,25 @@ public abstract class Sprite implements Commons{
     //**************************************************************************
     // Functions
     //**************************************************************************
-    
+    /**
+     * Kill this character! :p
+     */
     public void die(){
         this.isAlive = false;
+    }
+    
+    /**
+     * Perform a move
+     */
+    public void move(){
+        moveType.move();
+    }
+    
+    /**
+     * Perform one shoot
+     */
+    public void shoot(){
+        shootType.fire();
     }
     
     
@@ -79,6 +95,30 @@ public abstract class Sprite implements Commons{
     //**************************************************************************
     // Getters - Setters
     //**************************************************************************
+    /**
+     * get image to display for this Sprite
+     * @return 
+     */
+    public Image getImage(){
+        return this.img;
+    }
+    
+    /**
+     * Get the position x
+     * @return 
+     */
+    public int getPosX(){
+        return this.posX;
+    }
+    
+    /**
+     * Get the position y
+     * @return 
+     */
+    public int getPosY(){
+        return this.posY;
+    }
+    
     /**
      * Check if is alive
      * @return true if alive, otherwise, return false

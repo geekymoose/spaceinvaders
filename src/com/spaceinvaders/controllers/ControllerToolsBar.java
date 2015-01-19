@@ -38,7 +38,7 @@ public class ControllerToolsBar {
     // Constructor - Initialization
     //**************************************************************************
     public ControllerToolsBar(ModelGame pModel){
-    
+        this.model  = pModel;
     }
     
     
@@ -49,13 +49,38 @@ public class ControllerToolsBar {
     //**************************************************************************
     // Functions
     //**************************************************************************
+    /**
+     * Order to start the game
+     */
+    public void startGame(){
+        
+    }
     
+    /**
+     * Order to stop the game
+     */
+    public void stopGame(){
+        
+    }
     
+    /*
+     * Order to restart the game (Reste the current and restart)
+     */
+    public void restartGame(){
+        
+    }
     
+    /**
+     * Save the current game
+     */
+    public void saveGame(){
+        
+    }
     
-    
-
-    //**************************************************************************
-    // Getters - Setters
-    //**************************************************************************
+    /**
+     * Load a old game
+     */
+    public void loadGame(){
+        
+    }
 }

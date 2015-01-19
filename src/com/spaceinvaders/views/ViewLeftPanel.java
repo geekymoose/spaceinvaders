@@ -8,6 +8,8 @@
 package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
+import com.spaceinvaders.observers.ObservableGame;
+import com.spaceinvaders.observers.ObserverGame;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -20,7 +22,10 @@ import javax.swing.JPanel;
 
 /**
  * <h1>ViewLeftPanel</h1>
- * <p>public class ViewLeftPanel</p>
+ * <p>
+ * public class ViewLeftPanel<br/>
+ * implements Commons, ObserverGame
+ * </p>
  * 
  * <p>
  * This left panel display data about the current game like score
@@ -28,7 +33,7 @@ import javax.swing.JPanel;
  *
  * @author Constantin MASSON
  */
-public class ViewLeftPanel extends JPanel implements Commons{
+public class ViewLeftPanel extends JPanel implements Commons, ObserverGame{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -95,6 +100,9 @@ public class ViewLeftPanel extends JPanel implements Commons{
     //**************************************************************************
     // Functions
     //**************************************************************************
+    @Override
+    public void update(ObservableGame obs){
+    }
     
     
     

@@ -7,6 +7,8 @@
 
 package com.spaceinvaders.models;
 
+import com.spaceinvaders.behaviors.ShootBomb;
+
 
 
 
@@ -40,6 +42,7 @@ public class Alien3 extends Sprite{
      */
     public Alien3(int pX, int pY){
         super(pX, pY, ALIEN_WIDTH, ALIEN_HEIGHT);
+        this.shootType  = new ShootBomb();
     }
     
     

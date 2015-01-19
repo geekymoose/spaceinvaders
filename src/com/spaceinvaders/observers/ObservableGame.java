@@ -18,5 +18,19 @@ package com.spaceinvaders.observers;
  * @author Constantin MASSON
  */
 public interface ObservableGame {
+    /**
+     * Add one observer
+     * @param obs 
+     */
+    public void addObserver(ObserverGame obs);
     
+    /**
+     * Delete all observers
+     */
+    public void deleteAllObservers();
+    
+    /**
+     * Notify all observers
+     */
+    public void notifyAObservers();
 }
