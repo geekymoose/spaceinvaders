@@ -7,9 +7,10 @@
 
 package com.views;
 
+import com.constants.Commons;
 import java.awt.Color;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -27,7 +28,7 @@ import javax.swing.JPanel;
  *
  * @author Constantin MASSON
  */
-public class ViewLeftPanel extends JPanel{
+public class ViewLeftPanel extends JPanel implements Commons{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -48,10 +49,8 @@ public class ViewLeftPanel extends JPanel{
      * Initialize the leftPanel
      */
     public ViewLeftPanel(){
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setLayout(new GridLayout(4,1));
         this.setBackground(new Color(20,20,20));
-        this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        
         this.initLabels();
     }
     
@@ -62,7 +61,7 @@ public class ViewLeftPanel extends JPanel{
     private void initLabels(){
         this.labelScore             = new JLabel("Score");
         this.labelScoreValue        = new JLabel("0");
-        this.labelNbInvaders        = new JLabel("Remaining Invaders");
+        this.labelNbInvaders        = new JLabel("Invaders");
         this.labelNbInvadersValue   = new JLabel("0");
         
         this.labelScore             .setHorizontalAlignment(JLabel.CENTER);
@@ -70,7 +69,17 @@ public class ViewLeftPanel extends JPanel{
         this.labelNbInvaders        .setHorizontalAlignment(JLabel.CENTER);
         this.labelNbInvadersValue   .setHorizontalAlignment(JLabel.CENTER);
         
-        //laps.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,FONT_COUNTERS_SIZE));
+        Font fontLabel              = new Font( Font.SERIF,
+                                                Font.BOLD,
+                                                LEFT_LABEL_TITLE_SIZE);
+        Font fontNumber             = new Font( Font.SERIF,
+                                                Font.BOLD,
+                                                LEFT_LABEL_SIZE);
+        
+        this.labelScore             .setFont(fontLabel);
+        this.labelScoreValue        .setFont(fontNumber);
+        this.labelNbInvaders        .setFont(fontLabel);
+        this.labelNbInvadersValue   .setFont(fontNumber);
         
         this.add(labelScore);
         this.add(labelScoreValue);

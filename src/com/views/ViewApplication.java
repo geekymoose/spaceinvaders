@@ -7,6 +7,7 @@
 
 package com.views;
 
+import com.constants.Commons;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JFrame;
@@ -21,11 +22,12 @@ import javax.swing.JPanel;
  * <p>
  public class ViewApplication<br/>
  * extends JFrame<br/>
+ * implements Commons
  * </p>
  *
  * @author Constantin MASSON
  */
-public class ViewApplication extends JFrame{
+public class ViewApplication extends JFrame implements Commons{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -49,6 +51,8 @@ public class ViewApplication extends JFrame{
      */
     public ViewApplication(){
         this.setTitle("Mini games launcher");
+        this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+        this.setMinimumSize(DIM_FRAME_MIN);
         this.setAlwaysOnTop(false);
         this.setResizable(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,7 +69,7 @@ public class ViewApplication extends JFrame{
         this.mainContent        = new JPanel();
         this.panTop             = new ViewToolsBar();
         this.panLeft            = new ViewLeftPanel();
-        this.panCenter          = new JPanel();
+        this.panCenter          = new ViewGame();
         
         this.mainContent.setLayout(new BorderLayout());
         this.mainContent.setBackground(Color.BLACK);
