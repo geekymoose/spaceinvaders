@@ -7,7 +7,7 @@
 
 package com.main;
 
-import com.views.Application;
+import com.views.ViewApplication;
 import java.awt.EventQueue;
 
 
@@ -28,10 +28,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
+        //EventQueue.invokeLater(new Runnable() {
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Application ap = new Application();
+                ViewApplication ap = new ViewApplication();
                 ap.setVisible(true);
             }
         });

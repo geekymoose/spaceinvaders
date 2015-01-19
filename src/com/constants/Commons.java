@@ -1,5 +1,5 @@
 /*
- * Class :      commons
+ * Class :      Commons
  * Creation:    Jan 18, 2015
  * Author :     Constantin MASSON
  * 
@@ -12,12 +12,12 @@ package com.constants;
 
 
 /**
- * <h1>commons</h1>
- * <p>public interface commons</p>
+ * <h1>Commons</h1>
+ * <p>public interface Commons</p>
  *
  * @author Constantin MASSON
  */
-public interface commons {
+public interface Commons {
     public static final int BOARD_WIDTH                     = 358;
     public static final int BOARD_HEIGTH                    = 350;
     public static final int GROUND                          = 290;
