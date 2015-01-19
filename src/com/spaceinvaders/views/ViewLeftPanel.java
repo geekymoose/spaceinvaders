@@ -5,9 +5,9 @@
  * 
  */
 
-package com.views;
+package com.spaceinvaders.views;
 
-import com.constants.Commons;
+import com.spaceinvaders.constants.Commons;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;

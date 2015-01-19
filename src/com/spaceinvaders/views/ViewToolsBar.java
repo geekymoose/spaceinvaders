@@ -5,9 +5,9 @@
  * 
  */
 
-package com.views;
+package com.spaceinvaders.views;
 
-import com.constants.Commons;
+import com.spaceinvaders.constants.Commons;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -59,8 +59,17 @@ public class ViewToolsBar extends JPanel implements Commons{
      * Create the tools bar
      */
     public ViewToolsBar(){
-        this.setBackground(new Color(30,30,30));
+        //this.setBackground(new Color(30,30,30));
+        this.setBackground(Color.WHITE);
+        
+        buttonStartListener     = new ButtonStartListener();
+        buttonStopListener      = new ButtonStopListener();
+        buttonRestartListener   = new ButtonRestartListener();
+        buttonSaveListener      = new ButtonSaveListener();
+        buttonLoadListener      = new ButtonLoadListener();
+        
         this.initButtons();
+        this.initButtonState();
     }
     
     
@@ -94,6 +103,16 @@ public class ViewToolsBar extends JPanel implements Commons{
     }
     
     
+    /*
+     * Initialize the button state
+     */
+    private void initButtonState(){
+        this.buttonStop     .setEnabled(false);
+        this.buttonRestart  .setEnabled(false);
+        this.buttonSave     .setEnabled(false);
+    }
+    
+    
     
     
     
@@ -122,20 +141,29 @@ public class ViewToolsBar extends JPanel implements Commons{
     private class ButtonStartListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
+            buttonStart     .setEnabled(false);
+            buttonStop      .setEnabled(true);
+            buttonRestart   .setEnabled(false);
+            buttonSave      .setEnabled(false);
+            buttonLoad      .setEnabled(false);
         }
     }
     
     private class ButtonStopListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
-            
+            buttonStart     .setEnabled(true);
+            buttonStop      .setEnabled(false);
+            buttonRestart   .setEnabled(true);
+            buttonSave      .setEnabled(true);
+            buttonLoad      .setEnabled(true);
         }
     }
     
     private class ButtonRestartListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
-            
+            initButtonState();
         }
     }
     
@@ -149,7 +177,6 @@ public class ViewToolsBar extends JPanel implements Commons{
     private class ButtonLoadListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
-            
         }
     }
 }

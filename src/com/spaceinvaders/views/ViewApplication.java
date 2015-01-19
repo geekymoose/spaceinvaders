@@ -5,9 +5,9 @@
  * 
  */
 
-package com.views;
+package com.spaceinvaders.views;
 
-import com.constants.Commons;
+import com.spaceinvaders.constants.Commons;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JFrame;
@@ -66,10 +66,10 @@ public class ViewApplication extends JFrame implements Commons{
      * Initialize JPanel components
      */
     private void initComponents(){
-        this.mainContent        = new JPanel();
-        this.panTop             = new ViewToolsBar();
-        this.panLeft            = new ViewLeftPanel();
-        this.panCenter          = new ViewGame();
+        this.mainContent    = new JPanel();
+        this.panTop         = new ViewToolsBar();
+        this.panLeft        = new ViewLeftPanel();
+        this.panCenter      = new ViewGame();
         
         this.mainContent.setLayout(new BorderLayout());
         this.mainContent.setBackground(Color.BLACK);

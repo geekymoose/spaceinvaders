@@ -5,7 +5,7 @@
  * 
  */
 
-package com.constants;
+package com.spaceinvaders.constants;
 
 import java.awt.Dimension;
 
@@ -46,7 +46,7 @@ public interface Commons {
     public static final int         FRAME_WIDTH             = 1250;
     public static final int         FRAME_HEIGHT            = 850;
     public static final Dimension   DIM_FRAME_MIN           = new Dimension(450,250);
-    public static final Dimension   DIM_ICON_TOOLS          = new Dimension(45,45);
+    public static final Dimension   DIM_ICON_TOOLS          = new Dimension(40,40);
     
     
     

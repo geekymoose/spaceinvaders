@@ -1,32 +1,26 @@
 /*
- * Class :      ViewGame
+ * Class :      Craft
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.views;
-
-import com.constants.Commons;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import javax.swing.JPanel;
+package com.spaceinvaders.characters;
 
 
 
 
 
 /**
- * <h1>ViewGame</h1>
+ * <h1>Craft</h1>
  * <p>
- * public class ViewGame<br/>
- * extends JPanel<br/>
- * implements Commons
+ * public class Craft<br/>
+ * extends Character
  * </p>
  *
  * @author Constantin MASSON
  */
-public class ViewGame extends JPanel implements Commons{
+public class Craft extends Character{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -39,9 +33,8 @@ public class ViewGame extends JPanel implements Commons{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public ViewGame(){
-        this.setLayout(new BorderLayout());
-        this.setBackground(Color.BLACK);
+    public Craft(){
+    
     }
     
     
