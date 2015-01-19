@@ -1,19 +1,23 @@
 /*
- * Class :      Character
+ * Class :      Sprite
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.spaceinvaders.characters;
+package com.spaceinvaders.models;
+
+import com.spaceinvaders.behaviors.MoveType;
+import com.spaceinvaders.behaviors.ShootType;
+import java.awt.Image;
 
 
 
 
 
 /**
- * <h1>Character</h1>
- * <p>public abstract class Character</p>
+ * <h1>Sprite</h1>
+ * <p>public abstract class Sprite</p>
  * 
  * <p>
  * Data for all characters
@@ -21,12 +25,15 @@ package com.spaceinvaders.characters;
  *
  * @author Constantin MASSON
  */
-public abstract class Character {
+public abstract class Sprite {
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
     protected   MoveType        moveType;
     protected   ShootType       shootType;
+    
+    protected   boolean         isAlive;
+    protected   Image           img;
     
     
     
@@ -36,8 +43,8 @@ public abstract class Character {
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public Character(){
-    
+    public Sprite(){
+        this.isAlive    = true;
     }
     
     
@@ -49,6 +56,10 @@ public abstract class Character {
     // Functions
     //**************************************************************************
     
+    public void die(){
+        this.isAlive = false;
+    }
+    
     
     
     
@@ -57,4 +68,5 @@ public abstract class Character {
     //**************************************************************************
     // Getters - Setters
     //**************************************************************************
+    public boolean getIsAlive(){ return this.isAlive; }
 }

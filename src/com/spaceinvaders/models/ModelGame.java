@@ -1,38 +1,32 @@
 /*
- * Class :      ViewGame
+ * Class :      ModelGame
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.spaceinvaders.views;
+package com.spaceinvaders.models;
 
-import com.spaceinvaders.constants.Commons;
-import com.spaceinvaders.controllers.ControllerGame;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import javax.swing.JPanel;
+import java.util.ArrayList;
 
 
 
 
 
 /**
- * <h1>ViewGame</h1>
- * <p>
- * public class ViewGame<br/>
- * extends JPanel<br/>
- * implements Commons
- * </p>
+ * <h1>ModelGame</h1>
+ * <p>public class ModelGame</p>
+ * 
+ * <p>Data about the game</p>
  *
  * @author Constantin MASSON
  */
-public class ViewGame extends JPanel implements Commons{
+public class ModelGame {
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     ControllerGame      controller;
-    private     JPanel              panGame;
+    private     ArrayList<Sprite>       listAlien; //Only alien inside
+    private     Player                  player;
     
     
     
@@ -42,11 +36,20 @@ public class ViewGame extends JPanel implements Commons{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public ViewGame(ControllerGame pController){
-        this.controller = pController;
-        this.setLayout(new BorderLayout());
-        this.setBackground(Color.BLACK);
+    /**
+     * Create the game model
+     * Initialize the map with default value
+     */
+    public ModelGame(){
+    
     }
+    
+    
+    public void initMap(){
+        //11 * 5
+    }
+    
+    
     
     
     

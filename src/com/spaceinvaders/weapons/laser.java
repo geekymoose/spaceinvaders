@@ -1,38 +1,33 @@
 /*
- * Class :      ViewGame
+ * Class :      laser
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.spaceinvaders.views;
+package com.spaceinvaders.weapons;
 
-import com.spaceinvaders.constants.Commons;
-import com.spaceinvaders.controllers.ControllerGame;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import javax.swing.JPanel;
+import com.spaceinvaders.models.Sprite;
+import java.awt.Rectangle;
+import java.util.ArrayList;
 
 
 
 
 
 /**
- * <h1>ViewGame</h1>
+ * <h1>laser</h1>
  * <p>
- * public class ViewGame<br/>
- * extends JPanel<br/>
- * implements Commons
+ * public class laser<br/>
+ * extends Projectile
  * </p>
  *
  * @author Constantin MASSON
  */
-public class ViewGame extends JPanel implements Commons{
+public class laser extends Projectile{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     ControllerGame      controller;
-    private     JPanel              panGame;
     
     
     
@@ -42,10 +37,13 @@ public class ViewGame extends JPanel implements Commons{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public ViewGame(ControllerGame pController){
-        this.controller = pController;
-        this.setLayout(new BorderLayout());
-        this.setBackground(Color.BLACK);
+    /**
+     * Create a new laser shoot
+     * @param pX        x coordinate
+     * @param pY        y coordinate
+     */
+    public laser(int pX, int pY){
+        super(pX, pY, LASER_WIDTH, LASER_HEIGHT);
     }
     
     
@@ -56,6 +54,15 @@ public class ViewGame extends JPanel implements Commons{
     //**************************************************************************
     // Functions
     //**************************************************************************
+    @Override
+    public void move(){
+        this.y -= 1;
+    }
+
+    @Override
+    public Sprite hits(ArrayList<Sprite> pList){
+        return null;
+    }
     
     
     

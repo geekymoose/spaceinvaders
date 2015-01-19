@@ -1,38 +1,30 @@
 /*
- * Class :      ViewGame
+ * Class :      Player
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.spaceinvaders.views;
-
-import com.spaceinvaders.constants.Commons;
-import com.spaceinvaders.controllers.ControllerGame;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import javax.swing.JPanel;
+package com.spaceinvaders.models;
 
 
 
 
 
 /**
- * <h1>ViewGame</h1>
+ * <h1>Player</h1>
  * <p>
- * public class ViewGame<br/>
- * extends JPanel<br/>
- * implements Commons
- * </p>
+ public class Player<br/>
+ extends Sprite
+ </p>
  *
  * @author Constantin MASSON
  */
-public class ViewGame extends JPanel implements Commons{
+public class Player extends Sprite{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     ControllerGame      controller;
-    private     JPanel              panGame;
+    private     int     nbLife;
     
     
     
@@ -42,10 +34,8 @@ public class ViewGame extends JPanel implements Commons{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public ViewGame(ControllerGame pController){
-        this.controller = pController;
-        this.setLayout(new BorderLayout());
-        this.setBackground(Color.BLACK);
+    public Player(){
+    
     }
     
     
@@ -56,6 +46,12 @@ public class ViewGame extends JPanel implements Commons{
     //**************************************************************************
     // Functions
     //**************************************************************************
+    /**
+     * Earn one more life
+     */
+    public void earnOneLife(){
+        this.nbLife += 1;
+    }
     
     
     
@@ -65,4 +61,7 @@ public class ViewGame extends JPanel implements Commons{
     //**************************************************************************
     // Getters - Setters
     //**************************************************************************
+    public int getNbLife(){
+        return this.nbLife;
+    }
 }

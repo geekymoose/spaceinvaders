@@ -8,7 +8,6 @@
 package com.spaceinvaders.main;
 
 import com.spaceinvaders.views.ViewApplication;
-import java.awt.EventQueue;
 
 
 

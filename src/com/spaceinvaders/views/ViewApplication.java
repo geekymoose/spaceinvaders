@@ -8,6 +8,9 @@
 package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
+import com.spaceinvaders.controllers.ControllerGame;
+import com.spaceinvaders.controllers.ControllerToolsBar;
+import com.spaceinvaders.models.ModelGame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JFrame;
@@ -63,13 +66,19 @@ public class ViewApplication extends JFrame implements Commons{
     
     
     /*
-     * Initialize JPanel components
+     * Initialize JPanel components used by the program
      */
     private void initComponents(){
-        this.mainContent    = new JPanel();
-        this.panTop         = new ViewToolsBar();
-        this.panLeft        = new ViewLeftPanel();
-        this.panCenter      = new ViewGame();
+        ModelGame           m   = new ModelGame();
+        ControllerGame      c   = new ControllerGame(m);
+        ViewGame            v   = new ViewGame(c);
+        
+        ControllerToolsBar  c2  = new ControllerToolsBar(m);
+        
+        this.mainContent        = new JPanel();
+        this.panTop             = new ViewToolsBar(c2);
+        this.panLeft            = new ViewLeftPanel();
+        this.panCenter          = v;
         
         this.mainContent.setLayout(new BorderLayout());
         this.mainContent.setBackground(Color.BLACK);

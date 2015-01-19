@@ -8,6 +8,7 @@
 package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
+import com.spaceinvaders.controllers.ControllerToolsBar;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,19 +34,21 @@ public class ViewToolsBar extends JPanel implements Commons{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
+    private     ControllerToolsBar          controller;
+    
     //Buttons and tools bar
-    private     JButton                 buttonStart;
-    private     JButton                 buttonStop;
-    private     JButton                 buttonRestart;
-    private     JButton                 buttonSave;
-    private     JButton                 buttonLoad;
+    private     JButton                     buttonStart;
+    private     JButton                     buttonStop;
+    private     JButton                     buttonRestart;
+    private     JButton                     buttonSave;
+    private     JButton                     buttonLoad;
     
     //Listener for buttons
-    private     ButtonStartListener     buttonStartListener;
-    private     ButtonStopListener      buttonStopListener;
-    private     ButtonRestartListener   buttonRestartListener;
-    private     ButtonSaveListener      buttonSaveListener;
-    private     ButtonLoadListener      buttonLoadListener;
+    private     final ButtonStartListener   buttonStartListener;
+    private     final ButtonStopListener    buttonStopListener;
+    private     final ButtonRestartListener buttonRestartListener;
+    private     final ButtonSaveListener    buttonSaveListener;
+    private     final ButtonLoadListener    buttonLoadListener;
     
     
     
@@ -58,9 +61,8 @@ public class ViewToolsBar extends JPanel implements Commons{
     /*
      * Create the tools bar
      */
-    public ViewToolsBar(){
-        //this.setBackground(new Color(30,30,30));
-        this.setBackground(Color.WHITE);
+    public ViewToolsBar(ControllerToolsBar pController){
+        this.controller         = pController;
         
         buttonStartListener     = new ButtonStartListener();
         buttonStopListener      = new ButtonStopListener();
@@ -68,6 +70,7 @@ public class ViewToolsBar extends JPanel implements Commons{
         buttonSaveListener      = new ButtonSaveListener();
         buttonLoadListener      = new ButtonLoadListener();
         
+        this.setBackground(Color.WHITE);
         this.initButtons();
         this.initButtonState();
     }
@@ -116,25 +119,6 @@ public class ViewToolsBar extends JPanel implements Commons{
     
     
     
-
-    //**************************************************************************
-    // Functions
-    //**************************************************************************
-    
-    
-    
-    
-    
-
-    //**************************************************************************
-    // Getters - Setters
-    //**************************************************************************
-    
-    
-    
-    
-    
-
     //**************************************************************************
     // class intern ActionListener for buttons
     //**************************************************************************

@@ -1,26 +1,26 @@
 /*
- * Class :      Alien
+ * Class :      Alien1
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.spaceinvaders.characters;
+package com.spaceinvaders.models;
 
 
 
 
 
 /**
- * <h1>Alien</h1>
+ * <h1>Alien1</h1>
  * <p>
- * public class Alien<br/>
- * extends Character
- * </p>
+ public class Alien1<br/>
+ extends Sprite
+ </p>
  *
  * @author Constantin MASSON
  */
-public class Alien extends Character{
+public class Alien1 extends Sprite{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -33,7 +33,7 @@ public class Alien extends Character{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public Alien(){
+    public Alien1(){
     
     }
     
