@@ -33,8 +33,13 @@ public class Alien3 extends Sprite{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public Alien3(){
-    
+    /**
+     * Create a Alien (type 3) at position x, y
+     * @param pX x coordinate
+     * @param pY y coordinate
+     */
+    public Alien3(int pX, int pY){
+        super(pX, pY, ALIEN_WIDTH, ALIEN_HEIGHT);
     }
     
     

@@ -1,45 +1,45 @@
 /*
- * Class :      Alien1
+ * Class :      MoveDefaultAlien
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.spaceinvaders.models;
+package com.spaceinvaders.behaviors;
 
 
 
 
 
 /**
- * <h1>Alien1</h1>
- * <p>
- public class Alien1<br/>
- extends Sprite
- </p>
+ * <h1>MoveDefaultAlien</h1>
+ * <p>public class MoveDefaultAlien</p>
  *
  * @author Constantin MASSON
  */
-public class Alien1 extends Sprite{
+public class MoveDefaultAlien implements MoveType{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
+    /**
+     * The direction of the movement
+     * 1 = Left
+     * 2 = Right
+     * @var moveDirection
+     */
+    private     int         moveDirection;
+    private     boolean     isMoveDown;
     
     
     
     
     
-
+    
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    /**
-     * Create a Alien (type 1) at position x, y
-     * @param pX x coordinate
-     * @param pY y coordinate
-     */
-    public Alien1(int pX, int pY){
-        super(pX, pY, ALIEN_WIDTH, ALIEN_HEIGHT);
+    public MoveDefaultAlien(){
+        
     }
     
     
@@ -50,13 +50,7 @@ public class Alien1 extends Sprite{
     //**************************************************************************
     // Functions
     //**************************************************************************
-    
-    
-    
-    
-    
-
-    //**************************************************************************
-    // Getters - Setters
-    //**************************************************************************
+    @Override
+    public void move(){
+    }
 }

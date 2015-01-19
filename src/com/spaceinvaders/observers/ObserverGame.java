@@ -1,26 +1,23 @@
 /*
- * Class :      Alien1
+ * Class :      ObserverGame
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.spaceinvaders.models;
+package com.spaceinvaders.observers;
 
 
 
 
 
 /**
- * <h1>Alien1</h1>
- * <p>
- public class Alien1<br/>
- extends Sprite
- </p>
+ * <h1>ObserverGame</h1>
+ * <p>public class ObserverGame</p>
  *
  * @author Constantin MASSON
  */
-public class Alien1 extends Sprite{
+public class ObserverGame {
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -33,13 +30,8 @@ public class Alien1 extends Sprite{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    /**
-     * Create a Alien (type 1) at position x, y
-     * @param pX x coordinate
-     * @param pY y coordinate
-     */
-    public Alien1(int pX, int pY){
-        super(pX, pY, ALIEN_WIDTH, ALIEN_HEIGHT);
+    public ObserverGame(){
+    
     }
     
     
