@@ -1,38 +1,29 @@
 /*
- * Class :      ViewGame
+ * Class :      Alien3
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.spaceinvaders.views;
-
-import com.spaceinvaders.constants.Commons;
-import com.spaceinvaders.controllers.ControllerGame;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import javax.swing.JPanel;
+package com.spaceinvaders.models;
 
 
 
 
 
 /**
- * <h1>ViewGame</h1>
+ * <h1>Alien3</h1>
  * <p>
- * public class ViewGame<br/>
- * extends JPanel<br/>
- * implements Commons
- * </p>
+ public class Alien3<br/>
+ extends Sprite
+ </p>
  *
  * @author Constantin MASSON
  */
-public class ViewGame extends JPanel implements Commons{
+public class Alien3 extends Sprite{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     ControllerGame      controller;
-    private     JPanel              panGame;
     
     
     
@@ -42,10 +33,8 @@ public class ViewGame extends JPanel implements Commons{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public ViewGame(ControllerGame pController){
-        this.controller = pController;
-        this.setLayout(new BorderLayout());
-        this.setBackground(Color.BLACK);
+    public Alien3(){
+    
     }
     
     

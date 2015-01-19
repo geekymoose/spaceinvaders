@@ -5,7 +5,7 @@
  * 
  */
 
-package com.spaceinvaders.characters;
+package com.spaceinvaders.behaviors;
 
 
 
