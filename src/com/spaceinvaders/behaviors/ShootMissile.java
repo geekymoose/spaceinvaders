@@ -1,30 +1,26 @@
 /*
- * Class :      laser
+ * Class :      ShootMissile
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.spaceinvaders.weapons;
-
-import com.spaceinvaders.models.Sprite;
-import java.awt.Rectangle;
-import java.util.ArrayList;
+package com.spaceinvaders.behaviors;
 
 
 
 
 
 /**
- * <h1>laser</h1>
+ * <h1>ShootMissile</h1>
  * <p>
- * public class laser<br/>
- * extends Projectile
+ * public class ShootMissile<br/>
+ * implements ShootType
  * </p>
  *
  * @author Constantin MASSON
  */
-public class laser extends Projectile{
+public class ShootMissile implements ShootType{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -37,13 +33,8 @@ public class laser extends Projectile{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    /**
-     * Create a new laser shoot
-     * @param pX        x coordinate
-     * @param pY        y coordinate
-     */
-    public laser(int pX, int pY){
-        super(pX, pY, LASER_WIDTH, LASER_HEIGHT);
+    public ShootMissile(){
+    
     }
     
     
@@ -55,13 +46,7 @@ public class laser extends Projectile{
     // Functions
     //**************************************************************************
     @Override
-    public void move(){
-        this.y += 1;
-    }
-
-    @Override
-    public Sprite hits(ArrayList<Sprite> pList){
-        return null;
+    public void fire(){
     }
     
     

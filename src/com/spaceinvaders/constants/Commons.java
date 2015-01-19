@@ -30,8 +30,10 @@ public interface Commons {
     
     public static final int BOMB_WIDTH                      = 1;
     public static final int BOMB_HEIGHT                     = 5;
-    public static final int LASER_HEIGHT                    = 5;
     public static final int LASER_WIDTH                     = 1;
+    public static final int LASER_HEIGHT                    = 5;
+    public static final int MISSILE_WIDTH                   = 1;
+    public static final int MISSILE_HEIGHT                  = 5;
     
     public static final int ALIEN_WIDTH                     = 12;
     public static final int ALIEN_HEIGHT                    = 12;

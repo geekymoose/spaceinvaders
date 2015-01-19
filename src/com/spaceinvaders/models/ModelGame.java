@@ -8,6 +8,8 @@
 package com.spaceinvaders.models;
 
 import com.spaceinvaders.constants.Commons;
+import com.spaceinvaders.observers.ObservableGame;
+import com.spaceinvaders.observers.ObserverGame;
 import com.spaceinvaders.weapons.Projectile;
 import java.util.ArrayList;
 
@@ -23,14 +25,17 @@ import java.util.ArrayList;
  *
  * @author Constantin MASSON
  */
-public class ModelGame implements Commons{
+public class ModelGame implements Commons, ObservableGame{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     ArrayList<Sprite>       listAlien; //Only alien inside
     private     Player                  player;
+    private     ArrayList<Sprite>       listAliens; //Only alien inside
     private     ArrayList<Projectile>   listAlienShoot;
     private     ArrayList<Projectile>   listPlayerShoot;
+    private     ArrayList<ObserverGame> listObservers;
+    private     int                     currentScore;
+    private     int                     nbAliens;
     
     
     
@@ -45,18 +50,26 @@ public class ModelGame implements Commons{
      * Initialize the map with default value
      */
     public ModelGame(){
-        this.initMap();
+        this.player             = new Player(GAME_MAP_WIDTH/2, GAME_MAP_HEIGHT);
+        this.listPlayerShoot    = new ArrayList();
+        this.listAliens         = new ArrayList();
+        this.listAlienShoot     = new ArrayList();
+        this.listObservers      = new ArrayList();
+        this.nbAliens           = 0;
     }
     
     
     /*
-     * Initialize the map 
+     * Initialize the map
      */
-    private void initMap(){
-        this.listAlien          = new ArrayList();
+    public void initMap(){
         this.player             = new Player(GAME_MAP_WIDTH/2, GAME_MAP_HEIGHT);
-        this.listAlienShoot     = new ArrayList();
         this.listPlayerShoot    = new ArrayList();
+        this.listAliens         = new ArrayList();
+        this.listAlienShoot     = new ArrayList();
+        this.listObservers      = new ArrayList();
+        
+        this.nbAliens           = 55; //11 * 5
         
         this.placeInitialeSpaceInvaders();
     }
@@ -69,10 +82,11 @@ public class ModelGame implements Commons{
      * the 2 last are filled with alien1
      */
     private void placeInitialeSpaceInvaders(){
+        System.out.println(11*(DEFAULT_LEFT_POSITION + ALIEN_WIDTH + GAP_BETWEEN_ALIENS));
         //First line with alien3 (Calculation start at x=0, y=0)
         for(int x=0; x<11; x++){
             int posX = DEFAULT_LEFT_POSITION + (x*ALIEN_WIDTH) + GAP_BETWEEN_ALIENS;
-            this.listAlien.add(new Alien3(posX, DEFAULT_Y_POSITION));
+            this.listAliens.add(new Alien3(posX, DEFAULT_Y_POSITION));
         }
         
         //Lines 2-3
@@ -80,7 +94,7 @@ public class ModelGame implements Commons{
             for(int y=1; y<3; y++){
                 int posX = DEFAULT_LEFT_POSITION + (x*ALIEN_WIDTH) + GAP_BETWEEN_ALIENS;
                 int posY = DEFAULT_Y_POSITION + (y*ALIEN_HEIGHT)  + GAP_BETWEEN_ALIENS;
-                this.listAlien.add(new Alien2(posX, posY));
+                this.listAliens.add(new Alien2(posX, posY));
             }
         }
         
@@ -89,7 +103,7 @@ public class ModelGame implements Commons{
             for(int y=3; y<5; y++){
                 int posX = DEFAULT_LEFT_POSITION + (x*ALIEN_WIDTH) + GAP_BETWEEN_ALIENS;
                 int posY = DEFAULT_Y_POSITION + (y*ALIEN_HEIGHT)  + GAP_BETWEEN_ALIENS;
-                this.listAlien.add(new Alien1(posX, posY));
+                this.listAliens.add(new Alien1(posX, posY));
             }
         }
     }
@@ -104,6 +118,13 @@ public class ModelGame implements Commons{
     //**************************************************************************
     // Functions
     //**************************************************************************
+    /**
+     * Kill one alien. This alien will be removed from the list
+     * @param pAlien
+     */
+    public void killOneAlien(Sprite pAlien){
+        this.listAliens.remove(pAlien);
+    }
     
     
     
@@ -113,4 +134,76 @@ public class ModelGame implements Commons{
     //**************************************************************************
     // Getters - Setters
     //**************************************************************************
+    /**
+     * Get the current player score
+     * @return score
+     */
+    public int getScore(){
+        return this.currentScore;
+    }
+    
+    /**
+     * Get the number of remaining aliens
+     * @return 
+     */
+    public int getNbAliens(){
+        return this.nbAliens;
+    }
+    
+    /**
+     * Get the player
+     * @return 
+     */
+    public Player getPlayer(){
+        return this.player;
+    }
+    
+    /**
+     * Return the alien list
+     * @return 
+     */
+    public ArrayList<Sprite> getListAliens(){
+        return this.listAliens;
+    }
+    
+    /**
+     * Get the list of player shoots
+     * @return 
+     */
+    public ArrayList<Projectile> getPlayerShoot(){
+        return this.listPlayerShoot;
+    }
+    
+    /**
+     * Get the list of alien shoots
+     * @return 
+     */
+    public ArrayList<Projectile> getAlienShoot(){
+        return this.listAlienShoot;
+    }
+    
+    
+    
+    
+    
+
+    //**************************************************************************
+    // Observers
+    //**************************************************************************
+    @Override
+    public void addObserver(ObserverGame obs){
+        this.listObservers.add(obs);
+    }
+
+    @Override
+    public void deleteAllObservers(){
+        this.listObservers = new ArrayList();
+    }
+    
+    @Override
+    public void notifyAObservers(){
+        for(ObserverGame obs : this.listObservers){
+            obs.update(this);
+        }
+    }
 }

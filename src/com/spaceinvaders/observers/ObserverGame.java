@@ -13,42 +13,15 @@ package com.spaceinvaders.observers;
 
 /**
  * <h1>ObserverGame</h1>
- * <p>public class ObserverGame</p>
+ * <p>public interface ObserverGame</p>
  *
  * @author Constantin MASSON
  */
-public class ObserverGame {
-    //**************************************************************************
-    // Constants - Variables
-    //**************************************************************************
+public interface ObserverGame {
     
-    
-    
-    
-    
-
-    //**************************************************************************
-    // Constructor - Initialization
-    //**************************************************************************
-    public ObserverGame(){
-    
-    }
-    
-    
-    
-    
-    
-
-    //**************************************************************************
-    // Functions
-    //**************************************************************************
-    
-    
-    
-    
-    
-
-    //**************************************************************************
-    // Getters - Setters
-    //**************************************************************************
+    /**
+     * Update all the display
+     * @param obs
+     */
+    public void update(ObservableGame obs);
 }

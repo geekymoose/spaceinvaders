@@ -8,7 +8,6 @@
 package com.spaceinvaders.weapons;
 
 import com.spaceinvaders.models.Sprite;
-import java.awt.Rectangle;
 import java.util.ArrayList;
 
 

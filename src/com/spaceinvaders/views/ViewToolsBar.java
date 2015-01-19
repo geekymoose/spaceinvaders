@@ -72,7 +72,7 @@ public class ViewToolsBar extends JPanel implements Commons{
         
         this.setBackground(Color.WHITE);
         this.initButtons();
-        this.initButtonState();
+        this.initialButtonState();
     }
     
     
@@ -108,11 +108,15 @@ public class ViewToolsBar extends JPanel implements Commons{
     
     /*
      * Initialize the button state
+     * Restore the state used at the beginning
      */
-    private void initButtonState(){
+    private void initialButtonState(){
+        this.buttonStart    .setEnabled(true);
         this.buttonStop     .setEnabled(false);
+        this.buttonRestart  .setEnabled(true);
         this.buttonRestart  .setEnabled(false);
         this.buttonSave     .setEnabled(false);
+        this.buttonLoad     .setEnabled(true);
     }
     
     
@@ -122,6 +126,9 @@ public class ViewToolsBar extends JPanel implements Commons{
     //**************************************************************************
     // class intern ActionListener for buttons
     //**************************************************************************
+    /*
+     * Intern class for button start
+     */
     private class ButtonStartListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
@@ -130,9 +137,14 @@ public class ViewToolsBar extends JPanel implements Commons{
             buttonRestart   .setEnabled(false);
             buttonSave      .setEnabled(false);
             buttonLoad      .setEnabled(false);
+            
+            controller.startGame();
         }
     }
     
+    /*
+     * Intern class for button stop
+     */
     private class ButtonStopListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
@@ -141,26 +153,40 @@ public class ViewToolsBar extends JPanel implements Commons{
             buttonRestart   .setEnabled(true);
             buttonSave      .setEnabled(true);
             buttonLoad      .setEnabled(true);
+            
+            controller.stopGame();
         }
     }
     
+    /*
+     * Intern class for button restart
+     */
     private class ButtonRestartListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
-            initButtonState();
+            initialButtonState();
+            
+            controller.restartGame();
         }
     }
     
+    /*
+     * Intern class for button save
+     */
     private class ButtonSaveListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
-            
+            controller.saveGame();
         }
     }
     
+    /*
+     * Intern class for button load
+     */
     private class ButtonLoadListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
+            controller.loadGame();
         }
     }
 }
