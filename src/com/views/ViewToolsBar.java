@@ -7,8 +7,8 @@
 
 package com.views;
 
-import com.constants.DimView;
-import com.constants.Paths;
+import com.constants.Commons;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -24,12 +24,12 @@ import javax.swing.JPanel;
  * <p>
  public class ViewToolsBar<br/>
  * extends JPanel<br/>
- * implements Paths, DimView
+ * implements Commons
  * </p>
  *
  * @author Constantin MASSON
  */
-public class ViewToolsBar extends JPanel implements Paths, DimView{
+public class ViewToolsBar extends JPanel implements Commons{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -59,6 +59,7 @@ public class ViewToolsBar extends JPanel implements Paths, DimView{
      * Create the tools bar
      */
     public ViewToolsBar(){
+        this.setBackground(new Color(30,30,30));
         this.initButtons();
     }
     

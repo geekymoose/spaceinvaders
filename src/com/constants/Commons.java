@@ -7,6 +7,8 @@
 
 package com.constants;
 
+import java.awt.Dimension;
+
 
 
 
@@ -18,6 +20,9 @@ package com.constants;
  * @author Constantin MASSON
  */
 public interface Commons {
+    //**************************************************************************
+    // Game constants
+    //**************************************************************************
     public static final int BOARD_WIDTH                     = 358;
     public static final int BOARD_HEIGTH                    = 350;
     public static final int GROUND                          = 290;
@@ -32,4 +37,30 @@ public interface Commons {
     public static final int DELAY                           = 17;
     public static final int PLAYER_WIDTH                    = 15;
     public static final int PLAYER_HEIGHT                   = 10;
+    
+    
+    
+    //**************************************************************************
+    // View - dimension constants
+    //**************************************************************************
+    public static final int         FRAME_WIDTH             = 1250;
+    public static final int         FRAME_HEIGHT            = 850;
+    public static final Dimension   DIM_FRAME_MIN           = new Dimension(450,250);
+    public static final Dimension   DIM_ICON_TOOLS          = new Dimension(45,45);
+    
+    
+    
+    //**************************************************************************
+    // Label - Font constants
+    //**************************************************************************
+    public static final int         LEFT_LABEL_SIZE         = 20;
+    public static final int         LEFT_LABEL_TITLE_SIZE   = 25;
+    
+    
+    
+    //**************************************************************************
+    // Paths constants
+    //**************************************************************************
+    public static final String PATH_ICON_TOOLS  = "img/icon/miniatures/";
+    
 }
