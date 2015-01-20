@@ -57,17 +57,24 @@ public class ViewGame extends JPanel implements Commons, ObserverGame{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
+    /**
+     * Create the View for game
+     * @param pController 
+     */
     public ViewGame(ControllerGame pController){
         this.controller         = pController;
+        this.player             = new Player(0,0);
+        this.listPlayerShoot    = new ArrayList();
+        this.listAlien          = new ArrayList();
+        this.listAlienShoot     = new ArrayList();
         this.setLayout(new BorderLayout());
         this.setBackground(Color.BLACK);
+        this.setPreferredSize(DIM_GAME);
     }
     
     
     
     
-    
-
     //**************************************************************************
     // Functions
     //**************************************************************************
@@ -76,14 +83,25 @@ public class ViewGame extends JPanel implements Commons, ObserverGame{
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D)g;
         
-        //Draw the player
+        //Draw the player and the ground
         g2d.drawImage(player.getImage(), player.getPosX(), player.getPosY(), this);
+        g2d.setColor(Color.red);
+        g2d.drawLine(0, GROUND, GAME_WIDTH, GROUND);
         
         //Draw the aliens
         for(Sprite o : this.listAlien){
             g2d.drawImage(o.getImage(), o.getPosX(), o.getPosY(), this);
         }
         
+        //Draw the alien shoots
+        for(Projectile p : this.listAlienShoot){
+            g2d.drawImage(p.getImage(), p.getPosX(), p.getPosY(), this);
+        }
+        
+        //Draw the player shoots
+        for(Projectile p : this.listPlayerShoot){
+            g2d.drawImage(p.getImage(), p.getPosX(), p.getPosY(), this);
+        }
         
         //See doc: used for synchronisation
         Toolkit.getDefaultToolkit().sync();
@@ -98,7 +116,6 @@ public class ViewGame extends JPanel implements Commons, ObserverGame{
         this.listAlienShoot     = m.getAlienShoot();
         this.listPlayerShoot    = m.getPlayerShoot();
         this.player             = m.getPlayer();
-        
         this.repaint();
     }
 }

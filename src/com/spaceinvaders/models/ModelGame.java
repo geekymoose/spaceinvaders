@@ -50,12 +50,8 @@ public class ModelGame implements Commons, ObservableGame{
      * Initialize the map with default value
      */
     public ModelGame(){
-        this.player             = new Player(GAME_MAP_WIDTH/2, GAME_MAP_HEIGHT);
-        this.listPlayerShoot    = new ArrayList();
-        this.listAliens         = new ArrayList();
-        this.listAlienShoot     = new ArrayList();
         this.listObservers      = new ArrayList();
-        this.nbAliens           = 0;
+        this.initMap();
     }
     
     
@@ -63,15 +59,16 @@ public class ModelGame implements Commons, ObservableGame{
      * Initialize the map
      */
     public void initMap(){
-        this.player             = new Player(GAME_MAP_WIDTH/2, GAME_MAP_HEIGHT);
+        this.player             = new Player(DEFAULT_PLAYER_POS_X, DEFAULT_PLAYER_POS_Y);
         this.listPlayerShoot    = new ArrayList();
         this.listAliens         = new ArrayList();
         this.listAlienShoot     = new ArrayList();
-        this.listObservers      = new ArrayList();
         
         this.nbAliens           = 55; //11 * 5
+        this.currentScore       = 0;
         
         this.placeInitialeSpaceInvaders();
+        this.notifyObservers();
     }
     
     
@@ -82,18 +79,17 @@ public class ModelGame implements Commons, ObservableGame{
      * the 2 last are filled with alien1
      */
     private void placeInitialeSpaceInvaders(){
-        System.out.println(11*(DEFAULT_LEFT_POSITION + ALIEN_WIDTH + GAP_BETWEEN_ALIENS));
         //First line with alien3 (Calculation start at x=0, y=0)
         for(int x=0; x<11; x++){
-            int posX = DEFAULT_LEFT_POSITION + (x*ALIEN_WIDTH) + GAP_BETWEEN_ALIENS;
+            int posX = DEFAULT_LEFT_POSITION + (x*(ALIEN_WIDTH+GAP_BETWEEN_ALIENS));
             this.listAliens.add(new Alien3(posX, DEFAULT_Y_POSITION));
         }
         
         //Lines 2-3
         for(int x=0; x<11; x++){
             for(int y=1; y<3; y++){
-                int posX = DEFAULT_LEFT_POSITION + (x*ALIEN_WIDTH) + GAP_BETWEEN_ALIENS;
-                int posY = DEFAULT_Y_POSITION + (y*ALIEN_HEIGHT)  + GAP_BETWEEN_ALIENS;
+                int posX = DEFAULT_LEFT_POSITION + (x*(ALIEN_WIDTH+GAP_BETWEEN_ALIENS));
+                int posY = DEFAULT_Y_POSITION + (y*(ALIEN_HEIGHT+GAP_BETWEEN_ALIENS));
                 this.listAliens.add(new Alien2(posX, posY));
             }
         }
@@ -101,8 +97,8 @@ public class ModelGame implements Commons, ObservableGame{
         //Lines 4-5
         for(int x=0; x<11; x++){
             for(int y=3; y<5; y++){
-                int posX = DEFAULT_LEFT_POSITION + (x*ALIEN_WIDTH) + GAP_BETWEEN_ALIENS;
-                int posY = DEFAULT_Y_POSITION + (y*ALIEN_HEIGHT)  + GAP_BETWEEN_ALIENS;
+                int posX = DEFAULT_LEFT_POSITION + (x*(ALIEN_WIDTH+GAP_BETWEEN_ALIENS));
+                int posY = DEFAULT_Y_POSITION + (y*(ALIEN_HEIGHT+GAP_BETWEEN_ALIENS));
                 this.listAliens.add(new Alien1(posX, posY));
             }
         }
@@ -201,7 +197,7 @@ public class ModelGame implements Commons, ObservableGame{
     }
     
     @Override
-    public void notifyAObservers(){
+    public void notifyObservers(){
         for(ObserverGame obs : this.listObservers){
             obs.update(this);
         }

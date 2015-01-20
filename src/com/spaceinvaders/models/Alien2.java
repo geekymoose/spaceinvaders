@@ -8,6 +8,7 @@
 package com.spaceinvaders.models;
 
 import com.spaceinvaders.behaviors.ShootBomb;
+import javax.swing.ImageIcon;
 
 
 
@@ -42,6 +43,8 @@ public class Alien2 extends Sprite{
      */
     public Alien2(int pX, int pY){
         super(pX, pY, ALIEN_WIDTH, ALIEN_HEIGHT);
+        ImageIcon i    = new ImageIcon(PATH_ALIEN2_IMG);
+        this.img    = i.getImage();
         this.shootType  = new ShootBomb();
     }
     

@@ -54,7 +54,6 @@ public class ViewApplication extends JFrame implements Commons{
      */
     public ViewApplication(){
         this.setTitle("Mini games launcher");
-        this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         this.setMinimumSize(DIM_FRAME_MIN);
         this.setAlwaysOnTop(false);
         this.setResizable(true);
@@ -75,6 +74,7 @@ public class ViewApplication extends JFrame implements Commons{
         ViewGame            v   = new ViewGame(c);
         
         m.addObserver(v);
+        m.initMap();
         
         this.mainContent        = new JPanel();
         this.panTop             = new ViewToolsBar(c2);

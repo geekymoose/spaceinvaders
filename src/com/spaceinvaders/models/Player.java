@@ -7,6 +7,9 @@
 
 package com.spaceinvaders.models;
 
+import com.spaceinvaders.behaviors.ShootMissile;
+import javax.swing.ImageIcon;
+
 
 
 
@@ -39,8 +42,11 @@ public class Player extends Sprite{
      * @param pX x coordinate
      * @param pY y coordinate
      */
-    protected Player(int pX, int pY){
+    public Player(int pX, int pY){
         super(pX, pY, PLAYER_WIDTH, PLAYER_HEIGHT);
+        ImageIcon i    = new ImageIcon(PATH_PLAYER_IMG);
+        this.img    = i.getImage();
+        this.shootType  = new ShootMissile();
     }
     
     

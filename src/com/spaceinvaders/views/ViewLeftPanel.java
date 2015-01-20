@@ -102,6 +102,10 @@ public class ViewLeftPanel extends JPanel implements Commons, ObserverGame{
     //**************************************************************************
     @Override
     public void update(ObservableGame obs){
+        this.labelScore             .setForeground(Color.WHITE);
+        this.labelScoreValue        .setForeground(Color.WHITE);
+        this.labelNbInvaders        .setForeground(Color.WHITE);
+        this.labelNbInvadersValue   .setForeground(Color.WHITE);
     }
     
     

@@ -1,29 +1,29 @@
 /*
- * Class :      bomb
- * Creation:    Jan 19, 2015
+ * Class :      keyManager
+ * Creation:    Jan 20, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.spaceinvaders.weapons;
+package com.spaceinvaders.tools;
 
-import com.spaceinvaders.models.Sprite;
-import java.util.ArrayList;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 
 
 
 
 /**
- * <h1>bomb</h1>
+ * <h1>keyManager</h1>
  * <p>
- * public class bomb<br/>
- * extends Projectile
+ * public class keyManager<br/>
+ * implements KeyListener
  * </p>
  *
  * @author Constantin MASSON
  */
-public class bomb extends Projectile{
+public class keyManager implements KeyListener{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -36,13 +36,8 @@ public class bomb extends Projectile{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    /**
-     * Create a new bomb
-     * @param pX        x coordinate
-     * @param pY        y coordinate
-     */
-    public bomb(int pX, int pY){
-        super(pX, pY, BOMB_WIDTH, BOMB_WIDTH);
+    public keyManager(){
+    
     }
     
     
@@ -54,20 +49,18 @@ public class bomb extends Projectile{
     // Functions
     //**************************************************************************
     @Override
-    public void move(){
-        this.posY += 1;
+    public void keyTyped(KeyEvent e){
     }
+
+
 
     @Override
-    public Sprite hits(ArrayList<Sprite> pList){
-        return null;
+    public void keyPressed(KeyEvent e){
     }
-    
-    
-    
-    
 
-    //**************************************************************************
-    // Getters - Setters
-    //**************************************************************************
+
+
+    @Override
+    public void keyReleased(KeyEvent e){
+    }
 }
