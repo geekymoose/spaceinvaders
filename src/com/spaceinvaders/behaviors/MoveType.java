@@ -21,6 +21,7 @@ public interface MoveType {
     
     /**
      * Process a move
+     * @param direction movement direction
      */
-    public void move();
+    public void move(int direction);
 }
