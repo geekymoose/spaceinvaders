@@ -75,9 +75,10 @@ public abstract class Sprite implements Commons{
     
     /**
      * Perform a move
+     * @param direction
      */
-    public void move(){
-        moveType.move();
+    public void move(int direction){
+        moveType.move(direction);
     }
     
     /**

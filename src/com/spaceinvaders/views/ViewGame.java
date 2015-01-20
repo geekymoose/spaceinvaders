@@ -14,6 +14,7 @@ import com.spaceinvaders.models.Player;
 import com.spaceinvaders.models.Sprite;
 import com.spaceinvaders.observers.ObservableGame;
 import com.spaceinvaders.observers.ObserverGame;
+import com.spaceinvaders.tools.KeyGameManager;
 import com.spaceinvaders.weapons.Projectile;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -42,6 +43,7 @@ public class ViewGame extends JPanel implements Commons, ObserverGame{
     // Constants - Variables
     //**************************************************************************
     private     ControllerGame          controller;
+    private     KeyGameManager          keyGameManager;
     private     JPanel                  panGame;
     
     private     ArrayList<Sprite>       listAlien;
@@ -63,6 +65,7 @@ public class ViewGame extends JPanel implements Commons, ObserverGame{
      */
     public ViewGame(ControllerGame pController){
         this.controller         = pController;
+        this.keyGameManager     = new KeyGameManager(this.controller);
         this.player             = new Player(0,0);
         this.listPlayerShoot    = new ArrayList();
         this.listAlien          = new ArrayList();
@@ -70,6 +73,9 @@ public class ViewGame extends JPanel implements Commons, ObserverGame{
         this.setLayout(new BorderLayout());
         this.setBackground(Color.BLACK);
         this.setPreferredSize(DIM_GAME);
+        this.setFocusable(true);
+        this.setDoubleBuffered(true);
+        this.addKeyListener(keyGameManager);
     }
     
     

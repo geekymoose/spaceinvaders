@@ -34,6 +34,6 @@ public class MovePlayer implements MoveType{
     // Functions
     //**************************************************************************
     @Override
-    public void move(){
+    public void move(int direction){
     }
 }
