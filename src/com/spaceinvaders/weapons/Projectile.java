@@ -30,8 +30,8 @@ public abstract class Projectile implements Commons{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    public      int         x;
-    public      int         y;
+    public      int         posX;
+    public      int         posY;
     protected   int         width;
     protected   int         height;
     protected   Image       img;
@@ -47,8 +47,8 @@ public abstract class Projectile implements Commons{
     //**************************************************************************
     protected Projectile(int pX, int pY, int pWidth, int pHeight){
         this.img    = null;
-        this.x      = pX;
-        this.y      = pY;
+        this.posX   = pX;
+        this.posY   = pY;
         this.width  = pWidth;
         this.height = pHeight;
     }
@@ -83,11 +83,27 @@ public abstract class Projectile implements Commons{
     // Getters - Setters
     //**************************************************************************
     /**
+     * Get the image
+     * @return 
+     */
+    public Image getImage(){
+        return this.img;
+    }
+    
+    public int getPosX(){
+        return this.posX;
+    }
+    
+    public int getPosY(){
+        return this.posY;
+    }
+    
+    /**
      * Return the projectile bounds
      * @return Rectangle
      */
     public Rectangle getBounds(){
-        return new Rectangle(x, y, width, height);
+        return new Rectangle(posX, posY, width, height);
     }
     
     /**

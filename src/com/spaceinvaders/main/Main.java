@@ -33,6 +33,7 @@ public class Main {
             public void run() {
                 ViewApplication ap = new ViewApplication();
                 ap.setVisible(true);
+                ap.pack();
             }
         });
     }

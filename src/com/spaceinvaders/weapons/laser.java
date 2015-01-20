@@ -56,7 +56,7 @@ public class laser extends Projectile{
     //**************************************************************************
     @Override
     public void move(){
-        this.y += 1;
+        this.posY += 1;
     }
 
     @Override

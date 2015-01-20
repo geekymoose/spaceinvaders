@@ -24,6 +24,7 @@ public interface Commons {
     // Game constants
     //**************************************************************************
     public static final int DELAY                           = 17;
+    
     public static final int DEFAULT_LEFT_POSITION           = 50;
     public static final int DEFAULT_Y_POSITION              = 50;
     public static final int GAP_BETWEEN_ALIENS              = 10;
@@ -41,19 +42,20 @@ public interface Commons {
     public static final int PLAYER_HEIGHT                   = 10;
     
     
-    public static final int GAME_MAP_WIDTH                  = 358;
-    public static final int GAME_MAP_HEIGHT                 = 350;
-    public static final int GROUND                          = 300;
+    public static final int GAME_WIDTH                      = 400;
+    public static final int GAME_HEIGHT                     = 300;
+    public static final int GROUND                          = 250;
+    public static final int DEFAULT_PLAYER_POS_X            = 10;
+    public static final int DEFAULT_PLAYER_POS_Y            = GROUND-PLAYER_HEIGHT-3;
     
     
     
     //**************************************************************************
     // View - dimension constants
     //**************************************************************************
-    public static final int         FRAME_WIDTH             = 1250;
-    public static final int         FRAME_HEIGHT            = 850;
-    public static final Dimension   DIM_FRAME_MIN           = new Dimension(450,250);
     public static final Dimension   DIM_ICON_TOOLS          = new Dimension(40,40);
+    public static final Dimension   DIM_FRAME_MIN           = new Dimension(450,250);
+    public static final Dimension   DIM_GAME                = new Dimension(GAME_WIDTH, GAME_HEIGHT);
     
     
     
@@ -69,5 +71,8 @@ public interface Commons {
     // Paths constants
     //**************************************************************************
     public static final String PATH_ICON_TOOLS  = "img/icon/miniatures/";
-    
+    public static final String PATH_PLAYER_IMG  = "img/player.png";
+    public static final String PATH_ALIEN1_IMG  = "img/alien1.png";
+    public static final String PATH_ALIEN2_IMG  = "img/alien1.png";
+    public static final String PATH_ALIEN3_IMG  = "img/alien1.png";
 }

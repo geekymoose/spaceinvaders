@@ -32,5 +32,5 @@ public interface ObservableGame {
     /**
      * Notify all observers
      */
-    public void notifyAObservers();
+    public void notifyObservers();
 }
