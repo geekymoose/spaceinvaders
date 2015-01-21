@@ -30,7 +30,7 @@ public class ModelGame implements Commons, ObservableGame{
     // Constants - Variables
     //**************************************************************************
     private     Player                  player;
-    private     ArrayList<Sprite>       listAliens; //Only alien inside
+    private     ArrayList<Character>       listAliens; //Only alien inside
     private     ArrayList<Projectile>   listAlienShoot;
     private     ArrayList<Projectile>   listPlayerShoot;
     private     ArrayList<ObserverGame> listObservers;
@@ -81,15 +81,15 @@ public class ModelGame implements Commons, ObservableGame{
     private void placeInitialeSpaceInvaders(){
         //First line with alien3 (Calculation start at x=0, y=0)
         for(int x=0; x<11; x++){
-            int posX = DEFAULT_LEFT_POSITION + (x*(ALIEN_WIDTH+GAP_BETWEEN_ALIENS));
-            this.listAliens.add(new Alien3(posX, DEFAULT_Y_POSITION));
+            int posX = GAP_LEFT + (x*GAP_BETWEEN_ALIENS+10);
+            this.listAliens.add(new Alien1(posX, GAP_TOP));
         }
         
         //Lines 2-3
         for(int x=0; x<11; x++){
             for(int y=1; y<3; y++){
-                int posX = DEFAULT_LEFT_POSITION + (x*(ALIEN_WIDTH+GAP_BETWEEN_ALIENS));
-                int posY = DEFAULT_Y_POSITION + (y*(ALIEN_HEIGHT+GAP_BETWEEN_ALIENS));
+                int posX = GAP_LEFT + (x*GAP_BETWEEN_ALIENS);
+                int posY = GAP_TOP + (y*GAP_BETWEEN_ALIENS);
                 this.listAliens.add(new Alien2(posX, posY));
             }
         }
@@ -97,9 +97,9 @@ public class ModelGame implements Commons, ObservableGame{
         //Lines 4-5
         for(int x=0; x<11; x++){
             for(int y=3; y<5; y++){
-                int posX = DEFAULT_LEFT_POSITION + (x*(ALIEN_WIDTH+GAP_BETWEEN_ALIENS));
-                int posY = DEFAULT_Y_POSITION + (y*(ALIEN_HEIGHT+GAP_BETWEEN_ALIENS));
-                this.listAliens.add(new Alien1(posX, posY));
+                int posX = GAP_LEFT + (x*GAP_BETWEEN_ALIENS);
+                int posY = GAP_TOP + (y*GAP_BETWEEN_ALIENS);
+                this.listAliens.add(new Alien3(posX, posY));
             }
         }
     }
@@ -118,7 +118,7 @@ public class ModelGame implements Commons, ObservableGame{
      * Kill one alien. This alien will be removed from the list
      * @param pAlien
      */
-    public void killOneAlien(Sprite pAlien){
+    public void killOneAlien(Character pAlien){
         this.listAliens.remove(pAlien);
     }
     
@@ -158,7 +158,7 @@ public class ModelGame implements Commons, ObservableGame{
      * Return the alien list
      * @return 
      */
-    public ArrayList<Sprite> getListAliens(){
+    public ArrayList<Character> getListAliens(){
         return this.listAliens;
     }
     

@@ -18,12 +18,12 @@ import javax.swing.ImageIcon;
  * <h1>Player</h1>
  * <p>
  public class Player<br/>
- extends Sprite
+ extends Character
  </p>
  *
  * @author Constantin MASSON
  */
-public class Player extends Sprite{
+public class Player extends Character{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************

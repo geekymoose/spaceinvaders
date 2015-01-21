@@ -7,7 +7,7 @@
 
 package com.spaceinvaders.weapons;
 
-import com.spaceinvaders.models.Sprite;
+import com.spaceinvaders.models.Character;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
@@ -60,7 +60,7 @@ public class laser extends Projectile{
     }
 
     @Override
-    public Sprite hits(ArrayList<Sprite> pList){
+    public Character hits(ArrayList<Character> pList){
         return null;
     }
     

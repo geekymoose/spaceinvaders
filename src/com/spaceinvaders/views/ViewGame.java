@@ -11,7 +11,7 @@ import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.controllers.ControllerGame;
 import com.spaceinvaders.models.ModelGame;
 import com.spaceinvaders.models.Player;
-import com.spaceinvaders.models.Sprite;
+import com.spaceinvaders.models.Character;
 import com.spaceinvaders.observers.ObservableGame;
 import com.spaceinvaders.observers.ObserverGame;
 import com.spaceinvaders.tools.KeyGameManager;
@@ -46,7 +46,7 @@ public class ViewGame extends JPanel implements Commons, ObserverGame{
     private     KeyGameManager          keyGameManager;
     private     JPanel                  panGame;
     
-    private     ArrayList<Sprite>       listAlien;
+    private     ArrayList<Character>       listAlien;
     private     ArrayList<Projectile>   listPlayerShoot;
     private     ArrayList<Projectile>   listAlienShoot;
     private     Player                  player;
@@ -95,7 +95,7 @@ public class ViewGame extends JPanel implements Commons, ObserverGame{
         g2d.drawLine(0, GROUND, GAME_WIDTH, GROUND);
         
         //Draw the aliens
-        for(Sprite o : this.listAlien){
+        for(Character o : this.listAlien){
             g2d.drawImage(o.getImage(), o.getPosX(), o.getPosY(), this);
         }
         
