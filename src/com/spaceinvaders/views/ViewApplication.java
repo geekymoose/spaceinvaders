@@ -1,4 +1,4 @@
-/*
+/* 
  * Class :      ViewApplication
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 /**
  * <h1>ViewApplication</h1>
  * <p>
- public class ViewApplication<br/>
+ * public class ViewApplication<br/>
  * extends JFrame<br/>
  * implements Commons
  * </p>
@@ -78,7 +78,7 @@ public class ViewApplication extends JFrame implements Commons{
         
         this.mainContent        = new JPanel();
         this.panTop             = new ViewToolsBar(c2);
-        this.panLeft            = new ViewLeftPanel();
+        this.panLeft            = new ViewTopPanel();
         this.panCenter          = v;
         
         this.mainContent.setLayout(new BorderLayout());

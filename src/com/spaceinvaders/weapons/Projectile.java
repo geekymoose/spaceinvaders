@@ -8,7 +8,7 @@
 package com.spaceinvaders.weapons;
 
 import com.spaceinvaders.constants.Commons;
-import com.spaceinvaders.models.Sprite;
+import com.spaceinvaders.models.Character;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public abstract class Projectile implements Commons{
      * @param pList
      * @return return the object hit, null if nothing
      */
-    public abstract Sprite hits(ArrayList<Sprite> pList);
+    public abstract Character hits(ArrayList<Character> pList);
     
     
     
