@@ -24,4 +24,10 @@ public interface ObserverGame {
      * @param obs
      */
     public void update(ObservableGame obs);
+    
+    /**
+     * Update the initial display
+     * @param obs 
+     */
+    public void updateInitMap(ObservableGame obs);
 }

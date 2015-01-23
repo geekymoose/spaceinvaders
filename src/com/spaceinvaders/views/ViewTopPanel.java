@@ -101,6 +101,10 @@ public class ViewTopPanel extends JPanel implements Commons, ObserverGame{
     // Functions
     //**************************************************************************
     @Override
+    public void updateInitMap(ObservableGame obs){
+    }
+    
+    @Override
     public void update(ObservableGame obs){
         this.labelScore             .setForeground(Color.WHITE);
         this.labelScoreValue        .setForeground(Color.WHITE);

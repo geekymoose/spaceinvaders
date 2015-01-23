@@ -36,7 +36,7 @@ public class ControllerGame {
     // Constructor - Initialization
     //**************************************************************************
     public ControllerGame(ModelGame pModel){
-    
+        this.model  = pModel;
     }
     
     
@@ -47,4 +47,24 @@ public class ControllerGame {
     //**************************************************************************
     // Functions
     //**************************************************************************
+    
+    
+    
+    
+    
+
+    //**************************************************************************
+    // Getters - Setters
+    //**************************************************************************
+    /*
+     * This function is.. ugly, it shouldn't be done like this 
+     * (Used for the controller player)
+     */
+    /**
+     * Get the model
+     * @return 
+     */
+    public ModelGame getModelGame(){
+        return this.model;
+    }
 }

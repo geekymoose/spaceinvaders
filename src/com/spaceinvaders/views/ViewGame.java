@@ -13,7 +13,7 @@ import com.spaceinvaders.controllers.ControllerPlayer;
 import com.spaceinvaders.models.Alien;
 import com.spaceinvaders.models.ModelGame;
 import com.spaceinvaders.models.Player;
-import com.spaceinvaders.models.Character;
+import com.spaceinvaders.models.Living;
 import com.spaceinvaders.observers.ObservableCharacter;
 import com.spaceinvaders.observers.ObservableGame;
 import com.spaceinvaders.observers.ObserverCharacter;
@@ -82,13 +82,6 @@ public class ViewGame extends JPanel implements Commons, ObserverGame, ObserverC
         this.setPreferredSize(DIM_GAME);
         this.setFocusable(true);
         this.setDoubleBuffered(true);
-        
-        this.keyGameManager     = new ManagerKeyPlayer(new ControllerPlayer(this.player));
-        this.addKeyListener(keyGameManager);
-        
-        //Start timer
-        this.player.addObserver(this);
-        this.timerPlayer        = new TimerPlayer(this.player);
     }
     
     
@@ -108,7 +101,7 @@ public class ViewGame extends JPanel implements Commons, ObserverGame, ObserverC
         g2d.drawLine(0, GROUND, GAME_WIDTH, GROUND);
         
         //Draw the aliens
-        for(Character o : this.listAlien){
+        for(Living o : this.listAlien){
             g2d.drawImage(o.getImage(), o.getUpperLeftCorner().x, o.getUpperLeftCorner().y, this);
         }
         
@@ -128,13 +121,39 @@ public class ViewGame extends JPanel implements Commons, ObserverGame, ObserverC
     }
     
     
+    
+    
+    
+    //**************************************************************************
+    // Observers
+    //**************************************************************************
     @Override
-    public void update(ObservableGame obs){
+    public void updateInitMap(ObservableGame obs){
         ModelGame m = ((ModelGame)obs);
         this.listAlien          = m.getListAliens();
         this.listAlienShoot     = m.getAlienShoot();
         this.listPlayerShoot    = m.getPlayerShoot();
         this.player.setCenter(m.getPlayer().getCenter());
+        
+        
+        ControllerPlayer c      = new ControllerPlayer(this.player, this.controller.getModelGame());
+        this.keyGameManager     = new ManagerKeyPlayer(c);
+        this.addKeyListener(keyGameManager);
+        
+        //Start timer
+        this.player.addObserver(this);
+        this.timerPlayer        = new TimerPlayer(this.player);
+        this.repaint();
+    }
+    
+    
+    @Override
+    public void update(ObservableGame obs){
+        ModelGame m = ((ModelGame)obs);
+        //this.listAlien          = m.getListAliens();
+        //this.listAlienShoot     = m.getAlienShoot();
+        //this.listPlayerShoot    = m.getPlayerShoot();
+        //this.player.setCenter(m.getPlayer().getCenter());
         this.repaint();
     }
 

@@ -9,6 +9,7 @@ package com.spaceinvaders.models;
 
 import com.spaceinvaders.behaviors.MovePlayer;
 import com.spaceinvaders.behaviors.ShootMissile;
+import java.awt.Point;
 import javax.swing.ImageIcon;
 
 
@@ -19,12 +20,12 @@ import javax.swing.ImageIcon;
  * <h1>Player</h1>
  * <p>
  public class Player<br/>
- extends Character
+ extends Living
  </p>
  *
  * @author Constantin MASSON
  */
-public class Player extends Character{
+public class Player extends Living{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -47,10 +48,11 @@ public class Player extends Character{
         super(pX, pY);
         ImageIcon i         = new ImageIcon(PATH_PLAYER_IMG);
         this.img            = i.getImage();
-        this.shootType      = new ShootMissile();
+        this.shootType      = new ShootMissile(((Living)this), 1); //Ammo = 1
         this.moveType       = new MovePlayer(this);
         this.width          = PLAYER_WIDTH;
         this.height         = PLAYER_HEIGHT;
+        this.barrel         = new Point(this.posX+PLAYER_WIDTH/2, this.posY+0);
     }
     
     

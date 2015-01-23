@@ -32,7 +32,6 @@ public interface MoveType extends Movements{
      */
     public void moveDirection(int direction);
     
-    
     /**
      * Stop the move
      */

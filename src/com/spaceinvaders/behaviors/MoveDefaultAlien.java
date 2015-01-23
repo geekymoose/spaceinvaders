@@ -7,7 +7,7 @@
 
 package com.spaceinvaders.behaviors;
 
-import com.spaceinvaders.models.Character;
+import com.spaceinvaders.models.Living;
 import java.awt.Point;
 
 
@@ -24,7 +24,7 @@ public class MoveDefaultAlien implements MoveType{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     final Character alien;
+    private     final Living alien;
     private     int             dx; //See interface Movement for values
     private     int             dy;
     
@@ -40,7 +40,7 @@ public class MoveDefaultAlien implements MoveType{
      * Create a new Alien movement
      * @param pCharacter 
      */
-    public MoveDefaultAlien(Character pCharacter){
+    public MoveDefaultAlien(Living pCharacter){
         this.alien      = pCharacter;
         this.dx         = 0;
         this.dy         = 0;

@@ -1,5 +1,5 @@
 /*
- * Class :      laser
+ * Class :      Laser
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
@@ -7,24 +7,25 @@
 
 package com.spaceinvaders.weapons;
 
-import com.spaceinvaders.models.Character;
-import java.awt.Rectangle;
+import static com.spaceinvaders.constants.Commons.IMG_MISSILE;
+import com.spaceinvaders.models.Living;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 
 
 
 
 /**
- * <h1>laser</h1>
+ * <h1>Laser</h1>
  * <p>
- * public class laser<br/>
+ public class Laser<br/>
  * extends Projectile
  * </p>
  *
  * @author Constantin MASSON
  */
-public class laser extends Projectile{
+public class Laser extends Projectile{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -38,12 +39,15 @@ public class laser extends Projectile{
     // Constructor - Initialization
     //**************************************************************************
     /**
-     * Create a new laser shoot
+     * Create a new laser
      * @param pX        x coordinate
      * @param pY        y coordinate
+     * @param pOwner    owner
      */
-    public laser(int pX, int pY){
-        super(pX, pY, LASER_WIDTH, LASER_HEIGHT);
+    public Laser(int pX, int pY, Living pOwner){
+        super(pX, pY, MISSILE_WIDTH, MISSILE_WIDTH, pOwner);
+        ImageIcon i         = new ImageIcon(IMG_MISSILE);
+        this.img            = i.getImage();
     }
     
     
@@ -60,7 +64,7 @@ public class laser extends Projectile{
     }
 
     @Override
-    public Character hits(ArrayList<Character> pList){
+    public Living hits(ArrayList<Living> pList){
         return null;
     }
     
