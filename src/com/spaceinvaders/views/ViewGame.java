@@ -16,11 +16,10 @@ import com.spaceinvaders.models.Player;
 import com.spaceinvaders.models.Living;
 import com.spaceinvaders.observers.ObservableCharacter;
 import com.spaceinvaders.observers.ObservableGame;
-import com.spaceinvaders.observers.ObservableProjectile;
 import com.spaceinvaders.observers.ObserverCharacter;
 import com.spaceinvaders.observers.ObserverGame;
-import com.spaceinvaders.observers.ObserverProjectile;
 import com.spaceinvaders.tools.ManagerKeyPlayer;
+import com.spaceinvaders.tools.TimerGeneral;
 import com.spaceinvaders.tools.TimerPlayer;
 import com.spaceinvaders.tools.TimerShoot;
 import com.spaceinvaders.weapons.Projectile;
@@ -57,7 +56,8 @@ public class ViewGame extends JPanel implements Commons,
     private     JPanel                  panGame;
     
     private     TimerPlayer             timerPlayer;
-    private     TimerShoot              TimerShoot;
+    private     TimerShoot              timerShoot;
+    private     TimerGeneral            timerGeneral;
     
     private     ArrayList<Alien>        listAlien;
     private     ArrayList<Projectile>   listPlayerShoot;
@@ -148,10 +148,12 @@ public class ViewGame extends JPanel implements Commons,
         //Start timer Player
         this.player.addObserver(this);
         this.timerPlayer        = new TimerPlayer(this.player);
-        this.repaint();
         
         //Start timer shoot
-        this.TimerShoot         = new TimerShoot(this.listAlienShoot, this.listPlayerShoot);
+        this.timerShoot         = new TimerShoot(this.listAlienShoot, this.listPlayerShoot);
+        
+        //Start general Timer
+        this.timerGeneral       = new TimerGeneral(this);
     }
     
     
@@ -162,7 +164,6 @@ public class ViewGame extends JPanel implements Commons,
         this.listAlienShoot     = m.getAlienShoot();
         this.listPlayerShoot    = m.getPlayerShoot();
         this.player.setCenter(m.getPlayer().getCenter());
-        this.repaint();
     }
 
 
@@ -170,6 +171,5 @@ public class ViewGame extends JPanel implements Commons,
     public void update(ObservableCharacter obs){
         Player p = ((Player)obs);
         this.player             = p;
-        this.repaint();
     }
 }

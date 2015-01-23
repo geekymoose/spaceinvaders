@@ -19,7 +19,10 @@ import javax.swing.Timer;
 
 /**
  * <h1>TimerPlayer</h1>
- * <p>public class TimerPlayer</p>
+ * <p>
+ * public class TimerPlayer<br/>
+ * implements ActionListener, Commons
+ * </p>
  * <p>Timer for the player actions</p>
  *
  * @author Constantin MASSON
