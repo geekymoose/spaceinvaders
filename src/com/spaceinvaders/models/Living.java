@@ -186,6 +186,14 @@ public abstract class Living implements Commons, ObservableCharacter{
     }
     
     /**
+     * Get the width
+     * @return 
+     */
+    public int getWidth(){
+        return this.width;
+    }
+    
+    /**
      * Set a new center
      * @param pCenter 
      */

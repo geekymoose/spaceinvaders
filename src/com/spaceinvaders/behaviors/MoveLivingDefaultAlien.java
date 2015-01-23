@@ -27,6 +27,7 @@ public class MoveLivingDefaultAlien implements MoveLivingType{
     private     final Living alien;
     private     int             dx; //See interface Movement for values
     private     int             dy;
+    private     int             direction;
     
     
     
@@ -42,7 +43,8 @@ public class MoveLivingDefaultAlien implements MoveLivingType{
      */
     public MoveLivingDefaultAlien(Living pCharacter){
         this.alien      = pCharacter;
-        this.dx         = 0;
+        this.direction  = MOVE_RIGHT;
+        this.dx         = ALIEN_SPEED;
         this.dy         = 0;
     }
     
@@ -63,12 +65,14 @@ public class MoveLivingDefaultAlien implements MoveLivingType{
     }
     
     @Override
-    public void moveDirection(int direction){
-        if(direction == MOVE_DOWN){
-            this.dy = 1;
+    public void moveDirection(int pDirection){
+        if(pDirection == MOVE_OPPOSITE){
+            this.dx = 0;
+            this.dy = ALIEN_DOWN_SPEED;
         }
         else{
-            this.dx = direction;
+            this.dx = ALIEN_SPEED;
+            this.dy = 0;
         }
     }
     

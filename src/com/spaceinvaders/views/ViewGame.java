@@ -19,6 +19,7 @@ import com.spaceinvaders.observers.ObservableGame;
 import com.spaceinvaders.observers.ObserverCharacter;
 import com.spaceinvaders.observers.ObserverGame;
 import com.spaceinvaders.tools.ManagerKeyPlayer;
+import com.spaceinvaders.tools.TimerAlien;
 import com.spaceinvaders.tools.TimerGeneral;
 import com.spaceinvaders.tools.TimerPlayer;
 import com.spaceinvaders.tools.TimerShoot;
@@ -57,6 +58,7 @@ public class ViewGame extends JPanel implements Commons,
     
     private     TimerPlayer             timerPlayer;
     private     TimerShoot              timerShoot;
+    private     TimerAlien              timerAlien;
     private     TimerGeneral            timerGeneral;
     
     private     ArrayList<Alien>        listAlien;
@@ -151,6 +153,9 @@ public class ViewGame extends JPanel implements Commons,
         
         //Start timer shoot
         this.timerShoot         = new TimerShoot(this.listAlienShoot, this.listPlayerShoot);
+        
+        //Start timer for aliens
+        this.timerAlien         = new TimerAlien(this.listAlien);
         
         //Start general Timer
         this.timerGeneral       = new TimerGeneral(this);

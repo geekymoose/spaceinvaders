@@ -7,6 +7,7 @@
 
 package com.spaceinvaders.models;
 
+import com.spaceinvaders.behaviors.MoveLivingDefaultAlien;
 import com.spaceinvaders.behaviors.ShootLaser;
 import static com.spaceinvaders.constants.Commons.PLAYER_WIDTH;
 import java.awt.Point;
@@ -50,6 +51,7 @@ public class Alien1 extends Alien{
         ImageIcon i     = new ImageIcon(PATH_ALIEN1_IMG);
         this.img        = i.getImage();
         this.shootType  = new ShootLaser(this, barrel, 1);
+        this.moveType   = new MoveLivingDefaultAlien(this);
         this.width      = ALIEN1_WIDTH;
         this.height     = ALIEN1_HEIGHT;
     }
