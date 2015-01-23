@@ -16,10 +16,13 @@ import com.spaceinvaders.models.Player;
 import com.spaceinvaders.models.Living;
 import com.spaceinvaders.observers.ObservableCharacter;
 import com.spaceinvaders.observers.ObservableGame;
+import com.spaceinvaders.observers.ObservableProjectile;
 import com.spaceinvaders.observers.ObserverCharacter;
 import com.spaceinvaders.observers.ObserverGame;
+import com.spaceinvaders.observers.ObserverProjectile;
 import com.spaceinvaders.tools.ManagerKeyPlayer;
 import com.spaceinvaders.tools.TimerPlayer;
+import com.spaceinvaders.tools.TimerShoot;
 import com.spaceinvaders.weapons.Projectile;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -43,7 +46,9 @@ import javax.swing.JPanel;
  *
  * @author Constantin MASSON
  */
-public class ViewGame extends JPanel implements Commons, ObserverGame, ObserverCharacter{
+public class ViewGame extends JPanel implements Commons, 
+                                                ObserverGame, 
+                                                ObserverCharacter{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -52,6 +57,7 @@ public class ViewGame extends JPanel implements Commons, ObserverGame, ObserverC
     private     JPanel                  panGame;
     
     private     TimerPlayer             timerPlayer;
+    private     TimerShoot              TimerShoot;
     
     private     ArrayList<Alien>        listAlien;
     private     ArrayList<Projectile>   listPlayerShoot;
@@ -139,10 +145,13 @@ public class ViewGame extends JPanel implements Commons, ObserverGame, ObserverC
         this.keyGameManager     = new ManagerKeyPlayer(c);
         this.addKeyListener(keyGameManager);
         
-        //Start timer
+        //Start timer Player
         this.player.addObserver(this);
         this.timerPlayer        = new TimerPlayer(this.player);
         this.repaint();
+        
+        //Start timer shoot
+        this.TimerShoot         = new TimerShoot(this.listAlienShoot, this.listPlayerShoot);
     }
     
     

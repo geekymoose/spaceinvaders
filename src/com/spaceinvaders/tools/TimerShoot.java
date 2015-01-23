@@ -51,7 +51,7 @@ public class TimerShoot implements ActionListener, Commons{
     public TimerShoot(ArrayList<Projectile> pAlien, ArrayList<Projectile> pPlayer){
         this.listAlienShoots    = pAlien;
         this.listPlayerShoots   = pPlayer;
-        this.timer              = new Timer(DELAY_PLAYER, this);
+        this.timer              = new Timer(DELAY_SHOOT, this);
         this.timer.start();
     }
     

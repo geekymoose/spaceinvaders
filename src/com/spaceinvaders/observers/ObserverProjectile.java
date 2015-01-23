@@ -17,11 +17,11 @@ package com.spaceinvaders.observers;
  *
  * @author Constantin MASSON
  */
-public interface ObserverCharacter {
+public interface ObserverProjectile {
     
     /**
-     * Update the character position
+     * Update the projectile position
      * @param obs
      */
-    public void update(ObservableCharacter obs);
+    public void update(ObservableProjectile obs);
 }

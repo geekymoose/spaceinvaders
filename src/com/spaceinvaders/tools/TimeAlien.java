@@ -44,7 +44,7 @@ public class TimeAlien implements ActionListener, Commons{
     // Constructor - Initialization
     //**************************************************************************
     public TimeAlien(){
-        this.timer  = new Timer(DELAYT_ALIEN, this);
+        this.timer  = new Timer(DELAY_ALIEN, this);
         this.timer.start();
     }
     

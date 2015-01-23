@@ -7,7 +7,7 @@
 
 package com.spaceinvaders.weapons;
 
-import static com.spaceinvaders.constants.Commons.PATH_PLAYER_IMG;
+import com.spaceinvaders.behaviors.MoveShootMissile;
 import com.spaceinvaders.models.Living;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -45,6 +45,7 @@ public class Missile extends Projectile{
         super(pX, pY, MISSILE_WIDTH, MISSILE_WIDTH, pOwner);
         ImageIcon i         = new ImageIcon(IMG_MISSILE);
         this.img            = i.getImage();
+        this.moveShootType  = new MoveShootMissile(this);
     }
     
     
