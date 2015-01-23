@@ -10,7 +10,9 @@ package com.spaceinvaders.models;
 import com.spaceinvaders.behaviors.MoveType;
 import com.spaceinvaders.behaviors.ShootType;
 import com.spaceinvaders.constants.Commons;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Rectangle;
 
 
@@ -49,6 +51,13 @@ public abstract class Character implements Commons{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
+    /**
+     * Create a new character at the position x, y (x:y is the center coordinates)
+     * @param pX x center coordinates
+     * @param pY y center coordinates
+     * @param pWidth
+     * @param pHeight 
+     */
     public Character(int pX, int pY, int pWidth, int pHeight){
         this.isAlive    = true;
         this.img        = null;
@@ -105,19 +114,19 @@ public abstract class Character implements Commons{
     }
     
     /**
-     * Get the position x
-     * @return 
+     * Get the center position Point
+     * @return Point center
      */
-    public int getPosX(){
-        return this.posX;
+    public Point getCenter(){
+        return new Point(this.posX, this.posY);
     }
     
     /**
-     * Get the position y
-     * @return 
+     * Get the Upper left corner position Point of the character
+     * @return Point
      */
-    public int getPosY(){
-        return this.posY;
+    public Point getUpperLeftCorner(){
+        return new Point(this.posX-(this.width/2), this.posY-(this.height/2));
     }
     
     /**
@@ -129,10 +138,10 @@ public abstract class Character implements Commons{
     }
     
     /**
-     * Return the projectile bounds
+     * Return the character bounds
      * @return Rectangle
      */
     public Rectangle getBounds(){
-        return new Rectangle(posX, posY, width, height);
+        return new Rectangle(this.getUpperLeftCorner(), new Dimension(width, height));
     }
 }
