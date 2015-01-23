@@ -9,7 +9,6 @@ package com.spaceinvaders.models;
 
 import com.spaceinvaders.behaviors.MoveLivingDefaultAlien;
 import com.spaceinvaders.behaviors.ShootLaser;
-import static com.spaceinvaders.constants.Commons.PLAYER_WIDTH;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 

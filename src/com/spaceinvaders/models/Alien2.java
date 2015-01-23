@@ -9,8 +9,6 @@ package com.spaceinvaders.models;
 
 import com.spaceinvaders.behaviors.MoveLivingDefaultAlien;
 import com.spaceinvaders.behaviors.ShootBomb;
-import static com.spaceinvaders.constants.Commons.ALIEN1_HEIGHT;
-import static com.spaceinvaders.constants.Commons.ALIEN1_WIDTH;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 
