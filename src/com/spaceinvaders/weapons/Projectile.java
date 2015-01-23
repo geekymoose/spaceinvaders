@@ -7,6 +7,7 @@
 
 package com.spaceinvaders.weapons;
 
+import com.spaceinvaders.behaviors.MoveShootType;
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.models.Living;
 import java.awt.Dimension;
@@ -32,13 +33,15 @@ public abstract class Projectile implements Commons{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    public      int         posX;
-    public      int         posY;
-    protected   int         width;
-    protected   int         height;
-    protected   Image       img;
-    protected   boolean     isActive;
-    protected   Living      owner;
+    protected   int             posX;
+    protected   int             posY;
+    protected   int             width;
+    protected   int             height;
+    protected   Image           img;
+    protected   boolean         isActive;
+    protected   Living          owner;
+    
+    protected   MoveShootType   moveShootType;
     
     
     
@@ -57,12 +60,13 @@ public abstract class Projectile implements Commons{
      * @param pOwner 
      */
     protected Projectile(int pX, int pY, int pWidth, int pHeight, Living pOwner){
-        this.img        = null;
-        this.posX       = pX;
-        this.posY       = pY;
-        this.width      = pWidth;
-        this.height     = pHeight;
-        this.owner      = pOwner;
+        this.img            = null;
+        this.posX           = pX;
+        this.posY           = pY;
+        this.width          = pWidth;
+        this.height         = pHeight;
+        this.owner          = pOwner;
+        this.moveShootType  = null;
     }
     
     
@@ -76,7 +80,9 @@ public abstract class Projectile implements Commons{
     /**
      * Move the projectile
      */
-    public abstract void move();
+    public void move(){
+        this.moveShootType.move();
+    }
     
     
     /**
@@ -85,6 +91,14 @@ public abstract class Projectile implements Commons{
      * @return return the object hit, null if nothing
      */
     public abstract Living hits(ArrayList<Living> pList);
+    
+    /**
+     * Check if current projectile is active
+     * @return true if active, otherwise, return false
+     */
+    public boolean isActive(){
+        return this.isActive;
+    }
     
     
     
@@ -100,6 +114,22 @@ public abstract class Projectile implements Commons{
      */
     public Image getImage(){
         return this.img;
+    }
+    
+    /**
+     * Get the position x
+     * @return 
+     */
+    public int getPosX(){
+        return this.posX;
+    }
+    
+    /**
+     * Get the position Y
+     * @return 
+     */
+    public int getPosY(){
+        return this.posY;
     }
     
     /**
@@ -127,10 +157,11 @@ public abstract class Projectile implements Commons{
     }
     
     /**
-     * Check if current projectile is active
-     * @return true if active, otherwise, return false
+     * Set the center at a new position
+     * @param pCenter New position
      */
-    public boolean isActive(){
-        return this.isActive;
+    public void setCenter(Point pCenter){
+        this.posX   = pCenter.x;
+        this.posY   = pCenter.y;
     }
 }

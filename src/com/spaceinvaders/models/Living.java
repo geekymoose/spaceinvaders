@@ -7,7 +7,7 @@
 
 package com.spaceinvaders.models;
 
-import com.spaceinvaders.behaviors.MoveType;
+import com.spaceinvaders.behaviors.MoveLivingType;
 import com.spaceinvaders.behaviors.ShootType;
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.observers.ObservableCharacter;
@@ -40,7 +40,7 @@ public abstract class Living implements Commons, ObservableCharacter{
     // Constants - Variables
     //**************************************************************************
     private     ArrayList<ObserverCharacter>    listObservers;
-    protected   MoveType                        moveType;
+    protected   MoveLivingType                        moveType;
     protected   ShootType                       shootType;
     
     protected   boolean                         isAlive;
@@ -104,7 +104,7 @@ public abstract class Living implements Commons, ObservableCharacter{
     
 
     //**************************************************************************
-    // Functions MoveType
+    // Functions MoveLivingType
     //**************************************************************************
     /**
      * Perform a move

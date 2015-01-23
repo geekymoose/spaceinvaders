@@ -1,5 +1,5 @@
 /*
- * Class :      MovePlayer
+ * Class :      MoveLivingDefaultAlien
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
@@ -7,8 +7,7 @@
 
 package com.spaceinvaders.behaviors;
 
-import com.spaceinvaders.constants.Commons;
-import com.spaceinvaders.models.Player;
+import com.spaceinvaders.models.Living;
 import java.awt.Point;
 
 
@@ -16,20 +15,19 @@ import java.awt.Point;
 
 
 /**
- * <h1>MovePlayer</h1>
- * <p>
- * public class MovePlayer<br/>
- * implements MoveType, Commons
- * </p>
+ * <h1>MoveLivingDefaultAlien</h1>
+ * <p>public class MoveLivingDefaultAlien</p>
  *
  * @author Constantin MASSON
  */
-public class MovePlayer implements MoveType, Commons{
+public class MoveLivingDefaultAlien implements MoveLivingType{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     final Player    player;
+    private     final Living alien;
     private     int             dx; //See interface Movement for values
+    private     int             dy;
+    
     
     
     
@@ -39,12 +37,13 @@ public class MovePlayer implements MoveType, Commons{
     // Constructor - Initialization
     //**************************************************************************
     /**
-     * Create a new playerMovement
-     * @param pPlayer character using this moveType instance 
+     * Create a new Alien movement
+     * @param pCharacter 
      */
-    public MovePlayer(Player pPlayer){
-        this.player     = pPlayer;
+    public MoveLivingDefaultAlien(Living pCharacter){
+        this.alien      = pCharacter;
         this.dx         = 0;
+        this.dy         = 0;
     }
     
     
@@ -58,21 +57,24 @@ public class MovePlayer implements MoveType, Commons{
     @Override
     public void move(){
         //Add dx at the current x position
-        Point newCenter = new Point(this.player.getCenter().x + dx,
-                                    this.player.getCenter().y);
-        
-        if(newCenter.x > MIN_PLAYER_POSITION && newCenter.x < MAX_PLAYER_POSITION){
-            this.player.setCenter(newCenter);
-        }
+        Point newCenter = new Point(this.alien.getCenter().x + dx,
+                                    this.alien.getCenter().y + dy);
+        this.alien.setCenter(newCenter);
     }
     
     @Override
     public void moveDirection(int direction){
-        this.dx = (direction*PLAYER_SPEED);
+        if(direction == MOVE_DOWN){
+            this.dy = 1;
+        }
+        else{
+            this.dx = direction;
+        }
     }
     
     @Override
     public void stopMove(){
         this.dx = MOVE_STOP;
+        this.dy = MOVE_STOP;
     }
 }

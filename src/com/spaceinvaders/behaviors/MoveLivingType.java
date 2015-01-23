@@ -1,5 +1,5 @@
 /*
- * Class :      MoveType
+ * Class :      MoveLivingType
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
@@ -14,12 +14,12 @@ import com.spaceinvaders.constants.Movements;
 
 
 /**
- * <h1>MoveType</h1>
- * <p>public interface MoveType</p>
+ * <h1>MoveLivingType</h1>
+ * <p>public interface MoveLivingType</p>
  *
  * @author Constantin MASSON
  */
-public interface MoveType extends Movements{
+public interface MoveLivingType extends Movements{
     
     /**
      * Process a move
