@@ -10,6 +10,7 @@ package com.spaceinvaders.behaviors;
 import com.spaceinvaders.models.Living;
 import com.spaceinvaders.models.ModelGame;
 import com.spaceinvaders.weapons.Bomb;
+import java.awt.Point;
 
 
 
@@ -30,6 +31,7 @@ public class ShootBomb implements ShootType{
     //**************************************************************************
     private     final Living    owner;
     private     int             ammo;
+    private     Point           barrelPosition;
     
     
     
@@ -44,9 +46,10 @@ public class ShootBomb implements ShootType{
      * @param pOwner 
      * @param pAmmo Ammo at the creation
      */
-    public ShootBomb(Living pOwner, int pAmmo){
-        this.owner  = pOwner;
-        this.ammo   = pAmmo;
+    public ShootBomb(Living pOwner, Point pBarrel, int pAmmo){
+        this.owner          = pOwner;
+        this.ammo           = pAmmo;
+        this.barrelPosition = pBarrel;
     }
     
     
@@ -61,8 +64,8 @@ public class ShootBomb implements ShootType{
     public boolean fire(ModelGame world){
         if(this.ammo>0){
             this.ammo--;
-            int posX    = this.owner.getBarrel().x;
-            int posY    = this.owner.getBarrel().y;
+            int posX    = this.barrelPosition.x;
+            int posY    = this.barrelPosition.y;
             world.getPlayerShoot().add(new Bomb(posX, posY, this.owner));
             return true;
         }

@@ -29,7 +29,8 @@ public class Player extends Living{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     int     nbLife;
+    private     int             nbLife;
+    private     final Point     barrel;//Extremity canon position from the Player center
     
     
     
@@ -46,13 +47,13 @@ public class Player extends Living{
      */
     public Player(int pX, int pY){
         super(pX, pY);
+        this.barrel         = new Point(0, -(PLAYER_HEIGHT/2));
         ImageIcon i         = new ImageIcon(PATH_PLAYER_IMG);
         this.img            = i.getImage();
-        this.shootType      = new ShootMissile(((Living)this), 1); //Ammo = 1
+        this.shootType      = new ShootMissile(((Living)this), barrel, 1); //Ammo = 1
         this.moveType       = new MovePlayer(this);
         this.width          = PLAYER_WIDTH;
         this.height         = PLAYER_HEIGHT;
-        this.barrel         = new Point(this.posX+PLAYER_WIDTH/2, this.posY+0);
     }
     
     

@@ -51,8 +51,6 @@ public abstract class Living implements Commons, ObservableCharacter{
     protected   Image                           img;
     protected   int                             nbShootActive;
     
-    protected   Point                           barrel; //Canon extremity
-    
     
     
     
@@ -75,7 +73,6 @@ public abstract class Living implements Commons, ObservableCharacter{
         this.width              = 0;
         this.height             = 0;
         this.nbShootActive      = 0;
-        this.barrel             = null;
     }
     
     
@@ -178,14 +175,6 @@ public abstract class Living implements Commons, ObservableCharacter{
      */
     public Point getUpperLeftCorner(){
         return new Point(this.posX-(this.width/2), this.posY-(this.height/2));
-    }
-    
-    /**
-     * Get the barrel position point
-     * @return 
-     */
-    public Point getBarrel(){
-        return this.barrel;
     }
     
     /**
