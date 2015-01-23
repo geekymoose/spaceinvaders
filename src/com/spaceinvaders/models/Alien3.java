@@ -18,12 +18,12 @@ import javax.swing.ImageIcon;
  * <h1>Alien3</h1>
  * <p>
  public class Alien3<br/>
- extends Character
+ extends Alien
  </p>
  *
  * @author Constantin MASSON
  */
-public class Alien3 extends Character{
+public class Alien3 extends Alien{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -42,10 +42,12 @@ public class Alien3 extends Character{
      * @param pY y coordinate
      */
     public Alien3(int pX, int pY){
-        super(pX, pY, ALIEN3_WIDTH, ALIEN3_HEIGHT);
-        ImageIcon i    = new ImageIcon(PATH_ALIEN3_IMG);
-        this.img    = i.getImage();
+        super(pX, pY);
+        ImageIcon i     = new ImageIcon(PATH_ALIEN3_IMG);
+        this.img        = i.getImage();
         this.shootType  = new ShootBomb();
+        this.width      = ALIEN3_WIDTH;
+        this.height     = ALIEN3_HEIGHT;
     }
     
     

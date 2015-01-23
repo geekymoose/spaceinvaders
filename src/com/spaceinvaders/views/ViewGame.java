@@ -9,6 +9,7 @@ package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.controllers.ControllerGame;
+import com.spaceinvaders.models.Alien;
 import com.spaceinvaders.models.ModelGame;
 import com.spaceinvaders.models.Player;
 import com.spaceinvaders.models.Character;
@@ -46,7 +47,7 @@ public class ViewGame extends JPanel implements Commons, ObserverGame{
     private     KeyGameManager          keyGameManager;
     private     JPanel                  panGame;
     
-    private     ArrayList<Character>       listAlien;
+    private     ArrayList<Alien>        listAlien;
     private     ArrayList<Projectile>   listPlayerShoot;
     private     ArrayList<Projectile>   listAlienShoot;
     private     Player                  player;

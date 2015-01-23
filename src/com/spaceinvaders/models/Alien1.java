@@ -23,7 +23,7 @@ import javax.swing.ImageIcon;
  *
  * @author Constantin MASSON
  */
-public class Alien1 extends Character{
+public class Alien1 extends Alien{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -42,10 +42,12 @@ public class Alien1 extends Character{
      * @param pY y coordinate
      */
     public Alien1(int pX, int pY){
-        super(pX, pY, ALIEN1_WIDTH, ALIEN1_HEIGHT);
-        ImageIcon i    = new ImageIcon(PATH_ALIEN1_IMG);
-        this.img    = i.getImage();
+        super(pX, pY);
+        ImageIcon i     = new ImageIcon(PATH_ALIEN1_IMG);
+        this.img        = i.getImage();
         this.shootType  = new ShootLaser();
+        this.width      = ALIEN1_WIDTH;
+        this.height     = ALIEN1_HEIGHT;
     }
     
     

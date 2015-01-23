@@ -30,7 +30,7 @@ public class ModelGame implements Commons, ObservableGame{
     // Constants - Variables
     //**************************************************************************
     private     Player                  player;
-    private     ArrayList<Character>    listAliens; //Only alien inside
+    private     ArrayList<Alien>        listAliens; //Only alien inside
     private     ArrayList<Projectile>   listAlienShoot;
     private     ArrayList<Projectile>   listPlayerShoot;
     private     ArrayList<ObserverGame> listObservers;
@@ -158,7 +158,7 @@ public class ModelGame implements Commons, ObservableGame{
      * Return the alien list
      * @return 
      */
-    public ArrayList<Character> getListAliens(){
+    public ArrayList<Alien> getListAliens(){
         return this.listAliens;
     }
     
