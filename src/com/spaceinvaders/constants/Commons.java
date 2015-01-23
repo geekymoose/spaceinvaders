@@ -23,6 +23,7 @@ public interface Commons {
     //**************************************************************************
     // Game constants
     //**************************************************************************
+    public static final int DELAY_GENERAL                   = 5;
     public static final int DELAY_PLAYER                    = 5;
     public static final int DELAY_ALIEN                     = 100;
     public static final int DELAY_SHOOT                     = 5;
