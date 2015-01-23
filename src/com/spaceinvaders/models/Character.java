@@ -10,11 +10,14 @@ package com.spaceinvaders.models;
 import com.spaceinvaders.behaviors.MoveType;
 import com.spaceinvaders.behaviors.ShootType;
 import com.spaceinvaders.constants.Commons;
+import com.spaceinvaders.observers.ObservableCharacter;
+import com.spaceinvaders.observers.ObserverCharacter;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 
 
@@ -22,7 +25,10 @@ import java.awt.event.KeyEvent;
 
 /**
  * <h1>Character</h1>
- * <p>public abstract class Character</p>
+ * <p>
+ * public abstract class Character<br/>
+ * implements observableCharacter
+ * </p>
  * 
  * <p>
  * Data for all characters
@@ -30,19 +36,20 @@ import java.awt.event.KeyEvent;
  *
  * @author Constantin MASSON
  */
-public abstract class Character implements Commons{
+public abstract class Character implements Commons, ObservableCharacter{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    protected   MoveType        moveType;
-    protected   ShootType       shootType;
+    private     ArrayList<ObserverCharacter>    listObservers;
+    protected   MoveType                        moveType;
+    protected   ShootType                       shootType;
     
-    protected   boolean         isAlive;
-    protected   int             posX;
-    protected   int             posY;
-    protected   int             width;
-    protected   int             height;
-    protected   Image           img;
+    protected   boolean                         isAlive;
+    protected   int                             posX;
+    protected   int                             posY;
+    protected   int                             width;
+    protected   int                             height;
+    protected   Image                           img;
     
     
     
@@ -58,12 +65,13 @@ public abstract class Character implements Commons{
      * @param pY y coordinate
      */
     public Character(int pX, int pY){
-        this.isAlive    = true;
-        this.img        = null;
-        this.posX       = pX;
-        this.posY       = pY;
-        this.width      = 0;
-        this.height     = 0;
+        this.listObservers  = new ArrayList();
+        this.isAlive        = true;
+        this.img            = null;
+        this.posX           = pX;
+        this.posY           = pY;
+        this.width          = 0;
+        this.height         = 0;
     }
     
     /**
@@ -98,14 +106,6 @@ public abstract class Character implements Commons{
     }
     
     /**
-     * Perform a move
-     * @param e
-     */
-    public void move(KeyEvent e){
-        moveType.move();
-    }
-    
-    /**
      * Perform one shoot
      */
     public void shoot(){
@@ -118,6 +118,52 @@ public abstract class Character implements Commons{
      */
     public boolean isAlive(){
         return this.isAlive; 
+    }
+    
+    
+    
+    
+    
+
+    //**************************************************************************
+    // Functions MoveType
+    //**************************************************************************
+    /**
+     * Perform a move
+     */
+    public void move(){
+        moveType.move();
+        this.notifyObservers();
+    }
+    
+    /**
+     * Change the movement direction
+     * @param direction 
+     */
+    public void moveDirection(int direction){
+        moveType.moveDirection(direction);
+    }
+    
+    /**
+     * Stop moving
+     */
+    public void stopMoving(){
+        moveType.stopMove();
+    }
+    
+    
+    
+    
+    
+
+    //**************************************************************************
+    // Functions ShootType
+    //**************************************************************************
+    /**
+     * Process a shoot
+     */
+    public void fire(){
+        shootType.fire();
     }
     
     
@@ -167,5 +213,30 @@ public abstract class Character implements Commons{
     public void setCenter(Point pCenter){
         this.posX   = pCenter.x;
         this.posY   = pCenter.y;
+    }
+    
+    
+    
+    
+    
+
+    //**************************************************************************
+    // Observers
+    //**************************************************************************
+    @Override
+    public void addObserver(ObserverCharacter obs){
+        this.listObservers.add(obs);
+    }
+
+    @Override
+    public void deleteAllObservers(){
+        this.listObservers = new ArrayList();
+    }
+    
+    @Override
+    public void notifyObservers(){
+        for(ObserverCharacter obs : this.listObservers){
+            obs.update(this);
+        }
     }
 }

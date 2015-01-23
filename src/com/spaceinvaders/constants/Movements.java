@@ -22,4 +22,6 @@ public interface Movements {
     public static final int MOVE_RIGHT      = 1;
     public static final int MOVE_DOWN       = 2;
     public static final int MOVE_STOP       = 0;
+    
+    public static final int PLAYER_SPEED    = 2;
 }

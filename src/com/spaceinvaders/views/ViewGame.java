@@ -9,13 +9,17 @@ package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.controllers.ControllerGame;
+import com.spaceinvaders.controllers.ControllerPlayer;
 import com.spaceinvaders.models.Alien;
 import com.spaceinvaders.models.ModelGame;
 import com.spaceinvaders.models.Player;
 import com.spaceinvaders.models.Character;
+import com.spaceinvaders.observers.ObservableCharacter;
 import com.spaceinvaders.observers.ObservableGame;
+import com.spaceinvaders.observers.ObserverCharacter;
 import com.spaceinvaders.observers.ObserverGame;
-import com.spaceinvaders.tools.KeyGameManager;
+import com.spaceinvaders.tools.ManagerKeyPlayer;
+import com.spaceinvaders.tools.TimerPlayer;
 import com.spaceinvaders.weapons.Projectile;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -39,13 +43,15 @@ import javax.swing.JPanel;
  *
  * @author Constantin MASSON
  */
-public class ViewGame extends JPanel implements Commons, ObserverGame{
+public class ViewGame extends JPanel implements Commons, ObserverGame, ObserverCharacter{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
     private     ControllerGame          controller;
-    private     KeyGameManager          keyGameManager;
+    private     ManagerKeyPlayer        keyGameManager;
     private     JPanel                  panGame;
+    
+    private     TimerPlayer             timerPlayer;
     
     private     ArrayList<Alien>        listAlien;
     private     ArrayList<Projectile>   listPlayerShoot;
@@ -62,11 +68,11 @@ public class ViewGame extends JPanel implements Commons, ObserverGame{
     //**************************************************************************
     /**
      * Create the View for game
+     * Create all attribute and set the controllers, size and listener
      * @param pController 
      */
     public ViewGame(ControllerGame pController){
         this.controller         = pController;
-        this.keyGameManager     = new KeyGameManager(this.controller);
         this.player             = new Player(0,0);
         this.listPlayerShoot    = new ArrayList();
         this.listAlien          = new ArrayList();
@@ -76,7 +82,13 @@ public class ViewGame extends JPanel implements Commons, ObserverGame{
         this.setPreferredSize(DIM_GAME);
         this.setFocusable(true);
         this.setDoubleBuffered(true);
+        
+        this.keyGameManager     = new ManagerKeyPlayer(new ControllerPlayer(this.player));
         this.addKeyListener(keyGameManager);
+        
+        //Start timer
+        this.player.addObserver(this);
+        this.timerPlayer        = new TimerPlayer(this.player);
     }
     
     
@@ -122,7 +134,15 @@ public class ViewGame extends JPanel implements Commons, ObserverGame{
         this.listAlien          = m.getListAliens();
         this.listAlienShoot     = m.getAlienShoot();
         this.listPlayerShoot    = m.getPlayerShoot();
-        this.player             = m.getPlayer();
+        this.player.setCenter(m.getPlayer().getCenter());
+        this.repaint();
+    }
+
+
+    @Override
+    public void update(ObservableCharacter obs){
+        Player p = ((Player)obs);
+        this.player             = p;
         this.repaint();
     }
 }
