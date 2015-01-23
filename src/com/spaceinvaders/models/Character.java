@@ -54,6 +54,20 @@ public abstract class Character implements Commons{
     //**************************************************************************
     /**
      * Create a new character at the position x, y (x:y is the center coordinates)
+     * @param pX x coordinate
+     * @param pY y coordinate
+     */
+    public Character(int pX, int pY){
+        this.isAlive    = true;
+        this.img        = null;
+        this.posX       = pX;
+        this.posY       = pY;
+        this.width      = 0;
+        this.height     = 0;
+    }
+    
+    /**
+     * Create a new character at the position x, y (x:y is the center coordinates)
      * @param pX x center coordinates
      * @param pY y center coordinates
      * @param pWidth

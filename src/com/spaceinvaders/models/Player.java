@@ -44,11 +44,13 @@ public class Player extends Character{
      * @param pY y coordinate
      */
     public Player(int pX, int pY){
-        super(pX, pY, PLAYER_WIDTH, PLAYER_HEIGHT);
+        super(pX, pY);
         ImageIcon i         = new ImageIcon(PATH_PLAYER_IMG);
         this.img            = i.getImage();
         this.shootType      = new ShootMissile();
         this.moveType       = new MovePlayer(this);
+        this.width          = PLAYER_WIDTH;
+        this.height         = PLAYER_HEIGHT;
     }
     
     
