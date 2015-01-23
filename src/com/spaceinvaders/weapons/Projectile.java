@@ -10,6 +10,8 @@ package com.spaceinvaders.weapons;
 import com.spaceinvaders.behaviors.MoveShootType;
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.models.Living;
+import com.spaceinvaders.observers.ObservableProjectile;
+import com.spaceinvaders.observers.ObserverProjectile;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
@@ -33,15 +35,16 @@ public abstract class Projectile implements Commons{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    protected   int             posX;
-    protected   int             posY;
-    protected   int             width;
-    protected   int             height;
-    protected   Image           img;
-    protected   boolean         isActive;
-    protected   Living          owner;
+    private     ArrayList<ObserverProjectile>   listObservers;
+    protected   int                             posX;
+    protected   int                             posY;
+    protected   int                             width;
+    protected   int                             height;
+    protected   Image                           img;
+    protected   boolean                         isActive;
+    protected   Living                          owner;
     
-    protected   MoveShootType   moveShootType;
+    protected   MoveShootType                   moveShootType;
     
     
     
@@ -67,6 +70,7 @@ public abstract class Projectile implements Commons{
         this.height         = pHeight;
         this.owner          = pOwner;
         this.moveShootType  = null;
+        this.listObservers  = new ArrayList();
     }
     
     
