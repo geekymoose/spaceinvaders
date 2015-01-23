@@ -32,8 +32,9 @@ public class Main {
             @Override
             public void run() {
                 ViewApplication ap = new ViewApplication();
-                ap.setVisible(true);
                 ap.pack();
+                ap.setLocationRelativeTo(null);
+                ap.setVisible(true);
             }
         });
     }

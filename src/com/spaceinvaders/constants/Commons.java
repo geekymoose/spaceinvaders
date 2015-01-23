@@ -48,9 +48,9 @@ public interface Commons {
     
     
     public static final int GAME_WIDTH                      = 950;
-    public static final int GAME_HEIGHT                     = 550;
-    public static final int GROUND                          = 250;
-    public static final int DEFAULT_PLAYER_POS_X            = 10;
+    public static final int GAME_HEIGHT                     = 650;
+    public static final int GROUND                          = GAME_HEIGHT-45;
+    public static final int DEFAULT_PLAYER_POS_X            = 100;
     public static final int DEFAULT_PLAYER_POS_Y            = GROUND-PLAYER_HEIGHT-3;
     
     

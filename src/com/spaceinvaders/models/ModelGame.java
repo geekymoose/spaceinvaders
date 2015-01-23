@@ -30,7 +30,7 @@ public class ModelGame implements Commons, ObservableGame{
     // Constants - Variables
     //**************************************************************************
     private     Player                  player;
-    private     ArrayList<Character>       listAliens; //Only alien inside
+    private     ArrayList<Character>    listAliens; //Only alien inside
     private     ArrayList<Projectile>   listAlienShoot;
     private     ArrayList<Projectile>   listPlayerShoot;
     private     ArrayList<ObserverGame> listObservers;
@@ -81,7 +81,7 @@ public class ModelGame implements Commons, ObservableGame{
     private void placeInitialeSpaceInvaders(){
         //First line with alien3 (Calculation start at x=0, y=0)
         for(int x=0; x<11; x++){
-            int posX = GAP_LEFT + (x*GAP_BETWEEN_ALIENS+10);
+            int posX = GAP_LEFT + (x*GAP_BETWEEN_ALIENS);
             this.listAliens.add(new Alien1(posX, GAP_TOP));
         }
         

@@ -90,23 +90,23 @@ public class ViewGame extends JPanel implements Commons, ObserverGame{
         Graphics2D g2d = (Graphics2D)g;
         
         //Draw the player and the ground
-        g2d.drawImage(player.getImage(), player.getPosX(), player.getPosY(), this);
+        g2d.drawImage(player.getImage(), player.getUpperLeftCorner().x, player.getUpperLeftCorner().y, this);
         g2d.setColor(Color.red);
         g2d.drawLine(0, GROUND, GAME_WIDTH, GROUND);
         
         //Draw the aliens
         for(Character o : this.listAlien){
-            g2d.drawImage(o.getImage(), o.getPosX(), o.getPosY(), this);
+            g2d.drawImage(o.getImage(), o.getUpperLeftCorner().x, o.getUpperLeftCorner().y, this);
         }
         
         //Draw the alien shoots
         for(Projectile p : this.listAlienShoot){
-            g2d.drawImage(p.getImage(), p.getPosX(), p.getPosY(), this);
+            g2d.drawImage(p.getImage(), p.getUpperLeftCorner().x, p.getUpperLeftCorner().y, this);
         }
         
         //Draw the player shoots
         for(Projectile p : this.listPlayerShoot){
-            g2d.drawImage(p.getImage(), p.getPosX(), p.getPosY(), this);
+            g2d.drawImage(p.getImage(), p.getUpperLeftCorner().x, p.getUpperLeftCorner().y, this);
         }
         
         //See doc: used for synchronisation

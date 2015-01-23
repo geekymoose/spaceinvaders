@@ -58,7 +58,7 @@ public class ViewApplication extends JFrame implements Commons{
         this.setAlwaysOnTop(false);
         this.setResizable(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
+        //this.setLocationRelativeTo(null); use after pack
         
         this.initComponents();
     }

@@ -9,7 +9,9 @@ package com.spaceinvaders.weapons;
 
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.models.Character;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
@@ -90,20 +92,28 @@ public abstract class Projectile implements Commons{
         return this.img;
     }
     
-    public int getPosX(){
-        return this.posX;
-    }
-    
-    public int getPosY(){
-        return this.posY;
+    /**
+     * Get the center position Point
+     * @return Point center
+     */
+    public Point getCenter(){
+        return new Point(this.posX, this.posY);
     }
     
     /**
-     * Return the projectile bounds
+     * Get the Upper left corner position Point of the character
+     * @return Point
+     */
+    public Point getUpperLeftCorner(){
+        return new Point(this.posX-(this.width/2), this.posY-(this.height/2));
+    }
+    
+    /**
+     * Return the character bounds
      * @return Rectangle
      */
     public Rectangle getBounds(){
-        return new Rectangle(posX, posY, width, height);
+        return new Rectangle(this.getUpperLeftCorner(), new Dimension(width, height));
     }
     
     /**
