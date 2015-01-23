@@ -73,7 +73,7 @@ public class ViewGame extends JPanel implements Commons, ObserverGame, ObserverC
      */
     public ViewGame(ControllerGame pController){
         this.controller         = pController;
-        this.player             = new Player(0,0);
+        this.player             = null;
         this.listPlayerShoot    = new ArrayList();
         this.listAlien          = new ArrayList();
         this.listAlienShoot     = new ArrayList();
@@ -133,8 +133,7 @@ public class ViewGame extends JPanel implements Commons, ObserverGame, ObserverC
         this.listAlien          = m.getListAliens();
         this.listAlienShoot     = m.getAlienShoot();
         this.listPlayerShoot    = m.getPlayerShoot();
-        this.player.setCenter(m.getPlayer().getCenter());
-        
+        this.player             = m.getPlayer();
         
         ControllerPlayer c      = new ControllerPlayer(this.player, this.controller.getModelGame());
         this.keyGameManager     = new ManagerKeyPlayer(c);
@@ -150,10 +149,10 @@ public class ViewGame extends JPanel implements Commons, ObserverGame, ObserverC
     @Override
     public void update(ObservableGame obs){
         ModelGame m = ((ModelGame)obs);
-        //this.listAlien          = m.getListAliens();
-        //this.listAlienShoot     = m.getAlienShoot();
-        //this.listPlayerShoot    = m.getPlayerShoot();
-        //this.player.setCenter(m.getPlayer().getCenter());
+        this.listAlien          = m.getListAliens();
+        this.listAlienShoot     = m.getAlienShoot();
+        this.listPlayerShoot    = m.getPlayerShoot();
+        this.player.setCenter(m.getPlayer().getCenter());
         this.repaint();
     }
 
