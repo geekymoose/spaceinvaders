@@ -7,6 +7,7 @@
 
 package com.spaceinvaders.models;
 
+import java.awt.Image;
 import javax.swing.ImageIcon;
 
 
@@ -26,6 +27,8 @@ public abstract class Alien extends Living{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
+    protected   Image   img1;
+    protected   Image   img2;
     
     
     
@@ -52,6 +55,16 @@ public abstract class Alien extends Living{
     //**************************************************************************
     // Functions
     //**************************************************************************
+    @Override
+    public void move(){
+        if(this.img==this.img1){
+            this.img    = this.img2;
+        }
+        else{
+            this.img    = this.img1;
+        }
+        super.move();
+    }
     
     
     
