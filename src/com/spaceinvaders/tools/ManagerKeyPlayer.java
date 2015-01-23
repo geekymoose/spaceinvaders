@@ -1,5 +1,5 @@
 /*
- * Class :      KeyGameManager
+ * Class :      ManagerKeyPlayer
  * Creation:    Jan 20, 2015
  * Author :     Constantin MASSON
  * 
@@ -8,7 +8,7 @@
 package com.spaceinvaders.tools;
 
 import com.spaceinvaders.constants.Movements;
-import com.spaceinvaders.controllers.ControllerGame;
+import com.spaceinvaders.controllers.ControllerPlayer;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -17,19 +17,23 @@ import java.awt.event.KeyListener;
 
 
 /**
- * <h1>KeyGameManager</h1>
+ * <h1>ManagerKeyPlayer</h1>
  * <p>
- public class KeyGameManager<br/>
+ * public class ManagerKeyPlayer<br/>
  * implements KeyListener, Movements
+ * </p>
+ * <p>
+ * This class is the main manager for all key. When user use a key (Pressed, Typed etc)
+ * this manager is called to process this action. (In the game window)
  * </p>
  *
  * @author Constantin MASSON
  */
-public class KeyGameManager implements KeyListener, Movements{
+public class ManagerKeyPlayer implements KeyListener, Movements{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     ControllerGame  controller;
+    private     ControllerPlayer    controller;
     
     
     
@@ -43,7 +47,7 @@ public class KeyGameManager implements KeyListener, Movements{
      * Create a new KeyGameManager
      * @param pController 
      */
-    public KeyGameManager(ControllerGame pController){
+    public ManagerKeyPlayer(ControllerPlayer pController){
         this.controller = pController;
     }
     
@@ -57,6 +61,7 @@ public class KeyGameManager implements KeyListener, Movements{
     //**************************************************************************
     @Override
     public void keyTyped(KeyEvent e){
+        //Nothing
     }
 
 
@@ -66,14 +71,15 @@ public class KeyGameManager implements KeyListener, Movements{
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_SPACE) {
+            this.controller.shoot();
         }
         
         else if (key == KeyEvent.VK_LEFT) {
-            this.controller.movePlayer(MOVE_LEFT);
+            this.controller.changeMoveDirection(MOVE_LEFT);
         }
 
         else if (key == KeyEvent.VK_RIGHT) {
-            this.controller.movePlayer(MOVE_RIGHT);
+            this.controller.changeMoveDirection(MOVE_RIGHT);
         }
     }
 
@@ -82,11 +88,6 @@ public class KeyGameManager implements KeyListener, Movements{
     @Override
     public void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_SPACE) {
-        }
-        else{
-            //Stop moving
-        }
+        this.controller.stopMoving();
     }
 }

@@ -61,7 +61,7 @@ public class MovePlayer implements MoveType{
     
     @Override
     public void moveDirection(int direction){
-        this.dx = direction;
+        this.dx = (direction*PLAYER_SPEED);
     }
     
     @Override

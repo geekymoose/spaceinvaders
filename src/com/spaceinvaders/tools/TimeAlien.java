@@ -1,5 +1,5 @@
 /*
- * Class :      TimeManager
+ * Class :      TimeAlien
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
@@ -17,9 +17,9 @@ import javax.swing.Timer;
 
 
 /**
- * <h1>TimeManager</h1>
+ * <h1>TimeAlien</h1>
  * <p>
- * public class TimeManager<br/>
+ public class TimeAlien<br/>
  * implements ActionListener, commons
  * </p>
  * 
@@ -29,7 +29,7 @@ import javax.swing.Timer;
  *
  * @author Constantin MASSON
  */
-public class TimeManager implements ActionListener, Commons{
+public class TimeAlien implements ActionListener, Commons{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -43,8 +43,8 @@ public class TimeManager implements ActionListener, Commons{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public TimeManager(){
-        this.timer  = new Timer(DELAY, this);
+    public TimeAlien(){
+        this.timer  = new Timer(DELAYT_ALIEN, this);
         this.timer.start();
     }
     
