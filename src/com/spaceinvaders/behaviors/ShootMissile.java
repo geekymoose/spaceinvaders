@@ -10,6 +10,7 @@ package com.spaceinvaders.behaviors;
 import com.spaceinvaders.models.Living;
 import com.spaceinvaders.models.ModelGame;
 import com.spaceinvaders.weapons.Missile;
+import java.awt.Point;
 
 
 
@@ -30,6 +31,7 @@ public class ShootMissile implements ShootType{
     //**************************************************************************
     private     final Living    owner;
     private     int             ammo;
+    private     Point           barrelPosition;
     
     
     
@@ -42,11 +44,13 @@ public class ShootMissile implements ShootType{
     /**
      * Create a new ShootMissile type with its owner
      * @param pOwner 
-     * @param pAmmo Ammo at the creation
+     * @param pBarrel   Barrel position (where owner center is the 0:0 point)
+     * @param pAmmo     Ammo at the creation
      */
-    public ShootMissile(Living pOwner, int pAmmo){
-        this.owner  = pOwner;
-        this.ammo   = pAmmo;
+    public ShootMissile(Living pOwner, Point pBarrel, int pAmmo){
+        this.owner          = pOwner;
+        this.ammo           = pAmmo;
+        this.barrelPosition = pBarrel;
     }
     
     
@@ -61,8 +65,8 @@ public class ShootMissile implements ShootType{
     public boolean fire(ModelGame world){
         if(this.ammo>0){
             this.ammo--;
-            int posX    = this.owner.getBarrel().x;
-            int posY    = this.owner.getBarrel().y;
+            int posX    = this.owner.getCenter().x+this.barrelPosition.x;
+            int posY    = this.owner.getCenter().y+this.barrelPosition.y;
             //System.out.println("X"+posX+" Y :"+posY);
             world.getPlayerShoot().add(new Missile(posX, posY, this.owner));
             world.notifyObservers();

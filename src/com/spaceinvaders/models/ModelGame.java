@@ -51,7 +51,6 @@ public class ModelGame implements Commons, ObservableGame{
      */
     public ModelGame(){
         this.listObservers      = new ArrayList();
-        this.initMap();
     }
     
     

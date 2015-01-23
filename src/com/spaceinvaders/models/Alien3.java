@@ -30,6 +30,7 @@ public class Alien3 extends Alien{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
+    private     final Point     barrel;//Extremity canon position from the Player center
     
     
     
@@ -46,12 +47,12 @@ public class Alien3 extends Alien{
      */
     public Alien3(int pX, int pY){
         super(pX, pY);
+        this.barrel    = new Point(0, ALIEN3_HEIGHT/2);
         ImageIcon i     = new ImageIcon(PATH_ALIEN3_IMG);
         this.img        = i.getImage();
-        this.shootType  = new ShootBomb(this, 1);
+        this.shootType  = new ShootBomb(this, barrel, 1);
         this.width      = ALIEN3_WIDTH;
         this.height     = ALIEN3_HEIGHT;
-        this.barrel         = new Point(ALIEN3_WIDTH/2, ALIEN3_HEIGHT);
     }
     
     
