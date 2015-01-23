@@ -59,7 +59,7 @@ public class MoveLivingDefaultAlien implements MoveLivingType{
     @Override
     public void move(){
         //Add dx at the current x position
-        Point newCenter = new Point(this.alien.getCenter().x + dx,
+        Point newCenter = new Point(this.alien.getCenter().x + (direction*dx),
                                     this.alien.getCenter().y + dy);
         this.alien.setCenter(newCenter);
     }
@@ -67,11 +67,10 @@ public class MoveLivingDefaultAlien implements MoveLivingType{
     @Override
     public void moveDirection(int pDirection){
         if(pDirection == MOVE_OPPOSITE){
-            this.dx = 0;
+            this.direction  *= -1;
             this.dy = ALIEN_DOWN_SPEED;
         }
         else{
-            this.dx = ALIEN_SPEED;
             this.dy = 0;
         }
     }

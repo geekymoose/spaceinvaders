@@ -76,8 +76,9 @@ public class TimerAlien implements ActionListener, Commons, Movements{
          * The GAP_BETWEEN_ALIENS is arbitrary (max gap between alien and border)
          */
         for(int k=0; k<this.listAliens.size(); k++){
+            
             Point p = this.listAliens.get(k).getCenter();
-            if(p.x>(GAME_WIDTH-this.listAliens.get(k).getWidth()) - GAP_BETWEEN_ALIENS
+            if(p.x>(GAME_WIDTH - (this.listAliens.get(k).getWidth()+GAP_BETWEEN_ALIENS))
                 || p.x<this.listAliens.get(k).getWidth()){
                 moveDown = true;
             }
