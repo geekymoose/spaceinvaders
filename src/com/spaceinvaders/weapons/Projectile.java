@@ -10,7 +10,6 @@ package com.spaceinvaders.weapons;
 import com.spaceinvaders.behaviors.MoveShootType;
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.models.Living;
-import com.spaceinvaders.observers.ObservableProjectile;
 import com.spaceinvaders.observers.ObserverProjectile;
 import java.awt.Dimension;
 import java.awt.Image;
