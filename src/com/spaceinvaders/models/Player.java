@@ -7,7 +7,7 @@
 
 package com.spaceinvaders.models;
 
-import com.spaceinvaders.behaviors.MovePlayer;
+import com.spaceinvaders.behaviors.MoveLivingPlayer;
 import com.spaceinvaders.behaviors.ShootMissile;
 import java.awt.Point;
 import javax.swing.ImageIcon;
@@ -51,7 +51,7 @@ public class Player extends Living{
         ImageIcon i         = new ImageIcon(PATH_PLAYER_IMG);
         this.img            = i.getImage();
         this.shootType      = new ShootMissile(((Living)this), barrel, 1); //Ammo = 1
-        this.moveType       = new MovePlayer(this);
+        this.moveType       = new MoveLivingPlayer(this);
         this.width          = PLAYER_WIDTH;
         this.height         = PLAYER_HEIGHT;
     }

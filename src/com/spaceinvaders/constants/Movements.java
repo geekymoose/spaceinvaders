@@ -24,4 +24,5 @@ public interface Movements {
     public static final int MOVE_STOP       = 0;
     
     public static final int PLAYER_SPEED    = 2;
+    public static final int MISSILE_SPEED   = 2;
 }

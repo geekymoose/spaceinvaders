@@ -56,13 +56,6 @@ public class Missile extends Projectile{
     // Functions
     //**************************************************************************
     @Override
-    public void move(){
-        this.posY -= 1;
-    }
-
-
-
-    @Override
     public Living hits(ArrayList<Living> pList){
         return null;
     }

@@ -46,7 +46,7 @@ public class Alien1 extends Alien{
      */
     public Alien1(int pX, int pY){
         super(pX, pY);
-        this.barrel     = new Point(posX, ALIEN1_HEIGHT/2);
+        this.barrel     = new Point(0, ALIEN1_HEIGHT/2);
         ImageIcon i     = new ImageIcon(PATH_ALIEN1_IMG);
         this.img        = i.getImage();
         this.shootType  = new ShootLaser(this, barrel, 1);
