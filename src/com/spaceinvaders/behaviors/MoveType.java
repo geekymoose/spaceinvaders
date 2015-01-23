@@ -7,6 +7,8 @@
 
 package com.spaceinvaders.behaviors;
 
+import com.spaceinvaders.constants.Movements;
+
 
 
 
@@ -17,11 +19,22 @@ package com.spaceinvaders.behaviors;
  *
  * @author Constantin MASSON
  */
-public interface MoveType {
+public interface MoveType extends Movements{
     
     /**
      * Process a move
-     * @param direction movement direction
      */
-    public void move(int direction);
+    public void move();
+    
+    /**
+     * Start the move
+     * @param direction new direction
+     */
+    public void moveDirection(int direction);
+    
+    
+    /**
+     * Stop the move
+     */
+    public void stopMove();
 }

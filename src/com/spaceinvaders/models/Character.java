@@ -14,6 +14,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 
 
 
@@ -37,8 +38,8 @@ public abstract class Character implements Commons{
     protected   ShootType       shootType;
     
     protected   boolean         isAlive;
-    private     int             posX;
-    private     int             posY;
+    protected   int             posX;
+    protected   int             posY;
     protected   int             width;
     protected   int             height;
     protected   Image           img;
@@ -84,10 +85,10 @@ public abstract class Character implements Commons{
     
     /**
      * Perform a move
-     * @param direction
+     * @param e
      */
-    public void move(int direction){
-        moveType.move(direction);
+    public void move(KeyEvent e){
+        moveType.move();
     }
     
     /**
@@ -95,6 +96,14 @@ public abstract class Character implements Commons{
      */
     public void shoot(){
         shootType.fire();
+    }
+    
+    /**
+     * Check if is alive
+     * @return true if alive, otherwise, return false
+     */
+    public boolean isAlive(){
+        return this.isAlive; 
     }
     
     
@@ -130,18 +139,19 @@ public abstract class Character implements Commons{
     }
     
     /**
-     * Check if is alive
-     * @return true if alive, otherwise, return false
-     */
-    public boolean isAlive(){
-        return this.isAlive; 
-    }
-    
-    /**
      * Return the character bounds
      * @return Rectangle
      */
     public Rectangle getBounds(){
         return new Rectangle(this.getUpperLeftCorner(), new Dimension(width, height));
+    }
+    
+    /**
+     * Set a new center
+     * @param pCenter 
+     */
+    public void setCenter(Point pCenter){
+        this.posX   = pCenter.x;
+        this.posY   = pCenter.y;
     }
 }
