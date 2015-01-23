@@ -71,13 +71,13 @@ public class ManagerKeyPlayer implements KeyListener, Movements{
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_SPACE) {
-            this.controller.shoot();
+            this.controller.fire();
         }
         
-        else if (key == KeyEvent.VK_LEFT) {
+        if (key == KeyEvent.VK_LEFT) {
             this.controller.changeMoveDirection(MOVE_LEFT);
         }
-
+        
         else if (key == KeyEvent.VK_RIGHT) {
             this.controller.changeMoveDirection(MOVE_RIGHT);
         }
@@ -88,6 +88,9 @@ public class ManagerKeyPlayer implements KeyListener, Movements{
     @Override
     public void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
-        this.controller.stopMoving();
+        
+        if(key == KeyEvent.VK_LEFT || key == KeyEvent.VK_RIGHT){
+            this.controller.stopMoving();
+        }
     }
 }

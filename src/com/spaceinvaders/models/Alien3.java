@@ -8,6 +8,9 @@
 package com.spaceinvaders.models;
 
 import com.spaceinvaders.behaviors.ShootBomb;
+import static com.spaceinvaders.constants.Commons.ALIEN1_HEIGHT;
+import static com.spaceinvaders.constants.Commons.ALIEN1_WIDTH;
+import java.awt.Point;
 import javax.swing.ImageIcon;
 
 
@@ -45,9 +48,10 @@ public class Alien3 extends Alien{
         super(pX, pY);
         ImageIcon i     = new ImageIcon(PATH_ALIEN3_IMG);
         this.img        = i.getImage();
-        this.shootType  = new ShootBomb();
+        this.shootType  = new ShootBomb(this, 1);
         this.width      = ALIEN3_WIDTH;
         this.height     = ALIEN3_HEIGHT;
+        this.barrel         = new Point(ALIEN3_WIDTH/2, ALIEN3_HEIGHT);
     }
     
     

@@ -8,6 +8,8 @@
 package com.spaceinvaders.models;
 
 import com.spaceinvaders.behaviors.ShootLaser;
+import static com.spaceinvaders.constants.Commons.PLAYER_WIDTH;
+import java.awt.Point;
 import javax.swing.ImageIcon;
 
 
@@ -45,9 +47,10 @@ public class Alien1 extends Alien{
         super(pX, pY);
         ImageIcon i     = new ImageIcon(PATH_ALIEN1_IMG);
         this.img        = i.getImage();
-        this.shootType  = new ShootLaser();
+        this.shootType  = new ShootLaser(this, 1);
         this.width      = ALIEN1_WIDTH;
         this.height     = ALIEN1_HEIGHT;
+        this.barrel         = new Point(ALIEN1_WIDTH/2, ALIEN1_HEIGHT);
     }
     
     

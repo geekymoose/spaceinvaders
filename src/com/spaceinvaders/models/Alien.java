@@ -17,12 +17,12 @@ import javax.swing.ImageIcon;
  * <h1>Alien</h1>
  * <p>
  * public class Alien<br/>
- * extends Character
- * </p>
+ extends Living
+ </p>
  *
  * @author Constantin MASSON
  */
-public abstract class Alien extends Character{
+public abstract class Alien extends Living{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -41,7 +41,7 @@ public abstract class Alien extends Character{
      * @param pY y coordinate
      */
     public Alien(int pX, int pY){
-        super(pX, pY, ALIEN1_WIDTH, ALIEN1_HEIGHT);
+        super(pX, pY);
     }
     
     

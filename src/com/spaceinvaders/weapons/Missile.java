@@ -7,8 +7,10 @@
 
 package com.spaceinvaders.weapons;
 
-import com.spaceinvaders.models.Character;
+import static com.spaceinvaders.constants.Commons.PATH_PLAYER_IMG;
+import com.spaceinvaders.models.Living;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 
 
@@ -34,12 +36,15 @@ public class Missile extends Projectile{
     // Constructor - Initialization
     //**************************************************************************
     /**
-     * Create a new bomb
+     * Create a new missile
      * @param pX        x coordinate
      * @param pY        y coordinate
+     * @param pOwner    owner
      */
-    public Missile(int pX, int pY){
-        super(pX, pY, MISSILE_WIDTH, MISSILE_WIDTH);
+    public Missile(int pX, int pY, Living pOwner){
+        super(pX, pY, MISSILE_WIDTH, MISSILE_WIDTH, pOwner);
+        ImageIcon i         = new ImageIcon(IMG_MISSILE);
+        this.img            = i.getImage();
     }
     
     
@@ -58,7 +63,7 @@ public class Missile extends Projectile{
 
 
     @Override
-    public Character hits(ArrayList<Character> pList){
+    public Living hits(ArrayList<Living> pList){
         return null;
     }
     

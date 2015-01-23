@@ -7,6 +7,7 @@
 
 package com.spaceinvaders.behaviors;
 
+import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.models.Player;
 import java.awt.Point;
 
@@ -16,11 +17,14 @@ import java.awt.Point;
 
 /**
  * <h1>MovePlayer</h1>
- * <p>public class MovePlayer</p>
+ * <p>
+ * public class MovePlayer<br/>
+ * implements MoveType, Commons
+ * </p>
  *
  * @author Constantin MASSON
  */
-public class MovePlayer implements MoveType{
+public class MovePlayer implements MoveType, Commons{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -56,7 +60,10 @@ public class MovePlayer implements MoveType{
         //Add dx at the current x position
         Point newCenter = new Point(this.player.getCenter().x + dx,
                                     this.player.getCenter().y);
-        this.player.setCenter(newCenter);
+        
+        if(newCenter.x > MIN_PLAYER_POSITION && newCenter.x < MAX_PLAYER_POSITION){
+            this.player.setCenter(newCenter);
+        }
     }
     
     @Override

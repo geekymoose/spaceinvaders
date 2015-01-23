@@ -7,6 +7,10 @@
 
 package com.spaceinvaders.behaviors;
 
+import com.spaceinvaders.models.Living;
+import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.weapons.Missile;
+
 
 
 
@@ -24,6 +28,8 @@ public class ShootMissile implements ShootType{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
+    private     final Living    owner;
+    private     int             ammo;
     
     
     
@@ -33,8 +39,14 @@ public class ShootMissile implements ShootType{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public ShootMissile(){
-        
+    /**
+     * Create a new ShootMissile type with its owner
+     * @param pOwner 
+     * @param pAmmo Ammo at the creation
+     */
+    public ShootMissile(Living pOwner, int pAmmo){
+        this.owner  = pOwner;
+        this.ammo   = pAmmo;
     }
     
     
@@ -46,15 +58,24 @@ public class ShootMissile implements ShootType{
     // Functions
     //**************************************************************************
     @Override
-    public void fire(){
+    public boolean fire(ModelGame world){
+        if(this.ammo>0){
+            this.ammo--;
+            int posX    = this.owner.getBarrel().x;
+            int posY    = this.owner.getBarrel().y;
+            //System.out.println("X"+posX+" Y :"+posY);
+            world.getPlayerShoot().add(new Missile(posX, posY, this.owner));
+            world.notifyObservers();
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
-    
-    
-    
-    
-
-    //**************************************************************************
-    // Getters - Setters
-    //**************************************************************************
+    @Override
+    public boolean reload(int pAmmo){
+        this.ammo = pAmmo;
+        return true;
+    }
 }

@@ -68,7 +68,7 @@ public class ModelGame implements Commons, ObservableGame{
         this.currentScore       = 0;
         
         this.placeInitialeSpaceInvaders();
-        this.notifyObservers();
+        this.notifyCreateMap();
     }
     
     
@@ -118,7 +118,7 @@ public class ModelGame implements Commons, ObservableGame{
      * Kill one alien. This alien will be removed from the list
      * @param pAlien
      */
-    public void killOneAlien(Character pAlien){
+    public void killOneAlien(Living pAlien){
         this.listAliens.remove(pAlien);
     }
     
@@ -200,6 +200,13 @@ public class ModelGame implements Commons, ObservableGame{
     public void notifyObservers(){
         for(ObserverGame obs : this.listObservers){
             obs.update(this);
+        }
+    }
+    
+    @Override
+    public void notifyCreateMap(){
+        for(ObserverGame obs : this.listObservers){
+            obs.updateInitMap(this);
         }
     }
 }

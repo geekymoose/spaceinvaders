@@ -1,5 +1,5 @@
 /*
- * Class :      Character
+ * Class :      Living
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
@@ -16,7 +16,6 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 
@@ -24,9 +23,9 @@ import java.util.ArrayList;
 
 
 /**
- * <h1>Character</h1>
+ * <h1>Living</h1>
  * <p>
- * public abstract class Character<br/>
+ public abstract class Living<br/>
  * implements observableCharacter
  * </p>
  * 
@@ -36,7 +35,7 @@ import java.util.ArrayList;
  *
  * @author Constantin MASSON
  */
-public abstract class Character implements Commons, ObservableCharacter{
+public abstract class Living implements Commons, ObservableCharacter{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -50,6 +49,9 @@ public abstract class Character implements Commons, ObservableCharacter{
     protected   int                             width;
     protected   int                             height;
     protected   Image                           img;
+    protected   int                             nbShootActive;
+    
+    protected   Point                           barrel; //Canon extremity
     
     
     
@@ -64,30 +66,16 @@ public abstract class Character implements Commons, ObservableCharacter{
      * @param pX x coordinate
      * @param pY y coordinate
      */
-    public Character(int pX, int pY){
-        this.listObservers  = new ArrayList();
-        this.isAlive        = true;
-        this.img            = null;
-        this.posX           = pX;
-        this.posY           = pY;
-        this.width          = 0;
-        this.height         = 0;
-    }
-    
-    /**
-     * Create a new character at the position x, y (x:y is the center coordinates)
-     * @param pX x center coordinates
-     * @param pY y center coordinates
-     * @param pWidth
-     * @param pHeight 
-     */
-    public Character(int pX, int pY, int pWidth, int pHeight){
-        this.isAlive    = true;
-        this.img        = null;
-        this.posX       = pX;
-        this.posY       = pY;
-        this.width      = pWidth;
-        this.height     = pHeight;
+    public Living(int pX, int pY){
+        this.listObservers      = new ArrayList();
+        this.isAlive            = true;
+        this.img                = null;
+        this.posX               = pX;
+        this.posY               = pY;
+        this.width              = 0;
+        this.height             = 0;
+        this.nbShootActive      = 0;
+        this.barrel             = null;
     }
     
     
@@ -103,13 +91,6 @@ public abstract class Character implements Commons, ObservableCharacter{
      */
     public void die(){
         this.isAlive = false;
-    }
-    
-    /**
-     * Perform one shoot
-     */
-    public void shoot(){
-        shootType.fire();
     }
     
     /**
@@ -160,10 +141,11 @@ public abstract class Character implements Commons, ObservableCharacter{
     // Functions ShootType
     //**************************************************************************
     /**
-     * Process a shoot
+     * Perform one shoot
+     * @param world Where to perform the shoot
      */
-    public void fire(){
-        shootType.fire();
+    public void fire(ModelGame world){
+        shootType.fire(world);
     }
     
     
@@ -175,7 +157,7 @@ public abstract class Character implements Commons, ObservableCharacter{
     // Getters - Setters
     //**************************************************************************
     /**
-     * get image to display for this Character
+     * get image to display for this Living
      * @return 
      */
     public Image getImage(){
@@ -196,6 +178,14 @@ public abstract class Character implements Commons, ObservableCharacter{
      */
     public Point getUpperLeftCorner(){
         return new Point(this.posX-(this.width/2), this.posY-(this.height/2));
+    }
+    
+    /**
+     * Get the barrel position point
+     * @return 
+     */
+    public Point getBarrel(){
+        return this.barrel;
     }
     
     /**

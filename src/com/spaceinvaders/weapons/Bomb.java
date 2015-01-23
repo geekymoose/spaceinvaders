@@ -1,5 +1,5 @@
 /*
- * Class :      bomb
+ * Class :      Bomb
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
@@ -7,23 +7,25 @@
 
 package com.spaceinvaders.weapons;
 
-import com.spaceinvaders.models.Character;
+import static com.spaceinvaders.constants.Commons.IMG_MISSILE;
+import com.spaceinvaders.models.Living;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 
 
 
 
 /**
- * <h1>bomb</h1>
+ * <h1>Bomb</h1>
  * <p>
- * public class bomb<br/>
+ public class Bomb<br/>
  * extends Projectile
  * </p>
  *
  * @author Constantin MASSON
  */
-public class bomb extends Projectile{
+public class Bomb extends Projectile{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -40,9 +42,12 @@ public class bomb extends Projectile{
      * Create a new bomb
      * @param pX        x coordinate
      * @param pY        y coordinate
+     * @param pOwner    owner
      */
-    public bomb(int pX, int pY){
-        super(pX, pY, BOMB_WIDTH, BOMB_WIDTH);
+    public Bomb(int pX, int pY, Living pOwner){
+        super(pX, pY, MISSILE_WIDTH, MISSILE_WIDTH, pOwner);
+        ImageIcon i         = new ImageIcon(IMG_MISSILE);
+        this.img            = i.getImage();
     }
     
     
@@ -59,7 +64,7 @@ public class bomb extends Projectile{
     }
 
     @Override
-    public Character hits(ArrayList<Character> pList){
+    public Living hits(ArrayList<Living> pList){
         return null;
     }
     

@@ -8,7 +8,7 @@
 package com.spaceinvaders.weapons;
 
 import com.spaceinvaders.constants.Commons;
-import com.spaceinvaders.models.Character;
+import com.spaceinvaders.models.Living;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
@@ -38,6 +38,7 @@ public abstract class Projectile implements Commons{
     protected   int         height;
     protected   Image       img;
     protected   boolean     isActive;
+    protected   Living      owner;
     
     
     
@@ -47,12 +48,21 @@ public abstract class Projectile implements Commons{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    protected Projectile(int pX, int pY, int pWidth, int pHeight){
-        this.img    = null;
-        this.posX   = pX;
-        this.posY   = pY;
-        this.width  = pWidth;
-        this.height = pHeight;
+    /**
+     * Create a new projectile owned by a character (Alien or player)
+     * @param pX
+     * @param pY
+     * @param pWidth
+     * @param pHeight
+     * @param pOwner 
+     */
+    protected Projectile(int pX, int pY, int pWidth, int pHeight, Living pOwner){
+        this.img        = null;
+        this.posX       = pX;
+        this.posY       = pY;
+        this.width      = pWidth;
+        this.height     = pHeight;
+        this.owner      = pOwner;
     }
     
     
@@ -74,7 +84,7 @@ public abstract class Projectile implements Commons{
      * @param pList
      * @return return the object hit, null if nothing
      */
-    public abstract Character hits(ArrayList<Character> pList);
+    public abstract Living hits(ArrayList<Living> pList);
     
     
     

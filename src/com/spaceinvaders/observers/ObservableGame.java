@@ -33,4 +33,9 @@ public interface ObservableGame {
      * Notify all observers
      */
     public void notifyObservers();
+    
+    /**
+     * Notify the map was just created
+     */
+    public void notifyCreateMap();
 }

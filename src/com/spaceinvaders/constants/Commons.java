@@ -54,6 +54,9 @@ public interface Commons {
     public static final int DEFAULT_PLAYER_POS_X            = 100;
     public static final int DEFAULT_PLAYER_POS_Y            = GROUND-PLAYER_HEIGHT-3;
     
+    public static final int MIN_PLAYER_POSITION            = PLAYER_WIDTH+5;
+    public static final int MAX_PLAYER_POSITION            = GAME_WIDTH-(PLAYER_WIDTH+5);
+    
     
     
     //**************************************************************************
@@ -81,4 +84,5 @@ public interface Commons {
     public static final String PATH_ALIEN1_IMG  = "img/resized/alien1_pos2.png";
     public static final String PATH_ALIEN2_IMG  = "img/resized/alien2_pos2.png";
     public static final String PATH_ALIEN3_IMG  = "img/resized/alien3_pos2.png";
+    public static final String IMG_MISSILE      = "img/resized/missile.png";
 }
