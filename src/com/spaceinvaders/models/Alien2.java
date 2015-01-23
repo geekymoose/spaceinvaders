@@ -7,6 +7,7 @@
 
 package com.spaceinvaders.models;
 
+import com.spaceinvaders.behaviors.MoveLivingDefaultAlien;
 import com.spaceinvaders.behaviors.ShootBomb;
 import static com.spaceinvaders.constants.Commons.ALIEN1_HEIGHT;
 import static com.spaceinvaders.constants.Commons.ALIEN1_WIDTH;
@@ -51,6 +52,7 @@ public class Alien2 extends Alien{
         ImageIcon i     = new ImageIcon(PATH_ALIEN2_IMG);
         this.img        = i.getImage();
         this.shootType  = new ShootBomb(this, barrel, 1);
+        this.moveType   = new MoveLivingDefaultAlien(this);
         this.width      = ALIEN2_WIDTH;
         this.height     = ALIEN2_HEIGHT;
     }
