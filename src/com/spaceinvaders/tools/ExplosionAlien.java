@@ -1,30 +1,30 @@
 /*
- * Class :      MoveShootMissile
- * Creation:    Jan 23, 2015
+ * Class :      ExplosionAlien
+ * Creation:    Jan 24, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.spaceinvaders.behaviors;
+package com.spaceinvaders.tools;
 
-import com.spaceinvaders.weapons.Missile;
-import java.awt.Point;
+import java.awt.event.ActionEvent;
 
 
 
 
 
 /**
- * <h1>MoveShootMissile</h1>
- * <p>public class MoveShootMissile</p>
+ * <h1>ExplosionAlien</h1>
+ * <p>
+ * public class ExplosionAlien<br/>
+ * </p>
  *
  * @author Constantin MASSON
  */
-public class MoveShootMissile implements MoveShootType{
+public class ExplosionAlien extends TimerManager{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     final Missile       missile;
     
     
     
@@ -34,12 +34,8 @@ public class MoveShootMissile implements MoveShootType{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    /**
-     * Create a new MoveShootType for a missile
-     * @param pMissile missile tie
-     */
-    public MoveShootMissile(Missile pMissile){
-        this.missile = pMissile;
+    public ExplosionAlien(){
+        super(20);
     }
     
     
@@ -51,11 +47,15 @@ public class MoveShootMissile implements MoveShootType{
     // Functions
     //**************************************************************************
     @Override
-    public void move(){
-        this.missile.setCenter(new Point(this.missile.getPosX(), this.missile.getPosY()-MISSILE_SPEED ));
+    public void actionPerformed(ActionEvent e){
     }
     
-    @Override
-    public void moveDirection(int direction){
-    }
+    
+    
+    
+    
+
+    //**************************************************************************
+    // Getters - Setters
+    //**************************************************************************
 }

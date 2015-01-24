@@ -52,7 +52,7 @@ public class MoveShootBomb implements MoveShootType{
     //**************************************************************************
     @Override
     public void move(){
-        this.bomb.setCenter(new Point(this.bomb.getPosX(), this.bomb.getPosY()+1 ));
+        this.bomb.setCenter(new Point(this.bomb.getPosX(), this.bomb.getPosY()+BOMB_SPEED ));
     }
     
     @Override

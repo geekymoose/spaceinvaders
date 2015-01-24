@@ -52,7 +52,7 @@ public class MoveShootLaser implements MoveShootType{
     //**************************************************************************
     @Override
     public void move(){
-        this.laser.setCenter(new Point(this.laser.getPosX(), this.laser.getPosY()+1 ));
+        this.laser.setCenter(new Point(this.laser.getPosX(), this.laser.getPosY()+LASER_SPEED ));
     }
     
     @Override

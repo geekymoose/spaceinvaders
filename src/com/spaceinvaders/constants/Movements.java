@@ -29,5 +29,8 @@ public interface Movements {
     public static final int PLAYER_SPEED        = 2;
     public static final int ALIEN_SPEED         = 5;
     public static final int ALIEN_DOWN_SPEED    = 10;
-    public static final int MISSILE_SPEED       = 4;
+    
+    public static final int MISSILE_SPEED       = 3;
+    public static final int LASER_SPEED         = 5;
+    public static final int BOMB_SPEED          = 5;
 }
