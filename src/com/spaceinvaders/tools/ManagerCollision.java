@@ -64,7 +64,12 @@ public class ManagerCollision {
             Projectile p    = this.map.getPlayerShoot().get(k);
             Object obj = p.checkCollision(map);
             
-            //Hit nothing but could have reached the border extremity
+            /*
+             * Hit nothing but could have reached the border extremity
+             * Do not forget the k-- which is very important! Because of the 
+             * destroyeProjectile, the current k value must be decremented by one!!!
+             * The total size (getPlayerShoot().size()) is sub by one
+             */
             if(obj==null){
                 if(p.borderlandReached()){
                     this.map.destroyeProjectile(p);
