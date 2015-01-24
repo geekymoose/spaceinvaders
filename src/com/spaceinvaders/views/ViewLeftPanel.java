@@ -1,5 +1,5 @@
 /*
- * Class :      ViewTopPanel
+ * Class :      ViewLeftPanel
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
@@ -8,6 +8,7 @@
 package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
+import com.spaceinvaders.models.ModelGame;
 import com.spaceinvaders.observers.ObservableGame;
 import com.spaceinvaders.observers.ObserverGame;
 import java.awt.Color;
@@ -21,9 +22,9 @@ import javax.swing.JPanel;
 
 
 /**
- * <h1>ViewTopPanel</h1>
+ * <h1>ViewLeftPanel</h1>
  * <p>
- public class ViewTopPanel<br/>
+ public class ViewLeftPanel<br/>
  * implements Commons, ObserverGame
  * </p>
  * 
@@ -33,7 +34,7 @@ import javax.swing.JPanel;
  *
  * @author Constantin MASSON
  */
-public class ViewTopPanel extends JPanel implements Commons, ObserverGame{
+public class ViewLeftPanel extends JPanel implements Commons, ObserverGame{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -53,7 +54,7 @@ public class ViewTopPanel extends JPanel implements Commons, ObserverGame{
     /*
      * Initialize the leftPanel
      */
-    public ViewTopPanel(){
+    public ViewLeftPanel(){
         this.setLayout(new GridLayout(4,1));
         this.setBackground(new Color(20,20,20));
         this.initLabels();
@@ -102,14 +103,23 @@ public class ViewTopPanel extends JPanel implements Commons, ObserverGame{
     //**************************************************************************
     @Override
     public void updateInitMap(ObservableGame obs){
+        this.labelScore             .setForeground(Color.GRAY);
+        this.labelScoreValue        .setForeground(Color.GRAY);
+        this.labelNbInvaders        .setForeground(Color.GRAY);
+        this.labelNbInvadersValue   .setForeground(Color.GRAY);
+        this.labelScoreValue.setText("0");
+        this.labelNbInvadersValue.setText("0");
     }
     
     @Override
     public void update(ObservableGame obs){
+        ModelGame m = ((ModelGame)obs);
         this.labelScore             .setForeground(Color.WHITE);
         this.labelScoreValue        .setForeground(Color.WHITE);
         this.labelNbInvaders        .setForeground(Color.WHITE);
         this.labelNbInvadersValue   .setForeground(Color.WHITE);
+        this.labelScoreValue.setText(String.valueOf(m.getScore()));
+        this.labelNbInvadersValue.setText(String.valueOf(m.getNbAliens()));
     }
     
     

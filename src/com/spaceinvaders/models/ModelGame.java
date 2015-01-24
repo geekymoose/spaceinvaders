@@ -158,7 +158,9 @@ public class ModelGame implements Commons, ObservableGame{
      * @param pAlien
      */
     public void killOneAlien(Alien pAlien){
+        this.currentScore += pAlien.getScoreValue();
         this.listAliens.remove(pAlien);
+        this.nbAliens--;
     }
     
     /**
