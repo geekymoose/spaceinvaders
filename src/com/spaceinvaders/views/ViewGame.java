@@ -19,10 +19,6 @@ import com.spaceinvaders.observers.ObservableGame;
 import com.spaceinvaders.observers.ObserverCharacter;
 import com.spaceinvaders.observers.ObserverGame;
 import com.spaceinvaders.tools.ManagerKeyPlayer;
-import com.spaceinvaders.tools.TimerAlien;
-import com.spaceinvaders.tools.TimerGeneral;
-import com.spaceinvaders.tools.TimerPlayer;
-import com.spaceinvaders.tools.TimerShoot;
 import com.spaceinvaders.weapons.Projectile;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -56,11 +52,6 @@ public class ViewGame extends JPanel implements Commons,
     private     ManagerKeyPlayer        keyGameManager;
     private     JPanel                  panGame;
     
-    private     TimerPlayer             timerPlayer;
-    private     TimerShoot              timerShoot;
-    private     TimerAlien              timerAlien;
-    private     TimerGeneral            timerGeneral;
-    
     private     ArrayList<Alien>        listAlien;
     private     ArrayList<Projectile>   listPlayerShoot;
     private     ArrayList<Projectile>   listAlienShoot;
@@ -70,7 +61,6 @@ public class ViewGame extends JPanel implements Commons,
     
     
     
-
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
@@ -106,19 +96,19 @@ public class ViewGame extends JPanel implements Commons,
         //Draw the player and the ground
         g2d.drawImage(player.getImage(), player.getUpperLeftCorner().x, player.getUpperLeftCorner().y, this);
         g2d.setColor(Color.red);
-        g2d.drawLine(0, GROUND, GAME_WIDTH, GROUND);
+        g2d.drawLine(0, GROUND, GAME_WIDTH, GROUND); //Ground line
         
-        //Draw the aliens
+        /*
+         * Draw the aliens
+         * Draw the alien shoots
+         * Draw the player shoots
+         */
         for(Living o : this.listAlien){
             g2d.drawImage(o.getImage(), o.getUpperLeftCorner().x, o.getUpperLeftCorner().y, this);
         }
-        
-        //Draw the alien shoots
         for(Projectile p : this.listAlienShoot){
             g2d.drawImage(p.getImage(), p.getUpperLeftCorner().x, p.getUpperLeftCorner().y, this);
         }
-        
-        //Draw the player shoots
         for(Projectile p : this.listPlayerShoot){
             g2d.drawImage(p.getImage(), p.getUpperLeftCorner().x, p.getUpperLeftCorner().y, this);
         }
@@ -146,19 +136,7 @@ public class ViewGame extends JPanel implements Commons,
         ControllerPlayer c      = new ControllerPlayer(this.player, this.controller.getModelGame());
         this.keyGameManager     = new ManagerKeyPlayer(c);
         this.addKeyListener(keyGameManager);
-        
-        //Start timer Player
         this.player.addObserver(this);
-        this.timerPlayer        = new TimerPlayer(this.player);
-        
-        //Start timer shoot
-        this.timerShoot         = new TimerShoot(this.listAlienShoot, this.listPlayerShoot);
-        
-        //Start timer for aliens
-        this.timerAlien         = new TimerAlien(this.listAlien);
-        
-        //Start general Timer
-        this.timerGeneral       = new TimerGeneral(this);
     }
     
     
@@ -169,6 +147,7 @@ public class ViewGame extends JPanel implements Commons,
         this.listAlienShoot     = m.getAlienShoot();
         this.listPlayerShoot    = m.getPlayerShoot();
         this.player.setCenter(m.getPlayer().getCenter());
+        this.repaint();
     }
 
 

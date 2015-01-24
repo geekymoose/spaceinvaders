@@ -8,6 +8,7 @@
 package com.spaceinvaders.tools;
 
 import com.spaceinvaders.constants.Commons;
+import com.spaceinvaders.models.ModelGame;
 import com.spaceinvaders.views.ViewGame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,7 +36,7 @@ public class TimerGeneral implements ActionListener, Commons{
     // Constants - Variables
     //**************************************************************************
     private     Timer       timer;
-    private     ViewGame    view;
+    private     ModelGame   model;
     
     
     
@@ -45,8 +46,8 @@ public class TimerGeneral implements ActionListener, Commons{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public TimerGeneral(ViewGame pView){
-        this.view   = pView;
+    public TimerGeneral(ModelGame pModel){
+        this.model   = pModel;
         this.timer  = new Timer(DELAY_GENERAL, this);
         this.timer.start();
     }
@@ -61,7 +62,7 @@ public class TimerGeneral implements ActionListener, Commons{
     //**************************************************************************
     @Override
     public void actionPerformed(ActionEvent e){
-        this.view.repaint();
+        this.model.notifyObservers();
     }
     
     
