@@ -10,6 +10,8 @@ package com.spaceinvaders.weapons;
 import com.spaceinvaders.behaviors.MoveShootLaser;
 import static com.spaceinvaders.constants.Commons.IMG_MISSILE;
 import com.spaceinvaders.models.Living;
+import com.spaceinvaders.models.ModelGame;
+import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 
@@ -59,6 +61,11 @@ public class Laser extends Projectile{
     //**************************************************************************
     // Functions
     //**************************************************************************
+    @Override
+    public Object checkCollision(ModelGame map){
+        Rectangle r1 = this.getBounds();
+        return r1.intersects(map.getPlayer().getBounds()) ? map.getPlayer() : null;
+    }
     
     
     

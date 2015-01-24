@@ -44,11 +44,15 @@ public class TimerShoot extends TimerManager{
      * Create a timer for the shoot animations
      * @param pAlien
      * @param pPlayer 
+     * @param pManagerCollision 
      */
-    public TimerShoot(ArrayList<Projectile> pAlien, ArrayList<Projectile> pPlayer){
+    public TimerShoot(ArrayList<Projectile> pAlien, 
+                      ArrayList<Projectile> pPlayer,
+                      ManagerCollision pManagerCollision){
         super(DELAY_SHOOT);
         this.listAlienShoots    = pAlien;
         this.listPlayerShoots   = pPlayer;
+        this.managerCollision   = pManagerCollision;
     }
     
     
@@ -70,6 +74,7 @@ public class TimerShoot extends TimerManager{
     //**************************************************************************
     @Override
     public void actionPerformed(ActionEvent e){
+        this.managerCollision.processCollision();
         for(int k=0; k<this.listAlienShoots.size(); k++){
             this.listAlienShoots.get(k).move();
         }

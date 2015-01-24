@@ -10,11 +10,11 @@ package com.spaceinvaders.weapons;
 import com.spaceinvaders.behaviors.MoveShootType;
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.models.Living;
+import com.spaceinvaders.models.ModelGame;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.ArrayList;
 
 
 
@@ -84,15 +84,26 @@ public abstract class Projectile implements Commons{
     }
     
     
-    public Object hit(ArrayList<?> list){
-        return null;
+    /**
+     * Check if projectile hit something
+     * @param map map where to check (ModelGame)
+     * @return object touched, otherwise, return null
+     */
+    public abstract Object checkCollision(ModelGame map);
+    
+    
+    /**
+     * destroy the projectile if reached the borderland
+     * @return true if explode, otherwise, return false
+     */
+    public boolean borderlandReached(){
+        return (posY<=0 || posY>=GROUND);
     }
     
     
     
     
     
-
     //**************************************************************************
     // Getters - Setters
     //**************************************************************************
