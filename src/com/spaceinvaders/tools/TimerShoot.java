@@ -7,10 +7,8 @@
 
 package com.spaceinvaders.tools;
 
-import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.weapons.Projectile;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.Timer;
 
@@ -21,17 +19,15 @@ import javax.swing.Timer;
 /**
  * <h1>TimerShoot</h1>
  * <p>
- * public class TimerShoot<br/>
- * implements ActionListener, Commons
+ * public class TimerShoot
  * </p>
  *
  * @author Constantin MASSON
  */
-public class TimerShoot implements ActionListener, Commons{
+public class TimerShoot extends TimerManager{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     Timer                       timer;
     private     ArrayList<Projectile>       listAlienShoots;
     private     ArrayList<Projectile>       listPlayerShoots;
     private     ManagerCollision            managerCollision;
@@ -50,10 +46,9 @@ public class TimerShoot implements ActionListener, Commons{
      * @param pPlayer 
      */
     public TimerShoot(ArrayList<Projectile> pAlien, ArrayList<Projectile> pPlayer){
+        super(DELAY_SHOOT);
         this.listAlienShoots    = pAlien;
         this.listPlayerShoots   = pPlayer;
-        this.timer              = new Timer(DELAY_SHOOT, this);
-        this.timer.start();
     }
     
     

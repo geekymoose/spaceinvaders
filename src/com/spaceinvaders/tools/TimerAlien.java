@@ -24,7 +24,8 @@ import javax.swing.Timer;
  * <h1>TimerAlien</h1>
  * <p>
  * public class TimerAlien<br/>
- * implements ActionListener, commons, Movements
+ * extends TimerManager<br/>
+ * implements Movements
  * </p>
  * 
  * <p>
@@ -33,11 +34,10 @@ import javax.swing.Timer;
  *
  * @author Constantin MASSON
  */
-public class TimerAlien implements ActionListener, Commons, Movements{
+public class TimerAlien extends TimerManager implements Movements{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     Timer               timer;
     private     ArrayList<Alien>    listAliens;
     
     
@@ -53,9 +53,8 @@ public class TimerAlien implements ActionListener, Commons, Movements{
      * @param pList 
      */
     public TimerAlien(ArrayList<Alien> pList){
+        super(DELAY_ALIEN);
         this.listAliens     = pList;
-        this.timer          = new Timer(DELAY_ALIEN, this);
-        this.timer.start();
     }
     
     
@@ -95,13 +94,4 @@ public class TimerAlien implements ActionListener, Commons, Movements{
             this.listAliens.get(k).move();
         }
     }
-    
-    
-    
-    
-    
-
-    //**************************************************************************
-    // Getters - Setters
-    //**************************************************************************
 }

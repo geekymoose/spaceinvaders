@@ -7,11 +7,8 @@
 
 package com.spaceinvaders.tools;
 
-import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.models.ModelGame;
-import com.spaceinvaders.views.ViewGame;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 
@@ -21,8 +18,7 @@ import javax.swing.Timer;
 /**
  * <h1>TimerGeneral</h1>
  * <p>
- public class TimerGeneral<br/>
- * implements ActionListener, commons
+ * public class TimerGeneral
  * </p>
  * 
  * <p>
@@ -31,11 +27,10 @@ import javax.swing.Timer;
  *
  * @author Constantin MASSON
  */
-public class TimerGeneral implements ActionListener, Commons{
+public class TimerGeneral extends TimerManager{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     Timer       timer;
     private     ModelGame   model;
     
     
@@ -47,9 +42,8 @@ public class TimerGeneral implements ActionListener, Commons{
     // Constructor - Initialization
     //**************************************************************************
     public TimerGeneral(ModelGame pModel){
+        super(DELAY_GENERAL);
         this.model   = pModel;
-        this.timer  = new Timer(DELAY_GENERAL, this);
-        this.timer.start();
     }
     
     

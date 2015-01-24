@@ -53,14 +53,14 @@ public class ControllerToolsBar {
      * Order to start the game
      */
     public void startGame(){
-        
+        this.model.startTimers();
     }
     
     /**
      * Order to stop the game
      */
     public void stopGame(){
-        
+        this.model.stopTimers();
     }
     
     /*

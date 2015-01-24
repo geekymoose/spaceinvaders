@@ -119,8 +119,24 @@ public class ModelGame implements Commons, ObservableGame{
         }
     }
     
-    public void startGame(){
-        
+    /**
+     * Start every timer, means the game start
+     */
+    public void startTimers(){
+        this.timerPlayer.startTimer();
+        this.timerShoot.startTimer();
+        this.timerAlien.startTimer();
+        this.timerGeneral.startTimer();
+    }
+    
+    /**
+     * Stop the game
+     */
+    public void stopTimers(){
+        this.timerPlayer.stopTimer();
+        this.timerShoot.stopTimer();
+        this.timerAlien.stopTimer();
+        this.timerGeneral.stopTimer();
     }
     
     
