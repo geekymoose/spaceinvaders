@@ -9,7 +9,6 @@ package com.spaceinvaders.weapons;
 
 import com.spaceinvaders.behaviors.MoveShootMissile;
 import com.spaceinvaders.models.Living;
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 
