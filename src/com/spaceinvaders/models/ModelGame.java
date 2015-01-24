@@ -71,15 +71,13 @@ public class ModelGame implements Commons, ObservableGame{
      */
     public void initMap(){
         this.player             = new Player(DEFAULT_PLAYER_POS_X, DEFAULT_PLAYER_POS_Y);
-        this.listPlayerShoot    = new ArrayList();
         this.listAliens         = new ArrayList();
+        this.listPlayerShoot    = new ArrayList();
         this.listAlienShoot     = new ArrayList();
         
         this.nbAliens           = 55; //11 * 5
         this.currentScore       = 0;
         
-        this.placeInitialeSpaceInvaders();
-        this.notifyCreateMap();
         
         //Create the timer
         this.timerPlayer        = new TimerPlayer(this.player);
@@ -88,6 +86,9 @@ public class ModelGame implements Commons, ObservableGame{
                                                     this.managerCollision);
         this.timerAlien         = new TimerAlien(this.listAliens);
         this.timerGeneral       = new TimerGeneral(this);
+        
+        this.placeInitialeSpaceInvaders();
+        this.notifyCreateMap();
     }
     
     

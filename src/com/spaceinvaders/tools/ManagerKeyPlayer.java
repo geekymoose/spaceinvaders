@@ -51,6 +51,14 @@ public class ManagerKeyPlayer implements KeyListener, Movements{
         this.controller = pController;
     }
     
+    /**
+     * Set the controller
+     * @param pController 
+     */
+    public void setController(ControllerPlayer pController){
+        this.controller = pController;
+    }
+    
     
     
     

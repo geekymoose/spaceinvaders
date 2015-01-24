@@ -82,13 +82,23 @@ public class ViewGame extends JPanel implements Commons,
         this.listPlayerShoot    = new ArrayList();
         this.listAlien          = new ArrayList();
         this.listAlienShoot     = new ArrayList();
+        
         this.setLayout(new BorderLayout());
         this.setPreferredSize(DIM_GAME);
         this.setFocusable(true);
         this.setDoubleBuffered(true);
         this.setBackground(Color.BLACK);
+        
         ImageIcon i             = new ImageIcon(IMG_BACKGROUND);
         this.background         = i.getImage();
+        
+        /*
+         * keyManager manage player movements. Init to null because player has
+         * to be created in the model. the observer updateInitMap will add the
+         * controller in the keyGameManager (Created here)
+         */
+        this.keyGameManager     = new ManagerKeyPlayer(null);
+        this.addKeyListener(keyGameManager);
     }
     
     
@@ -165,9 +175,9 @@ public class ViewGame extends JPanel implements Commons,
         this.listPlayerShoot    = m.getPlayerShoot();
         this.player             = m.getPlayer();
         
-        ControllerPlayer c      = new ControllerPlayer(this.player, this.controller.getModelGame());
-        this.keyGameManager     = new ManagerKeyPlayer(c);
-        this.addKeyListener(keyGameManager);
+        ControllerPlayer c      = new ControllerPlayer( this.player, 
+                                                        this.controller.getModelGame());
+        this.keyGameManager.setController(c);
         this.player.addObserver(this);
         this.repaint();
         this.requestFocusInWindow();
