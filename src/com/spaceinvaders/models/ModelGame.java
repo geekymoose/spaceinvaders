@@ -10,6 +10,7 @@ package com.spaceinvaders.models;
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.observers.ObservableGame;
 import com.spaceinvaders.observers.ObserverGame;
+import com.spaceinvaders.tools.*;
 import com.spaceinvaders.weapons.Projectile;
 import java.util.ArrayList;
 
@@ -37,6 +38,11 @@ public class ModelGame implements Commons, ObservableGame{
     private     int                     currentScore;
     private     int                     nbAliens;
     
+    private     TimerPlayer             timerPlayer;
+    private     TimerShoot              timerShoot;
+    private     TimerAlien              timerAlien;
+    private     TimerGeneral            timerGeneral;
+    
     
     
     
@@ -56,6 +62,9 @@ public class ModelGame implements Commons, ObservableGame{
     
     /*
      * Initialize the map
+     * Create the list, the player, set the nbAlien and score
+     * Place all space invaders and update the view
+     * Then, the timers start
      */
     public void initMap(){
         this.player             = new Player(DEFAULT_PLAYER_POS_X, DEFAULT_PLAYER_POS_Y);
@@ -68,6 +77,13 @@ public class ModelGame implements Commons, ObservableGame{
         
         this.placeInitialeSpaceInvaders();
         this.notifyCreateMap();
+        
+        //Create the timer
+        this.timerPlayer        = new TimerPlayer(this.player);
+        this.timerShoot         = new TimerShoot(this.listAlienShoot, this.listPlayerShoot);
+        this.timerAlien         = new TimerAlien(this.listAliens);
+        this.timerGeneral       = new TimerGeneral(this);
+        
     }
     
     
@@ -101,6 +117,10 @@ public class ModelGame implements Commons, ObservableGame{
                 this.listAliens.add(new Alien3(posX, posY));
             }
         }
+    }
+    
+    public void startGame(){
+        
     }
     
     

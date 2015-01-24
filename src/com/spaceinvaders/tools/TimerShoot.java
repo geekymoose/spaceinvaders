@@ -34,6 +34,7 @@ public class TimerShoot implements ActionListener, Commons{
     private     Timer                       timer;
     private     ArrayList<Projectile>       listAlienShoots;
     private     ArrayList<Projectile>       listPlayerShoots;
+    private     ManagerCollision            managerCollision;
     
     
     
