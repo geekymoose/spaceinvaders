@@ -67,6 +67,7 @@ public class ControllerToolsBar {
      * Order to restart the game (Reste the current and restart)
      */
     public void restartGame(){
+        this.model.stopTimers();
         this.model.initMap();
     }
     

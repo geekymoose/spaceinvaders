@@ -45,7 +45,7 @@ public class Alien2 extends Alien{
      * @param pY y coordinate
      */
     public Alien2(int pX, int pY){
-        super(pX, pY);
+        super(pX, pY, SCORE_VALUE_ALIEN2);
         this.barrel    = new Point(0, ALIEN2_HEIGHT/2);
         this.shootType  = new ShootBomb(this, barrel, 1);
         this.moveType   = new MoveLivingDefaultAlien(this);

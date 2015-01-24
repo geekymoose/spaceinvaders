@@ -72,13 +72,15 @@ public class ViewApplication extends JFrame implements Commons{
         ControllerGame      c   = new ControllerGame(m);
         ControllerToolsBar  c2  = new ControllerToolsBar(m);
         ViewGame            v   = new ViewGame(c);
+        ViewLeftPanel       v2  = new ViewLeftPanel();
         
         m.addObserver(v);
+        m.addObserver(v2);
         m.initMap();
         
         this.mainContent        = new JPanel();
         this.panTop             = new ViewToolsBar(c2);
-        this.panLeft            = new ViewTopPanel();
+        this.panLeft            = v2;
         this.panCenter          = v;
         
         this.mainContent.setLayout(new BorderLayout());

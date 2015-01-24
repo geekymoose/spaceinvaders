@@ -28,6 +28,7 @@ public abstract class Alien extends Living{
     //**************************************************************************
     protected   Image   img1;
     protected   Image   img2;
+    protected   int     scoreValue;
     
     
     
@@ -41,9 +42,11 @@ public abstract class Alien extends Living{
      * Create a Alien (type 1) at position x, y
      * @param pX x coordinate
      * @param pY y coordinate
+     * @param pScoreValue
      */
-    public Alien(int pX, int pY){
+    public Alien(int pX, int pY, int pScoreValue){
         super(pX, pY);
+        this.scoreValue     = pScoreValue;
     }
     
     
@@ -73,4 +76,10 @@ public abstract class Alien extends Living{
     //**************************************************************************
     // Getters - Setters
     //**************************************************************************
+    /**
+     * Get the score value
+     */
+    public int getScoreValue(){
+        return this.scoreValue;
+    }
 }

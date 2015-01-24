@@ -23,15 +23,23 @@ public interface Commons {
     //**************************************************************************
     // Game constants
     //**************************************************************************
+    //Timer
     public static final int DELAY_GENERAL                   = 5;
     public static final int DELAY_PLAYER                    = 5;
     public static final int DELAY_ALIEN                     = 400;
     public static final int DELAY_SHOOT                     = 5;
     
+    //Alien gap
     public static final int GAP_LEFT                        = 50;
     public static final int GAP_TOP                         = 50;
     public static final int GAP_BETWEEN_ALIENS              = 70;
     
+    //Score
+    public static final int SCORE_VALUE_ALIEN1              = 10;
+    public static final int SCORE_VALUE_ALIEN2              = 20;
+    public static final int SCORE_VALUE_ALIEN3              = 40;
+    
+    //Weapons
     public static final int BOMB_WIDTH                      = 3;
     public static final int BOMB_HEIGHT                     = 10;
     public static final int LASER_WIDTH                     = 1;
@@ -50,6 +58,7 @@ public interface Commons {
     public static final int PLAYER_HEIGHT                   = 33;
     
     
+    //Game dimension
     public static final int GAME_WIDTH                      = 950;
     public static final int GAME_HEIGHT                     = 650;
     public static final int GROUND                          = GAME_HEIGHT-45;
