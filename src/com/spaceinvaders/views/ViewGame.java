@@ -8,6 +8,7 @@
 package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
+import static com.spaceinvaders.constants.Commons.PATH_ALIEN3_IMG2;
 import com.spaceinvaders.controllers.ControllerGame;
 import com.spaceinvaders.controllers.ControllerPlayer;
 import com.spaceinvaders.models.Alien;
@@ -20,12 +21,16 @@ import com.spaceinvaders.observers.ObserverCharacter;
 import com.spaceinvaders.observers.ObserverGame;
 import com.spaceinvaders.tools.ManagerKeyPlayer;
 import com.spaceinvaders.weapons.Projectile;
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 
@@ -57,6 +62,8 @@ public class ViewGame extends JPanel implements Commons,
     private     ArrayList<Projectile>   listAlienShoot;
     private     Player                  player;
     
+    private     Image                   background;
+    
     
     
     
@@ -76,10 +83,12 @@ public class ViewGame extends JPanel implements Commons,
         this.listAlien          = new ArrayList();
         this.listAlienShoot     = new ArrayList();
         this.setLayout(new BorderLayout());
-        this.setBackground(Color.BLACK);
         this.setPreferredSize(DIM_GAME);
         this.setFocusable(true);
         this.setDoubleBuffered(true);
+        this.setBackground(Color.BLACK);
+        ImageIcon i             = new ImageIcon(IMG_BACKGROUND);
+        this.background         = i.getImage();
     }
     
     
@@ -94,9 +103,14 @@ public class ViewGame extends JPanel implements Commons,
         Graphics2D g2d = (Graphics2D)g;
         
         //Draw the player and the ground
+        g2d.drawImage(background, 0, 0, this);
         g2d.drawImage(player.getImage(), player.getUpperLeftCorner().x, player.getUpperLeftCorner().y, this);
         g2d.setColor(Color.red);
-        g2d.drawLine(0, GROUND, GAME_WIDTH, GROUND); //Ground line
+        
+        //BasicStroke bs1 = new BasicStroke(1,BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);
+        //g2d.setStroke(null);
+        //g2d.drawLine(0, GROUND, GAME_WIDTH, GROUND); //Ground line
+        drawSubLine(g);
         
         /*
          * Draw the aliens
@@ -116,6 +130,24 @@ public class ViewGame extends JPanel implements Commons,
         //See doc: used for synchronisation
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
+    }
+    
+    
+    /**
+     * Draw the sub line (The ground)
+     * @param g 
+     */
+    private void drawSubLine(Graphics g){
+        Graphics2D g2d = (Graphics2D)g;
+        RenderingHints rh = new RenderingHints(
+                RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+        rh.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        g2d.setRenderingHints(rh);
+        
+        BasicStroke bs1 = new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        g2d.setStroke(bs1);
+        g2d.drawLine(10, GROUND, GAME_WIDTH-10, GROUND); //Ground line
     }
     
     

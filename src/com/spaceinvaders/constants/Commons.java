@@ -90,4 +90,5 @@ public interface Commons {
     public static final String PATH_ALIEN3_IMG  = "img/resized/alien3_pos1.png";
     public static final String PATH_ALIEN3_IMG2 = "img/resized/alien3_pos2.png";
     public static final String IMG_MISSILE      = "img/resized/missile.png";
+    public static final String IMG_BACKGROUND   = "img/resized/background.png";
 }
