@@ -137,6 +137,7 @@ public class ViewGame extends JPanel implements Commons,
         this.keyGameManager     = new ManagerKeyPlayer(c);
         this.addKeyListener(keyGameManager);
         this.player.addObserver(this);
+        this.repaint();
     }
     
     

@@ -1,14 +1,15 @@
 /*
- * Class :      TimerPlayer
- * Creation:    Jan 23, 2015
+ * Class :      TimerManager
+ * Creation:    Jan 24, 2015
  * Author :     Constantin MASSON
  * 
  */
 
 package com.spaceinvaders.tools;
 
-import com.spaceinvaders.models.Player;
-import java.awt.event.ActionEvent;
+import com.spaceinvaders.constants.Commons;
+import static com.spaceinvaders.constants.Commons.DELAY_SHOOT;
+import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 
@@ -16,19 +17,20 @@ import javax.swing.Timer;
 
 
 /**
- * <h1>TimerPlayer</h1>
+ * <h1>TimerManager</h1>
  * <p>
- * public class TimerPlayer
+ public class TimerManager<br/>
+ * implements ActionListener, Commons
  * </p>
- * <p>Timer for the player actions</p>
+ * <p>Parent class for every timers</p>
  *
  * @author Constantin MASSON
  */
-public class TimerPlayer extends TimerManager{
+public abstract class TimerManager implements ActionListener, Commons{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     Player  player;
+    private     Timer       timer;
     
     
     
@@ -38,9 +40,8 @@ public class TimerPlayer extends TimerManager{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public TimerPlayer(Player pPlayer){
-        super(DELAY_PLAYER);
-        this.player     = pPlayer;
+    public TimerManager(int pDelay){
+        this.timer              = new Timer(pDelay, this);
     }
     
     
@@ -51,17 +52,17 @@ public class TimerPlayer extends TimerManager{
     //**************************************************************************
     // Functions
     //**************************************************************************
+    /**
+     * Start the timer
+     */
+    public void startTimer(){
+        this.timer.start();
+    }
     
-    
-    
-    
-    
-
-    //**************************************************************************
-    // Getters - Setters
-    //**************************************************************************
-    @Override
-    public void actionPerformed(ActionEvent e){
-        this.player.move();
+    /**
+     * Stop the timer
+     */
+    public void stopTimer(){
+        this.timer.stop();
     }
 }
