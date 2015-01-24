@@ -43,6 +43,8 @@ public class ModelGame implements Commons, ObservableGame{
     private     TimerAlien              timerAlien;
     private     TimerGeneral            timerGeneral;
     
+    private     ManagerCollision        managerCollision;
+    
     
     
     
@@ -57,6 +59,7 @@ public class ModelGame implements Commons, ObservableGame{
      */
     public ModelGame(){
         this.listObservers      = new ArrayList();
+        this.managerCollision   = new ManagerCollision(this);
     }
     
     
@@ -80,10 +83,11 @@ public class ModelGame implements Commons, ObservableGame{
         
         //Create the timer
         this.timerPlayer        = new TimerPlayer(this.player);
-        this.timerShoot         = new TimerShoot(this.listAlienShoot, this.listPlayerShoot);
+        this.timerShoot         = new TimerShoot(   this.listAlienShoot, 
+                                                    this.listPlayerShoot,
+                                                    this.managerCollision);
         this.timerAlien         = new TimerAlien(this.listAliens);
         this.timerGeneral       = new TimerGeneral(this);
-        
     }
     
     
@@ -153,8 +157,17 @@ public class ModelGame implements Commons, ObservableGame{
      * Kill one alien. This alien will be removed from the list
      * @param pAlien
      */
-    public void killOneAlien(Living pAlien){
+    public void killOneAlien(Alien pAlien){
         this.listAliens.remove(pAlien);
+    }
+    
+    /**
+     * Destroy this projectile
+     * @param p projectile to destroy
+     */
+    public void destroyeProjectile(Projectile p){
+        this.listPlayerShoot.remove(p);
+        this.listAlienShoot.remove(p);
     }
     
     

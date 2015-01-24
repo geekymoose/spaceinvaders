@@ -8,7 +8,10 @@
 package com.spaceinvaders.weapons;
 
 import com.spaceinvaders.behaviors.MoveShootMissile;
+import com.spaceinvaders.models.Alien;
 import com.spaceinvaders.models.Living;
+import com.spaceinvaders.models.ModelGame;
+import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 
@@ -55,6 +58,23 @@ public class Missile extends Projectile{
     //**************************************************************************
     // Functions
     //**************************************************************************
+    @Override
+    public Object checkCollision(ModelGame map){
+        Rectangle r1 = this.getBounds();
+        
+        /*
+         * Check if hit a Living (Player and Alien)
+         */
+        for(Alien a : map.getListAliens()){
+            Rectangle r2 = a.getBounds();
+            if(r1.intersects(r2)){
+                return a;
+            }
+        }
+        
+        //Here, means nothing were hit
+        return null;
+    }
     
     
     

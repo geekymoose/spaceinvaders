@@ -56,7 +56,7 @@ public class ViewApplication extends JFrame implements Commons{
         this.setTitle("Mini games launcher");
         this.setMinimumSize(DIM_FRAME_MIN);
         this.setAlwaysOnTop(false);
-        this.setResizable(true);
+        this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //this.setLocationRelativeTo(null); use after pack
         

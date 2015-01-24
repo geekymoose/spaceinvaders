@@ -72,6 +72,15 @@ public class Player extends Living{
     }
     
     
+    /**
+     * Reload weapon (With one ammo)
+     * @return 
+     */
+    public boolean reload(){
+        return this.shootType.reload(1);
+    }
+    
+    
     
     
     
