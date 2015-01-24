@@ -35,6 +35,7 @@ public class ModelGame implements Commons, ObservableGame{
     private     ArrayList<Projectile>   listAlienShoot;
     private     ArrayList<Projectile>   listPlayerShoot;
     private     ArrayList<ObserverGame> listObservers;
+    
     private     int                     currentScore;
     private     int                     nbAliens;
     
