@@ -8,7 +8,6 @@
 package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
-import static com.spaceinvaders.constants.Commons.PATH_ALIEN3_IMG2;
 import com.spaceinvaders.controllers.ControllerGame;
 import com.spaceinvaders.controllers.ControllerPlayer;
 import com.spaceinvaders.models.Alien;
@@ -55,7 +54,6 @@ public class ViewGame extends JPanel implements Commons,
     //**************************************************************************
     private     ControllerGame          controller;
     private     ManagerKeyPlayer        keyGameManager;
-    private     JPanel                  panGame;
     
     private     ArrayList<Alien>        listAlien;
     private     ArrayList<Projectile>   listPlayerShoot;

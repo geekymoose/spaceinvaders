@@ -121,13 +121,4 @@ public class ViewLeftPanel extends JPanel implements Commons, ObserverGame{
         this.labelScoreValue.setText(String.valueOf(m.getScore()));
         this.labelNbInvadersValue.setText(String.valueOf(m.getNbAliens()));
     }
-    
-    
-    
-    
-    
-
-    //**************************************************************************
-    // Getters - Setters
-    //**************************************************************************
 }
