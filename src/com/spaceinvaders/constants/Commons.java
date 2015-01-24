@@ -32,12 +32,12 @@ public interface Commons {
     public static final int GAP_TOP                         = 50;
     public static final int GAP_BETWEEN_ALIENS              = 70;
     
-    public static final int BOMB_WIDTH                      = 10;
-    public static final int BOMB_HEIGHT                     = 20;
+    public static final int BOMB_WIDTH                      = 3;
+    public static final int BOMB_HEIGHT                     = 10;
     public static final int LASER_WIDTH                     = 1;
     public static final int LASER_HEIGHT                    = 5;
-    public static final int MISSILE_WIDTH                   = 1;
-    public static final int MISSILE_HEIGHT                  = 5;
+    public static final int MISSILE_WIDTH                   = 3;
+    public static final int MISSILE_HEIGHT                  = 10;
     
     //ALien and player size
     public static final int ALIEN1_WIDTH                    = 30;

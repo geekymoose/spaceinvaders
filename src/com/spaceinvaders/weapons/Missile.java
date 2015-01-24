@@ -56,10 +56,6 @@ public class Missile extends Projectile{
     //**************************************************************************
     // Functions
     //**************************************************************************
-    @Override
-    public Living hits(ArrayList<Living> pList){
-        return null;
-    }
     
     
     

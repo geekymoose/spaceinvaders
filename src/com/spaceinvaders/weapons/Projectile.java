@@ -10,12 +10,10 @@ package com.spaceinvaders.weapons;
 import com.spaceinvaders.behaviors.MoveShootType;
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.models.Living;
-import com.spaceinvaders.observers.ObserverProjectile;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.ArrayList;
 
 
 
@@ -34,13 +32,11 @@ public abstract class Projectile implements Commons{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     ArrayList<ObserverProjectile>   listObservers;
     protected   int                             posX;
     protected   int                             posY;
     protected   int                             width;
     protected   int                             height;
     protected   Image                           img;
-    protected   boolean                         isActive;
     protected   Living                          owner;
     
     protected   MoveShootType                   moveShootType;
@@ -69,7 +65,6 @@ public abstract class Projectile implements Commons{
         this.height         = pHeight;
         this.owner          = pOwner;
         this.moveShootType  = null;
-        this.listObservers  = new ArrayList();
     }
     
     
@@ -85,22 +80,6 @@ public abstract class Projectile implements Commons{
      */
     public void move(){
         this.moveShootType.move();
-    }
-    
-    
-    /**
-     * Check if projectile hits something
-     * @param pList
-     * @return return the object hit, null if nothing
-     */
-    public abstract Living hits(ArrayList<Living> pList);
-    
-    /**
-     * Check if current projectile is active
-     * @return true if active, otherwise, return false
-     */
-    public boolean isActive(){
-        return this.isActive;
     }
     
     
