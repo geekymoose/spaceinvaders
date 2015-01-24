@@ -1,6 +1,8 @@
 
 package com.spaceinvaders.tools;
 
+import com.spaceinvaders.models.ModelGame;
+
 /*
  * Class :      ManagerCollision
  * Creation:    Jan 24, 2015
@@ -24,6 +26,7 @@ public class ManagerCollision {
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
+    private     ModelGame       map;
     
     
     
@@ -33,8 +36,12 @@ public class ManagerCollision {
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public ManagerCollision(){
-    
+    /**
+     * Create a new ManagerCollision
+     * @param pMap where the collision are processed
+     */
+    public ManagerCollision(ModelGame pMap){
+        this.map = pMap;
     }
     
     
@@ -45,6 +52,9 @@ public class ManagerCollision {
     //**************************************************************************
     // Functions
     //**************************************************************************
+    public void processCollision(){
+        
+    }
     
     
     

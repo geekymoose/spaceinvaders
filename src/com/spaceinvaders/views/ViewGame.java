@@ -138,6 +138,7 @@ public class ViewGame extends JPanel implements Commons,
         this.addKeyListener(keyGameManager);
         this.player.addObserver(this);
         this.repaint();
+        this.requestFocusInWindow();
     }
     
     
@@ -149,6 +150,7 @@ public class ViewGame extends JPanel implements Commons,
         this.listPlayerShoot    = m.getPlayerShoot();
         this.player.setCenter(m.getPlayer().getCenter());
         this.repaint();
+        this.requestFocusInWindow();
     }
 
 
