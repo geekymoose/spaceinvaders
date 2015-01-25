@@ -80,11 +80,11 @@ public class ViewToolsBar extends JPanel implements Commons{
      * Create all the buttons
      */
     private void initButtons(){
-        this.buttonStart    = new JButton(new ImageIcon(PATH_ICON_TOOLS+"start.png"));
-        this.buttonStop     = new JButton(new ImageIcon(PATH_ICON_TOOLS+"stop.png"));
-        this.buttonRestart  = new JButton(new ImageIcon(PATH_ICON_TOOLS+"restart.png"));
-        this.buttonSave     = new JButton(new ImageIcon(PATH_ICON_TOOLS+"save.png"));
-        this.buttonLoad     = new JButton(new ImageIcon(PATH_ICON_TOOLS+"load.png"));
+        this.buttonStart    = new JButton(new ImageIcon(PATH_IMG_ICON_TOOLS+"start.png"));
+        this.buttonStop     = new JButton(new ImageIcon(PATH_IMG_ICON_TOOLS+"stop.png"));
+        this.buttonRestart  = new JButton(new ImageIcon(PATH_IMG_ICON_TOOLS+"restart.png"));
+        this.buttonSave     = new JButton(new ImageIcon(PATH_IMG_ICON_TOOLS+"save.png"));
+        this.buttonLoad     = new JButton(new ImageIcon(PATH_IMG_ICON_TOOLS+"load.png"));
         
         this.buttonStart    .addActionListener(buttonStartListener);
         this.buttonStop     .addActionListener(buttonStopListener);

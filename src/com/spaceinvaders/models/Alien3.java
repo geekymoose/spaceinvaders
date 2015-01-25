@@ -52,8 +52,8 @@ public class Alien3 extends Alien{
         this.width      = ALIEN3_WIDTH;
         this.height     = ALIEN3_HEIGHT;
         
-        ImageIcon i     = new ImageIcon(PATH_ALIEN3_IMG);
-        ImageIcon ii    = new ImageIcon(PATH_ALIEN3_IMG2);
+        ImageIcon i     = new ImageIcon(PATH_ALIENS_IMG+"alien3_pos1.png");
+        ImageIcon ii    = new ImageIcon(PATH_ALIENS_IMG+"alien3_pos2.png");
         this.img1       = i.getImage();
         this.img2       = ii.getImage();
         this.img        = img1;
