@@ -8,7 +8,6 @@
 package com.spaceinvaders.tools;
 
 import com.spaceinvaders.constants.Commons;
-import static com.spaceinvaders.constants.Commons.DELAY_SHOOT;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 

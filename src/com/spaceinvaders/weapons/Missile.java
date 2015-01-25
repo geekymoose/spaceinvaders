@@ -75,13 +75,4 @@ public class Missile extends Projectile{
         //Here, means nothing were hit
         return null;
     }
-    
-    
-    
-    
-    
-
-    //**************************************************************************
-    // Getters - Setters
-    //**************************************************************************
 }

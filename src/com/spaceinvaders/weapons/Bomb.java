@@ -66,12 +66,4 @@ public class Bomb extends Projectile{
         Rectangle r1 = this.getBounds();
         return r1.intersects(map.getPlayer().getBounds()) ? map.getPlayer() : null;
     }
-    
-    
-    
-    
-
-    //**************************************************************************
-    // Getters - Setters
-    //**************************************************************************
 }

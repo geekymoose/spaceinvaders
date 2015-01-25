@@ -28,6 +28,7 @@ public interface Commons {
     public static final int DELAY_PLAYER                    = 5;
     public static final int DELAY_ALIEN                     = 400;
     public static final int DELAY_SHOOT                     = 5;
+    public static final int DELAY_EXPLOSION                 = 15;
     
     //Alien gap
     public static final int GAP_LEFT                        = 50;
@@ -39,6 +40,11 @@ public interface Commons {
     public static final int SCORE_VALUE_ALIEN2              = 20;
     public static final int SCORE_VALUE_ALIEN3              = 40;
     
+    
+    
+    //**************************************************************************
+    // Dimension elements
+    //**************************************************************************
     //Weapons
     public static final int BOMB_WIDTH                      = 3;
     public static final int BOMB_HEIGHT                     = 10;
@@ -58,6 +64,10 @@ public interface Commons {
     public static final int PLAYER_HEIGHT                   = 33;
     
     
+    //Dynamics elements dimension (Explosion)
+    public static final int EXPLOSION_ALIEN_WIDTH           = 40;
+    public static final int EXPLOSION_ALIEN_HEIGHT          = 32;
+    
     //Game dimension
     public static final int GAME_WIDTH                      = 950;
     public static final int GAME_HEIGHT                     = 650;
@@ -65,8 +75,8 @@ public interface Commons {
     public static final int DEFAULT_PLAYER_POS_X            = 100;
     public static final int DEFAULT_PLAYER_POS_Y            = GROUND-PLAYER_HEIGHT-3;
     
-    public static final int MIN_PLAYER_POSITION            = PLAYER_WIDTH+5;
-    public static final int MAX_PLAYER_POSITION            = GAME_WIDTH-(PLAYER_WIDTH+5);
+    public static final int MIN_PLAYER_POSITION             = PLAYER_WIDTH+5;
+    public static final int MAX_PLAYER_POSITION             = GAME_WIDTH-(PLAYER_WIDTH+5);
     
     
     
@@ -101,4 +111,6 @@ public interface Commons {
     public static final String PATH_ALIEN3_IMG2 = "img/resized/alien3_pos2.png";
     public static final String IMG_MISSILE      = "img/resized/missile.png";
     public static final String IMG_BACKGROUND   = "img/resized/background.png";
+    
+    public static final String PATH_IMG_EXPLOSION   = "img/resized/explosion/";
 }

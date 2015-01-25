@@ -10,7 +10,6 @@ package com.spaceinvaders.tools;
 import com.spaceinvaders.weapons.Projectile;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-import javax.swing.Timer;
 
 
 
