@@ -34,7 +34,7 @@ public class ExplosionAlien extends Explosion{
      * @param pModel model map where explosion is 
      */
     public ExplosionAlien(Point pCenter, ModelGame pModel){
-        super(pCenter, EXPLOSION_ALIEN_WIDTH, EXPLOSION_ALIEN_HEIGHT, DELAY_EXPLOSION, pModel);
+        super(pCenter, DELAY_EXPLOSION, pModel);
         
         ImageIcon i1    = new ImageIcon(PATH_IMG_EXPLOSION+"explosion1.png");
         ImageIcon i2    = new ImageIcon(PATH_IMG_EXPLOSION+"explosion2.png");
@@ -45,6 +45,9 @@ public class ExplosionAlien extends Explosion{
         ImageIcon i7    = new ImageIcon(PATH_IMG_EXPLOSION+"explosion7.png");
         ImageIcon i8    = new ImageIcon(PATH_IMG_EXPLOSION+"explosion8.png");
         ImageIcon i9    = new ImageIcon(PATH_IMG_EXPLOSION+"explosion9.png");
+        ImageIcon i10   = new ImageIcon(PATH_IMG_EXPLOSION+"explosion10.png");
+        ImageIcon i11   = new ImageIcon(PATH_IMG_EXPLOSION+"explosion11.png");
+        ImageIcon i12   = new ImageIcon(PATH_IMG_EXPLOSION+"explosion12.png");
         
         this.img        = i1.getImage();
         
@@ -57,6 +60,9 @@ public class ExplosionAlien extends Explosion{
         this.listImg.add(i7.getImage());
         this.listImg.add(i8.getImage());
         this.listImg.add(i9.getImage());
+        this.listImg.add(i10.getImage());
+        this.listImg.add(i11.getImage());
+        this.listImg.add(i12.getImage());
         
         this.startTimer();
     }
