@@ -39,8 +39,6 @@ public abstract class Explosion extends TimerManager{
     
     protected   int                 posX;
     protected   int                 posY;
-    protected   int                 width;
-    protected   int                 height;
     
     
     
@@ -53,19 +51,15 @@ public abstract class Explosion extends TimerManager{
     /**
      * Create a new explosion
      * @param pPosition explosion center
-     * @param pW Image width
-     * @param pH Image height
      * @param pDelay
      * @param pModel model map where explosion is 
      */
-    public Explosion(Point pPosition, int pW, int pH, int pDelay, ModelGame pModel){
+    public Explosion(Point pPosition, int pDelay, ModelGame pModel){
         super(pDelay);
         this.listImg            = new ArrayList();
         this.model              = pModel;
         this.posX               = pPosition.x;
         this.posY               = pPosition.y;
-        this.width              = pW;
-        this.height             = pH;
         this.currentPosition    = 0;
     }
     
@@ -134,6 +128,9 @@ public abstract class Explosion extends TimerManager{
      * @return Point
      */
     public Point getUpperLeftCorner(){
-        return new Point(this.posX-(this.width/2), this.posY-(this.height/2));
+        //return new Point(this.posX-(this.width/2), this.posY-(this.height/2));
+        int w   = this.img.getWidth(null);
+        int h   = this.img.getHeight(null);
+        return new Point(this.posX-(w/2), this.posY-(h/2));
     }
 }
