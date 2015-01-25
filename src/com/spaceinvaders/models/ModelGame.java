@@ -34,6 +34,7 @@ public class ModelGame implements Commons, ObservableGame{
     private     ArrayList<Alien>        listAliens; //Only alien inside
     private     ArrayList<Projectile>   listAlienShoot;
     private     ArrayList<Projectile>   listPlayerShoot;
+    private     ArrayList<Explosion>    listExplosions; //Tmp object: explosion
     private     ArrayList<ObserverGame> listObservers;
     
     private     int                     currentScore;
@@ -75,6 +76,7 @@ public class ModelGame implements Commons, ObservableGame{
         this.listAliens         = new ArrayList();
         this.listPlayerShoot    = new ArrayList();
         this.listAlienShoot     = new ArrayList();
+        this.listExplosions     = new ArrayList();
         
         this.nbAliens           = 55; //11 * 5
         this.currentScore       = 0;
@@ -163,6 +165,7 @@ public class ModelGame implements Commons, ObservableGame{
         this.currentScore += pAlien.getScoreValue();
         this.listAliens.remove(pAlien);
         this.nbAliens--;
+        this.listExplosions.add(new ExplosionAlien(pAlien.getCenter(), this));
     }
     
     /**
@@ -172,6 +175,15 @@ public class ModelGame implements Commons, ObservableGame{
     public void destroyeProjectile(Projectile p){
         this.listPlayerShoot.remove(p);
         this.listAlienShoot.remove(p);
+    }
+    
+    /**
+     * Remove an explosion
+     * @param pExplosion 
+     */
+    public void removeExplosion(Explosion pExplosion){
+        this.listExplosions.remove(pExplosion);
+        //this.notifyObservers();
     }
     
     
@@ -228,6 +240,14 @@ public class ModelGame implements Commons, ObservableGame{
      */
     public ArrayList<Projectile> getAlienShoot(){
         return this.listAlienShoot;
+    }
+    
+    /**
+     * Get the explosion list
+     * @return 
+     */
+    public ArrayList<Explosion> getListExplosions(){
+        return this.listExplosions;
     }
     
     

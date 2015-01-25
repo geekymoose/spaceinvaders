@@ -9,7 +9,6 @@ package com.spaceinvaders.tools;
 
 import com.spaceinvaders.models.Player;
 import java.awt.event.ActionEvent;
-import javax.swing.Timer;
 
 
 

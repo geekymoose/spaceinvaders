@@ -18,6 +18,7 @@ import com.spaceinvaders.observers.ObservableCharacter;
 import com.spaceinvaders.observers.ObservableGame;
 import com.spaceinvaders.observers.ObserverCharacter;
 import com.spaceinvaders.observers.ObserverGame;
+import com.spaceinvaders.tools.Explosion;
 import com.spaceinvaders.tools.ManagerKeyPlayer;
 import com.spaceinvaders.weapons.Projectile;
 import java.awt.BasicStroke;
@@ -58,6 +59,7 @@ public class ViewGame extends JPanel implements Commons,
     private     ArrayList<Alien>        listAlien;
     private     ArrayList<Projectile>   listPlayerShoot;
     private     ArrayList<Projectile>   listAlienShoot;
+    private     ArrayList<Explosion>    listExplosions;
     private     Player                  player;
     
     private     Image                   background;
@@ -80,6 +82,7 @@ public class ViewGame extends JPanel implements Commons,
         this.listPlayerShoot    = new ArrayList();
         this.listAlien          = new ArrayList();
         this.listAlienShoot     = new ArrayList();
+        this.listExplosions     = new ArrayList();
         
         this.setLayout(new BorderLayout());
         this.setPreferredSize(DIM_GAME);
@@ -121,9 +124,10 @@ public class ViewGame extends JPanel implements Commons,
         drawSubLine(g);
         
         /*
-         * Draw the aliens
-         * Draw the alien shoots
-         * Draw the player shoots
+         * Draw aliens
+         * Draw alien shoots
+         * Draw player shoots
+         * Draw explosions
          */
         for(Living o : this.listAlien){
             g2d.drawImage(o.getImage(), o.getUpperLeftCorner().x, o.getUpperLeftCorner().y, this);
@@ -133,6 +137,9 @@ public class ViewGame extends JPanel implements Commons,
         }
         for(Projectile p : this.listPlayerShoot){
             g2d.drawImage(p.getImage(), p.getUpperLeftCorner().x, p.getUpperLeftCorner().y, this);
+        }
+        for(Explosion e : this.listExplosions){
+            g2d.drawImage(e.getImage(), e.getUpperLeftCorner().x, e.getUpperLeftCorner().y, this);
         }
         
         //See doc: used for synchronisation
@@ -171,6 +178,7 @@ public class ViewGame extends JPanel implements Commons,
         this.listAlien          = m.getListAliens();
         this.listAlienShoot     = m.getAlienShoot();
         this.listPlayerShoot    = m.getPlayerShoot();
+        this.listExplosions     = m.getListExplosions();
         this.player             = m.getPlayer();
         
         ControllerPlayer c      = new ControllerPlayer( this.player, 
@@ -188,6 +196,7 @@ public class ViewGame extends JPanel implements Commons,
         this.listAlien          = m.getListAliens();
         this.listAlienShoot     = m.getAlienShoot();
         this.listPlayerShoot    = m.getPlayerShoot();
+        this.listExplosions     = m.getListExplosions();
         this.player.setCenter(m.getPlayer().getCenter());
         this.repaint();
         this.requestFocusInWindow();

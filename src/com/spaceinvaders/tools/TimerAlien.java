@@ -7,14 +7,11 @@
 
 package com.spaceinvaders.tools;
 
-import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.constants.Movements;
 import com.spaceinvaders.models.Alien;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.Timer;
 
 
 
