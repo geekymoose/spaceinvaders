@@ -48,7 +48,7 @@ public class Player extends Living{
     public Player(int pX, int pY){
         super(pX, pY);
         this.barrel         = new Point(0, -(PLAYER_HEIGHT/2));
-        ImageIcon i         = new ImageIcon(PATH_PLAYER_IMG);
+        ImageIcon i         = new ImageIcon(PATH_PLAYER_IMG+"player.png");
         this.img            = i.getImage();
         this.shootType      = new ShootMissile(((Living)this), barrel, 1); //Ammo = 1
         this.moveType       = new MoveLivingPlayer(this);

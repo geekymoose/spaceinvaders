@@ -8,7 +8,6 @@
 package com.spaceinvaders.weapons;
 
 import com.spaceinvaders.behaviors.MoveShootLaser;
-import static com.spaceinvaders.constants.Commons.IMG_MISSILE;
 import com.spaceinvaders.models.Living;
 import com.spaceinvaders.models.ModelGame;
 import java.awt.Rectangle;
@@ -48,7 +47,7 @@ public class Laser extends Projectile{
      */
     public Laser(int pX, int pY, Living pOwner){
         super(pX, pY, MISSILE_WIDTH, MISSILE_WIDTH, pOwner);
-        ImageIcon i         = new ImageIcon(IMG_MISSILE);
+        ImageIcon i         = new ImageIcon(IMG_WEAPONS+"bomb.png");
         this.img            = i.getImage();
         this.moveShootType  = new MoveShootLaser(this);
     }

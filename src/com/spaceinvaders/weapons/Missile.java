@@ -45,7 +45,7 @@ public class Missile extends Projectile{
      */
     public Missile(int pX, int pY, Living pOwner){
         super(pX, pY, MISSILE_WIDTH, MISSILE_WIDTH, pOwner);
-        ImageIcon i         = new ImageIcon(IMG_MISSILE);
+        ImageIcon i         = new ImageIcon(IMG_WEAPONS+"missile.png");
         this.img            = i.getImage();
         this.moveShootType  = new MoveShootMissile(this);
     }
