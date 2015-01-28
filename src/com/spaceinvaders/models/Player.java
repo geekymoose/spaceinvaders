@@ -9,6 +9,7 @@ package com.spaceinvaders.models;
 
 import com.spaceinvaders.behaviors.MoveLivingPlayer;
 import com.spaceinvaders.behaviors.ShootMissile;
+import java.awt.Image;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 
@@ -31,6 +32,8 @@ public class Player extends Living{
     //**************************************************************************
     private     int             nbLife;
     private     final Point     barrel;//Extremity canon position from the Player center
+    private     final Image     img1;
+    private     final Image     img2;
     
     
     
@@ -48,12 +51,18 @@ public class Player extends Living{
     public Player(int pX, int pY){
         super(pX, pY);
         this.barrel         = new Point(0, -(PLAYER_HEIGHT/2));
-        ImageIcon i         = new ImageIcon(PATH_PLAYER_IMG+"player.png");
-        this.img            = i.getImage();
         this.shootType      = new ShootMissile(((Living)this), barrel, 1); //Ammo = 1
         this.moveType       = new MoveLivingPlayer(this);
         this.width          = PLAYER_WIDTH;
         this.height         = PLAYER_HEIGHT;
+        
+        ImageIcon i         = new ImageIcon(PATH_PLAYER_IMG+"player.png");
+        ImageIcon ii        = new ImageIcon(PATH_PLAYER_IMG+"playerHurt.png");
+        this.img1           = i.getImage();
+        this.img2           = ii.getImage();
+        this.img            = this.img1;
+        
+        this.nbLife         = 3;
     }
     
     
@@ -77,6 +86,7 @@ public class Player extends Living{
      */
     public void lostOneLife(){
         this.nbLife--;
+        this.img = this.img2;
         if(this.nbLife==0){
             this.isAlive = false;
         }
@@ -89,6 +99,10 @@ public class Player extends Living{
      */
     public boolean reload(){
         return this.shootType.reload(1);
+    }
+    
+    public void resetImg(){
+        this.img = this.img1;
     }
     
     

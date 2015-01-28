@@ -30,7 +30,7 @@ public interface Commons {
     public static final int DELAY_SHOOT                     = 5;
     public static final int DELAY_EXPLOSION                 = 15;
     
-    public static final int SLEEP_BREAK                     = 1000;
+    public static final int DELAY_BREAK                     = 1000;
     
     //Alien gap
     public static final int GAP_LEFT                        = 50;

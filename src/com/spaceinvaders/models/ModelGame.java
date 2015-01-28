@@ -13,8 +13,6 @@ import com.spaceinvaders.observers.ObserverGame;
 import com.spaceinvaders.tools.*;
 import com.spaceinvaders.weapons.Projectile;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 
@@ -46,6 +44,7 @@ public class ModelGame implements Commons, ObservableGame{
     private     TimerShoot              timerShoot;
     private     TimerAlien              timerAlien;
     private     TimerGeneral            timerGeneral;
+    private     TimerBreak              timerBreak;
     
     private     ManagerCollision        managerCollision;
     
@@ -86,11 +85,12 @@ public class ModelGame implements Commons, ObservableGame{
         
         //Create the timer
         this.timerPlayer        = new TimerPlayer(this.player);
+        this.timerAlien         = new TimerAlien(this);
+        this.timerGeneral       = new TimerGeneral(this);
+        this.timerBreak         = new TimerBreak(this);
         this.timerShoot         = new TimerShoot(   this.listAlienShoot, 
                                                     this.listPlayerShoot,
                                                     this.managerCollision);
-        this.timerAlien         = new TimerAlien(this);
-        this.timerGeneral       = new TimerGeneral(this);
         
         this.placeInitialeSpaceInvaders();
         this.notifyCreateMap();
@@ -133,9 +133,7 @@ public class ModelGame implements Commons, ObservableGame{
      * Start every timer, means the game start
      */
     public void startTimers(){
-        this.timerPlayer.startTimer();
-        this.timerShoot.startTimer();
-        this.timerAlien.startTimer();
+        this.startGameTimers();
         this.timerGeneral.startTimer();
     }
     
@@ -143,10 +141,27 @@ public class ModelGame implements Commons, ObservableGame{
      * Stop the game
      */
     public void stopTimers(){
+        this.stopGameTimers();
+        this.timerGeneral.stopTimer();
+    }
+    
+    /**
+     * Start only game timer
+     */
+    public void startGameTimers(){
+        this.timerPlayer.startTimer();
+        this.timerShoot.startTimer();
+        this.timerAlien.startTimer();
+    }
+    
+    
+    /**
+     * Stop only game timer
+     */
+    public void stopGameTimers(){
         this.timerPlayer.stopTimer();
         this.timerShoot.stopTimer();
         this.timerAlien.stopTimer();
-        this.timerGeneral.stopTimer();
     }
     
     
@@ -193,13 +208,19 @@ public class ModelGame implements Commons, ObservableGame{
      */
     public void playerHurt(){
         this.player.lostOneLife();
-        this.stopTimers();
-        try {
-            Thread.sleep(SLEEP_BREAK);
-        } catch(InterruptedException ex) {
-            Logger.getLogger(ModelGame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.startTimers();
+        this.timerBreak.makeBreak();
+        Thread t = new Thread(new Runnable(
+        ) {
+            @Override
+            public void run(){
+                try {
+                    Thread.sleep(DELAY_BREAK);
+                } catch(InterruptedException ex) {
+                }
+                player.resetImg();
+            }
+        });
+        t.start();
     }
     
     
