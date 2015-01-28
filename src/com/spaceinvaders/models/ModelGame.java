@@ -13,6 +13,8 @@ import com.spaceinvaders.observers.ObserverGame;
 import com.spaceinvaders.tools.*;
 import com.spaceinvaders.weapons.Projectile;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -87,7 +89,7 @@ public class ModelGame implements Commons, ObservableGame{
         this.timerShoot         = new TimerShoot(   this.listAlienShoot, 
                                                     this.listPlayerShoot,
                                                     this.managerCollision);
-        this.timerAlien         = new TimerAlien(this.listAliens);
+        this.timerAlien         = new TimerAlien(this);
         this.timerGeneral       = new TimerGeneral(this);
         
         this.placeInitialeSpaceInvaders();
@@ -184,6 +186,20 @@ public class ModelGame implements Commons, ObservableGame{
     public void removeExplosion(Explosion pExplosion){
         this.listExplosions.remove(pExplosion);
         //this.notifyObservers();
+    }
+    
+    /**
+     * Player lost one life and, player hurt image displayed during a small break
+     */
+    public void playerHurt(){
+        this.player.lostOneLife();
+        this.stopTimers();
+        try {
+            Thread.sleep(SLEEP_BREAK);
+        } catch(InterruptedException ex) {
+            Logger.getLogger(ModelGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.startTimers();
     }
     
     

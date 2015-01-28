@@ -9,6 +9,7 @@ package com.spaceinvaders.tools;
 
 import com.spaceinvaders.constants.Movements;
 import com.spaceinvaders.models.Alien;
+import com.spaceinvaders.models.ModelGame;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class TimerAlien extends TimerManager implements Movements{
     // Constants - Variables
     //**************************************************************************
     private     ArrayList<Alien>    listAliens;
+    private     ModelGame           modelMap;
     
     
     
@@ -47,11 +49,12 @@ public class TimerAlien extends TimerManager implements Movements{
     //**************************************************************************
     /**
      * Create a timer for alien movement
-     * @param pList 
+     * @param pModel
      */
-    public TimerAlien(ArrayList<Alien> pList){
+    public TimerAlien(ModelGame pModel){
         super(DELAY_ALIEN);
-        this.listAliens     = pList;
+        this.listAliens     = pModel.getListAliens();
+        this.modelMap       = pModel;
     }
     
     
@@ -67,20 +70,38 @@ public class TimerAlien extends TimerManager implements Movements{
         boolean moveDown    = false;
         
         /*
-         * if at least one alien reached the border, the direction is changed
+         * Aliens really want to kill you!! They are naughty!! Very naughty and
+         * they want your beer!! 
+         * One alien shoot, when the projectil reach ground, one more alien will
+         * shoot. (Only on alien shoot is active at the same time)
+         */
+        if(this.modelMap.getAlienShoot().isEmpty()){
+            int rand    = RandomManager.getRandomBetween(0, this.listAliens.size()-1);
+            System.out.println(rand);
+            Alien a     = this.listAliens.get(rand); //Alien who will shot
+            a.fire(modelMap);
+        }
+        
+        
+        /*
+         * If at least one alien reached the border, the direction is changed
          * and one move down is performed.
          * The GAP_BETWEEN_ALIENS is arbitrary (max gap between alien and border)
          */
         for(int k=0; k<this.listAliens.size(); k++){
-            
             Point p = this.listAliens.get(k).getCenter();
             if(p.x>(GAME_WIDTH - (this.listAliens.get(k).getWidth()+GAP_BETWEEN_ALIENS))
                 || p.x<this.listAliens.get(k).getWidth()){
                 moveDown = true;
+                break;
             }
         }
         
         
+        /*
+         * Process alien movements
+         * If one alien reached border, movement will be opposite
+         */
         for(int k=0; k<this.listAliens.size(); k++){
             if(moveDown == true){
                 this.listAliens.get(k).moveDirection(MOVE_OPPOSITE);

@@ -60,9 +60,13 @@ public class ManagerCollision {
      * do what the projectile must do over the hit item
      */
     public void processCollision(){
+        
+        /*
+         * Collision with player projectiles
+         */
         for(int k=0; k<this.map.getPlayerShoot().size(); k++){
             Projectile p    = this.map.getPlayerShoot().get(k);
-            Object obj = p.checkCollision(map);
+            Object obj      = p.checkCollision(map);
             
             /*
              * Hit nothing but could have reached the border extremity
@@ -78,7 +82,10 @@ public class ManagerCollision {
                 }
             }
             
-            //Hit alien or the player, in this case, destroy the projectile and the target
+            /*
+             * hit player : do nothing (It is him projectile XD)
+             * hit alien : kill him
+             */
             else{
                 if(obj instanceof Player){
                     //To do later
@@ -91,5 +98,45 @@ public class ManagerCollision {
                 }
             }
         }
+        
+        
+        /*
+         * Collisions with aliens shoots
+         * Note: listAlienShot could be only a variable because, only one 
+         * alien shoot must be present at the same time. But, one never kown
+         * maybe for a next extension..
+         */
+        for(int k=0; k<this.map.getAlienShoot().size(); k++){
+            Projectile p    = this.map.getAlienShoot().get(k);
+            Object obj      = p.checkCollision(map);
+            
+            /*
+             * Hit nothing but could have reached the border extremity
+             * Do not forget the k-- which is very important! Because of the 
+             * destroyeProjectile, the current k value must be decremented by one!!!
+             * The total size (getPlayerShoot().size()) is sub by one
+             */
+            if(obj==null){
+                if(p.borderlandReached()){
+                    this.map.destroyeProjectile(p);
+                    k--;
+                }
+            }
+            
+            /*
+             * Hit alien : do nothing
+             * hit player : kill player
+             */
+            else{
+                if(obj instanceof Alien){
+                    //To do later
+                }
+                else if(obj instanceof Player){
+                    this.map.destroyeProjectile(p);
+                    this.map.playerHurt();
+                    k--;
+                }
+            }
+        } //End management collision for aliens
     }
 }

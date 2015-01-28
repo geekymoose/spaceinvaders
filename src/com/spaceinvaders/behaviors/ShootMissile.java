@@ -67,7 +67,6 @@ public class ShootMissile implements ShootType{
             this.ammo--;
             int posX    = this.owner.getCenter().x+this.barrelPosition.x;
             int posY    = this.owner.getCenter().y+this.barrelPosition.y;
-            //System.out.println("X"+posX+" Y :"+posY);
             world.getPlayerShoot().add(new Missile(posX, posY, this.owner));
             world.notifyObservers();
             return true;
