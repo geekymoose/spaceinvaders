@@ -70,6 +70,14 @@ public class TimerAlien extends TimerManager implements Movements{
         boolean moveDown    = false;
         
         /*
+         * If there is no more alien, player win
+         */
+        if(this.listAliens.isEmpty()){
+            this.modelMap.victory();
+            return;
+        }
+        
+        /*
          * Aliens really want to kill you!! They are naughty!! Very naughty and
          * they want your beer!! 
          * One alien shoot, when the projectil reach ground, one more alien will
