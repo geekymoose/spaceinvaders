@@ -100,7 +100,7 @@ public class ViewScorePanel extends JPanel implements Commons, ObserverGame{
     private void displayLives(){
         this.panLives.removeAll();
         for(int k=0; k<this.nbLives; k++){
-            this.panLives.add(new ViewPlayerLives());
+            this.panLives.add(new ViewImgPlayer());
         }
         this.panLives.validate();
     }

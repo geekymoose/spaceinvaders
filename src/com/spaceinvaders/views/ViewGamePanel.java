@@ -1,5 +1,5 @@
 /*
- * Class :      ViewPanelGame
+ * Class :      ViewGamePanel
  * Creation:    Jan 28, 2015
  * Author :     Constantin MASSON
  * 
@@ -10,6 +10,8 @@ package com.spaceinvaders.views;
 import com.spaceinvaders.controllers.ControllerGame;
 import com.spaceinvaders.controllers.ControllerToolsBar;
 import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.observers.ObservableGame;
+import com.spaceinvaders.observers.ObserverGame;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
@@ -18,9 +20,9 @@ import javax.swing.JPanel;
 
 
 /**
- * <h1>ViewPanelGame</h1>
+ * <h1>ViewGamePanel</h1>
  * <p>
- * public class ViewPanelGame<br/>
+ public class ViewGamePanel<br/>
  * extends JPanel
  * </p>
  * 
@@ -29,10 +31,11 @@ import javax.swing.JPanel;
  *
  * @author Constantin MASSON
  */
-public class ViewPanelGame extends JPanel{
+public class ViewGamePanel extends JPanel implements ObserverGame{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
+    private     ViewApplication         parent;
     private     JPanel                  panTop;
     private     JPanel                  panScore;
     private     JPanel                  panCenter;
@@ -45,7 +48,12 @@ public class ViewPanelGame extends JPanel{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public ViewPanelGame(){
+    /**
+     * Create a new Game panel which will display the game map and data
+     * @param pParent Parent container
+     */
+    public ViewGamePanel(ViewApplication pParent){
+        this.parent             = pParent;
         this.setLayout(new BorderLayout());
         ModelGame           m   = new ModelGame();
         ControllerGame      c   = new ControllerGame(m);
@@ -83,4 +91,19 @@ public class ViewPanelGame extends JPanel{
     //**************************************************************************
     // Getters - Setters
     //**************************************************************************
+    @Override
+    public void update(ObservableGame obs){
+        ModelGame m = ((ModelGame)obs);
+        if(m.isGameOver()==true){
+        }
+        else if(m.isVictory()==true){
+        }
+    }
+
+
+
+    @Override
+    public void updateInitMap(ObservableGame obs){
+        //Nothing to do
+    }
 }

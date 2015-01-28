@@ -87,6 +87,7 @@ public interface Commons {
     //**************************************************************************
     public static final Dimension   DIM_ICON_TOOLS          = new Dimension(40,40);
     public static final Dimension   DIM_FRAME_MIN           = new Dimension(450,250);
+    public static final Dimension   DIM_FRAME               = new Dimension(650,450);
     public static final Dimension   DIM_GAME                = new Dimension(GAME_WIDTH, GAME_HEIGHT);
     
     
@@ -109,7 +110,7 @@ public interface Commons {
     public static final String PATH_PLAYER_IMG      = "img/player/miniatures/";
     public static final String PATH_ALIENS_IMG      = "img/aliens/miniatures/";
     public static final String IMG_WEAPONS          = "img/weapons/miniatures/";
-    public static final String IMG_BACKGROUND       = "img/";
+    public static final String IMG_THEME            = "img/";
     
 }
 /*
