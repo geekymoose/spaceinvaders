@@ -17,14 +17,14 @@ import javax.swing.JPanel;
  *
  * @author Constantin MASSON
  */
-public class ViewPlayerLives extends JPanel implements Commons{
+public class ViewImgPlayer extends JPanel implements Commons{
     private     final Image img;
     
     /**
      * Create a new player image
      * This is used to display player lives
      */
-    public ViewPlayerLives(){
+    public ViewImgPlayer(){
         ImageIcon i = new ImageIcon(PATH_PLAYER_IMG+"player.png");
         this.img    = i.getImage();
         Dimension dim = new Dimension(img.getWidth(null), img.getHeight(null));

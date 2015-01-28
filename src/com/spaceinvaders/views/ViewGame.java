@@ -90,7 +90,7 @@ public class ViewGame extends JPanel implements Commons,
         this.setDoubleBuffered(true);
         this.setBackground(Color.BLACK);
         
-        ImageIcon i             = new ImageIcon(IMG_BACKGROUND);
+        ImageIcon i             = new ImageIcon(IMG_THEME+"background.png");
         this.background         = i.getImage();
         
         /*
