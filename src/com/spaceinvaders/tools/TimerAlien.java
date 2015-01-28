@@ -77,7 +77,6 @@ public class TimerAlien extends TimerManager implements Movements{
          */
         if(this.modelMap.getAlienShoot().isEmpty()){
             int rand    = RandomManager.getRandomBetween(0, this.listAliens.size()-1);
-            System.out.println(rand);
             Alien a     = this.listAliens.get(rand); //Alien who will shot
             a.fire(modelMap);
         }

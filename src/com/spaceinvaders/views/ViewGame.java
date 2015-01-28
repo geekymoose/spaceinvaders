@@ -197,7 +197,7 @@ public class ViewGame extends JPanel implements Commons,
         this.listAlienShoot     = m.getAlienShoot();
         this.listPlayerShoot    = m.getPlayerShoot();
         this.listExplosions     = m.getListExplosions();
-        this.player.setCenter(m.getPlayer().getCenter());
+        this.player             = m.getPlayer();
         this.repaint();
         this.requestFocusInWindow();
     }
