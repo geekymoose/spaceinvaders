@@ -81,7 +81,6 @@ public class TimerAlien extends TimerManager implements Movements{
             a.fire(modelMap);
         }
         
-        
         /*
          * If at least one alien reached the border, the direction is changed
          * and one move down is performed.
@@ -89,10 +88,12 @@ public class TimerAlien extends TimerManager implements Movements{
          */
         for(int k=0; k<this.listAliens.size(); k++){
             Point p = this.listAliens.get(k).getCenter();
+            if(p.y>GROUND){
+                this.modelMap.gameOver();
+            }
             if(p.x>(GAME_WIDTH - (this.listAliens.get(k).getWidth()+GAP_BETWEEN_ALIENS))
                 || p.x<this.listAliens.get(k).getWidth()){
                 moveDown = true;
-                break;
             }
         }
         

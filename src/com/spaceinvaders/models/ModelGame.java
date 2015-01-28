@@ -224,10 +224,24 @@ public class ModelGame implements Commons, ObservableGame{
     }
     
     
+    /**
+     * Game over
+     * Finish the game
+     */
+    public void gameOver(){
+    }
+    
+    /**
+     * PLayer is victorious
+     */
+    public void victory(){
+        
+    }
     
     
     
-
+    
+    
     //**************************************************************************
     // Getters - Setters
     //**************************************************************************
