@@ -53,7 +53,7 @@ public class ViewApplication extends JFrame implements Commons{
      * Also call for toolBar function and left Panel creation
      */
     public ViewApplication(){
-        this.setTitle("Mini games launcher");
+        this.setTitle("Space invaders");
         this.setMinimumSize(DIM_FRAME_MIN);
         this.setAlwaysOnTop(false);
         this.setResizable(false);
@@ -68,24 +68,12 @@ public class ViewApplication extends JFrame implements Commons{
      * Initialize JPanel components used by the program
      */
     private void initComponents(){
-        ModelGame           m   = new ModelGame();
-        ControllerGame      c   = new ControllerGame(m);
-        ControllerToolsBar  c2  = new ControllerToolsBar(m);
-        ViewGame            v   = new ViewGame(c);
-        //ViewTopPanel       v2  = new ViewTopPanel();
-        
-        m.addObserver(v);
-        //m.addObserver(v2);
-        m.initMap();
-        
         this.mainContent        = new JPanel();
-        this.panTop             = new ViewToolsBar(c2);
-        this.panCenter          = v;
+        this.panCenter          = new ViewPanelGame();
         
         this.mainContent.setLayout(new BorderLayout());
         this.mainContent.setBackground(Color.BLACK);
         
-        this.mainContent.add(this.panTop, BorderLayout.NORTH);
         this.mainContent.add(this.panCenter, BorderLayout.CENTER);
         
         this.setContentPane(this.mainContent);

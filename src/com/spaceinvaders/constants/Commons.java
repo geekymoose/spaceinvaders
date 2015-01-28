@@ -97,6 +97,7 @@ public interface Commons {
     public static final int         LEFT_LABEL_SIZE         = 20;
     public static final int         LEFT_LABEL_TITLE_SIZE   = 25;
     public static final int         TOP_LABEL_FONT_SIZE     = 10;
+    public static final int         FONT_SCORE_SIZE         = 25;
     
     
     

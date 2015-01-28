@@ -211,6 +211,10 @@ public class ModelGame implements Commons, ObservableGame{
      */
     public void playerHurt(){
         this.player.lostOneLife();
+        if(!this.player.isAlive){
+            this.gameOver();
+            return;
+        }
         this.timerBreak.makeBreak();
         Thread t = new Thread(new Runnable(
         ) {
@@ -232,12 +236,14 @@ public class ModelGame implements Commons, ObservableGame{
      * Finish the game
      */
     public void gameOver(){
+        System.out.println("Game Over");
     }
     
     /**
      * PLayer is victorious
      */
     public void victory(){
+        System.out.println("Victory");
     }
     
     
