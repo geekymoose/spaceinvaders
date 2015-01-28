@@ -30,7 +30,6 @@ public class ShootLaser implements ShootType{
     // Constants - Variables
     //**************************************************************************
     private     final Living    owner;
-    private     int             ammo;
     private     Point           barrelPosition;
     
     
@@ -44,11 +43,10 @@ public class ShootLaser implements ShootType{
     /**
      * Create a new ShootLaser type with its owner
      * @param pOwner 
-     * @param pAmmo Ammo at the creation
+     * @param pBarrel 
      */
-    public ShootLaser(Living pOwner, Point pBarrel, int pAmmo){
+    public ShootLaser(Living pOwner, Point pBarrel){
         this.owner          = pOwner;
-        this.ammo           = pAmmo;
         this.barrelPosition = pBarrel;
     }
     
@@ -62,21 +60,15 @@ public class ShootLaser implements ShootType{
     //**************************************************************************
     @Override
     public boolean fire(ModelGame world){
-        if(this.ammo>0){
-            this.ammo--;
-            int posX    = this.barrelPosition.x;
-            int posY    = this.barrelPosition.y;
-            world.getPlayerShoot().add(new Laser(posX, posY, this.owner));
-            return true;
-        }
-        else{
-            return false;
-        }
+        int posX    = this.owner.getCenter().x+this.barrelPosition.x;
+        int posY    = this.owner.getCenter().y+this.barrelPosition.y;
+        world.getAlienShoot().add(new Laser(posX, posY, this.owner));
+        world.notifyObservers();
+        return true;
     }
     
     @Override
     public boolean reload(int pAmmo){
-        this.ammo = pAmmo;
         return true;
     }
 }

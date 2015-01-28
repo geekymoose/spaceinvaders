@@ -8,7 +8,6 @@
 package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
-import static com.spaceinvaders.constants.Commons.LEFT_LABEL_TITLE_SIZE;
 import com.spaceinvaders.models.ModelGame;
 import com.spaceinvaders.observers.ObservableGame;
 import com.spaceinvaders.observers.ObserverGame;

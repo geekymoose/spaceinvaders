@@ -71,6 +71,17 @@ public class Player extends Living{
         this.nbLife += 1;
     }
     
+    /**
+     * Lost one life
+     * if nb lives equals 0, this player will be dead
+     */
+    public void lostOneLife(){
+        this.nbLife--;
+        if(this.nbLife==0){
+            this.isAlive = false;
+        }
+    }
+    
     
     /**
      * Reload weapon (With one ammo)

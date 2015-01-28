@@ -73,7 +73,6 @@ public class TimerShoot extends TimerManager{
     //**************************************************************************
     @Override
     public void actionPerformed(ActionEvent e){
-        this.managerCollision.processCollision();
         for(int k=0; k<this.listAlienShoots.size(); k++){
             this.listAlienShoots.get(k).move();
         }
@@ -81,5 +80,6 @@ public class TimerShoot extends TimerManager{
         for(int k=0; k<this.listPlayerShoots.size(); k++){
             this.listPlayerShoots.get(k).move();
         }
+        this.managerCollision.processCollision();
     }
 }

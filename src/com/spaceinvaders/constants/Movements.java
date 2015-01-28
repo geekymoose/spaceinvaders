@@ -32,5 +32,5 @@ public interface Movements {
     
     public static final int MISSILE_SPEED       = 3;
     public static final int LASER_SPEED         = 5;
-    public static final int BOMB_SPEED          = 5;
+    public static final int BOMB_SPEED          = 1;
 }
