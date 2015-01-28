@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 
 
 /**
+ * @deprecated Not used anymore
  * <h1>ViewLeftPanel</h1>
  * <p>
  public class ViewLeftPanel<br/>
