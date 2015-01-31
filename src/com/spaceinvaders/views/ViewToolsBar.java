@@ -111,12 +111,12 @@ public class ViewToolsBar extends JPanel implements Commons{
      * Restore the state used at the beginning
      */
     private void initialButtonState(){
-        this.buttonStart    .setEnabled(true);
-        this.buttonStop     .setEnabled(false);
-        this.buttonRestart  .setEnabled(true);
+        this.buttonStart    .setEnabled(false);
+        this.buttonStop     .setEnabled(true);
+        this.buttonRestart  .setEnabled(false);
         this.buttonRestart  .setEnabled(false);
         this.buttonSave     .setEnabled(false);
-        this.buttonLoad     .setEnabled(true);
+        this.buttonLoad     .setEnabled(false);
     }
     
     
