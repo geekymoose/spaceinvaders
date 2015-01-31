@@ -76,6 +76,7 @@ public class ManagerCollision {
              */
             if(obj==null){
                 if(p.borderlandReached()){
+                    this.map.projectileExplode(new ExplosionAlien(p.getCenter(),this.map));
                     this.map.destroyeProjectile(p);
                     this.map.getPlayer().reload();
                     k--;
@@ -118,6 +119,7 @@ public class ManagerCollision {
              */
             if(obj==null){
                 if(p.borderlandReached()){
+                    this.map.projectileExplode(new ExplosionAlien(p.getCenter(),this.map));
                     this.map.destroyeProjectile(p);
                     k--;
                 }

@@ -12,6 +12,7 @@ import com.spaceinvaders.observers.ObservableGame;
 import com.spaceinvaders.observers.ObserverGame;
 import com.spaceinvaders.tools.*;
 import com.spaceinvaders.weapons.Projectile;
+import java.awt.Point;
 import java.util.ArrayList;
 
 
@@ -177,9 +178,6 @@ public class ModelGame implements Commons, ObservableGame{
     
     
     
-    
-    
-
     //**************************************************************************
     // Functions
     //**************************************************************************
@@ -201,6 +199,14 @@ public class ModelGame implements Commons, ObservableGame{
     public void destroyeProjectile(Projectile p){
         this.listPlayerShoot.remove(p);
         this.listAlienShoot.remove(p);
+    }
+    
+    /**
+     * Add an explosion in the ModelGame
+     * @param pExplosion explosion to add
+     */
+    public void projectileExplode(Explosion pExplosion){
+        this.listExplosions.add(pExplosion);
     }
     
     /**
@@ -237,6 +243,12 @@ public class ModelGame implements Commons, ObservableGame{
     }
     
     
+    
+    
+    
+    //**************************************************************************
+    // Functions game manager
+    //**************************************************************************
     /**
      * Game over
      * Finish the game
