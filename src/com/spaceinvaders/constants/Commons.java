@@ -23,6 +23,8 @@ public interface Commons {
     //**************************************************************************
     // Game constants
     //**************************************************************************
+    public static final int NB_LIVES                        = 1;
+    
     //Timer
     public static final int DELAY_GENERAL                   = 5;
     public static final int DELAY_PLAYER                    = 5;

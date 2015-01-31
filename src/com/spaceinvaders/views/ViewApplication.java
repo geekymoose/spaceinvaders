@@ -102,4 +102,17 @@ public class ViewApplication extends JFrame implements Commons{
         this.pack();
         this.setLocationRelativeTo(null);
     }
+    
+    /**
+     * Display the game over panel
+     * @param game Game just finished
+     */
+    public void displayGameOver(ModelGame game){
+        this.getContentPane().removeAll();
+        this.mainContent = new ViewGameOverPanel(this, game);
+        this.getContentPane().add(this.mainContent);
+        this.getContentPane().revalidate();
+        this.pack();
+        this.setLocationRelativeTo(null);
+    }
 }

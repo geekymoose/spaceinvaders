@@ -242,7 +242,6 @@ public class ModelGame implements Commons, ObservableGame{
      * Finish the game
      */
     public void gameOver(){
-        System.out.println("Game Over");
         this.isGameOver = true;
         this.stopTimers();
         this.notifyObservers();
@@ -260,7 +259,6 @@ public class ModelGame implements Commons, ObservableGame{
      * PLayer is victorious
      */
     public void victory(){
-        System.out.println("Victory");
         this.isVictory = true;
         this.stopTimers();
         this.notifyObservers();

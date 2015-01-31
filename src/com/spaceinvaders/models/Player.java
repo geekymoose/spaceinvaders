@@ -62,7 +62,7 @@ public class Player extends Living{
         this.img2           = ii.getImage();
         this.img            = this.img1;
         
-        this.nbLife         = 3;
+        this.nbLife         = NB_LIVES;
     }
     
     

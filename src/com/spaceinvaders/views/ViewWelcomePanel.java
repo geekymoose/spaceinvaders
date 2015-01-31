@@ -71,7 +71,7 @@ public class ViewWelcomePanel extends JPanel implements Commons, KeyListener{
         this.setPreferredSize(DIM_FRAME);
         this.setFocusable(true);
         this.setDoubleBuffered(true);
-        
+        this.requestFocus();
         this.parent = pParent;
         this.addKeyListener(this);
         
@@ -149,6 +149,7 @@ public class ViewWelcomePanel extends JPanel implements Commons, KeyListener{
             try {
                 this.finalize();
             } catch(Throwable ex) {
+                //Nothing
             }
         }
     }
