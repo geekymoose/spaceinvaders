@@ -80,10 +80,11 @@ public class ViewVictoryPanel extends JPanel implements Commons{
         this.background         = i.getImage();
         ImageIcon ii            = new ImageIcon(IMG_THEME+"victory.png");
         this.title              = ii.getImage();
-        this.msg                = "Congratulation!!! You just killed "//+this.game.getNbAliens()+"!!"
+        this.msg                = "Congratulation!!! You just killed "
+                +this.game.getNbAliens()+" poor space Invaders!!"
                 +"\nYou are a monster!!! Don't you know they had family???\n"
                 + "Don't you know they loved eating gherkin and mushroom??\n"
-                + "Aie aie aie... So.. what do you want now?\n";
+                + "Aie aie aie... So.. what do you want now...? Naughty teddy bear\n";
         
         this.buttonPanel        = new ButtonPanel();
         this.add(this.buttonPanel, BorderLayout.SOUTH);
@@ -129,7 +130,7 @@ public class ViewVictoryPanel extends JPanel implements Commons{
     
 
     //**************************************************************************
-    // Getters - Setters
+    // Intern class
     //**************************************************************************
     /*
      * Intern class: new button for restart the game

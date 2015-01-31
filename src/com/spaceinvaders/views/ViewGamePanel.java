@@ -36,11 +36,12 @@ public class ViewGamePanel extends JPanel implements ObserverGame{
     // Constants - Variables
     //**************************************************************************
     private     ViewApplication         parent;
-    private     JPanel                  panTop;
+    private     JPanel                  panTools;
     private     JPanel                  panScore;
     private     JPanel                  panCenter;
     
     private     ModelGame               game;
+    private     ViewToolsBar            tools;
     
     
     
@@ -55,13 +56,21 @@ public class ViewGamePanel extends JPanel implements ObserverGame{
      * @param pParent Parent container
      */
     public ViewGamePanel(ViewApplication pParent){
-        this.parent             = pParent;
         this.setLayout(new BorderLayout());
+        this.parent             = pParent;
+        this.initComponents();
+    }
+    
+    /*
+     * Initialize the components
+     */
+    private void initComponents(){
         this.game               = new ModelGame();
         ControllerGame      c   = new ControllerGame(this.game);
         ControllerToolsBar  c2  = new ControllerToolsBar(this.game);
         ViewGame            v   = new ViewGame(c);
         ViewScorePanel      v2  = new ViewScorePanel();
+        this.tools              = new ViewToolsBar(c2);
         
         this.game.addObserver(v);
         this.game.addObserver(v2);
@@ -69,10 +78,10 @@ public class ViewGamePanel extends JPanel implements ObserverGame{
         this.game.initMap();
         
         this.panScore           = v2;
-        this.panTop             = new ViewToolsBar(c2);
+        this.panTools           = this.tools;
         this.panCenter          = v;
         
-        this.add(this.panTop, BorderLayout.NORTH);
+        this.add(this.panTools, BorderLayout.NORTH);
         this.add(this.panCenter, BorderLayout.CENTER);
         this.add(this.panScore, BorderLayout.SOUTH);
     }
@@ -98,6 +107,7 @@ public class ViewGamePanel extends JPanel implements ObserverGame{
     public void update(ObservableGame obs){
         ModelGame m = ((ModelGame)obs);
         if(m.isGameOver()==true){
+            this.parent.displayGameOver(this.game);
         }
         else if(m.isVictory()==true){
             this.parent.displayVictory(this.game);
