@@ -99,6 +99,7 @@ public class ModelGame implements Commons, ObservableGame{
         
         this.placeInitialeSpaceInvaders();
         this.notifyCreateMap();
+        this.startTimers();
     }
     
     
@@ -110,15 +111,15 @@ public class ModelGame implements Commons, ObservableGame{
      */
     private void placeInitialeSpaceInvaders(){
         //First line with alien3 (Calculation start at x=0, y=0)
-        for(int x=0; x<11; x++){
-        //for(int x=0; x<0; x++){ //DEBUG MODE ***************************************
+        //for(int x=0; x<11; x++){
+        for(int x=0; x<0; x++){ //DEBUG MODE ***************************************
             int posX = GAP_LEFT + (x*GAP_BETWEEN_ALIENS);
             this.listAliens.add(new Alien1(posX, GAP_TOP));
         }
         
         //Lines 2-3
-        for(int x=0; x<11; x++){
-        //for(int x=0; x<0; x++){ //DEBUG MODE ***************************************
+        //for(int x=0; x<11; x++){
+        for(int x=0; x<0; x++){ //DEBUG MODE ***************************************
             for(int y=1; y<3; y++){
                 int posX = GAP_LEFT + (x*GAP_BETWEEN_ALIENS);
                 int posY = GAP_TOP + (y*GAP_BETWEEN_ALIENS);
@@ -127,8 +128,8 @@ public class ModelGame implements Commons, ObservableGame{
         }
         
         //Lines 4-5
-        for(int x=0; x<11; x++){
-        //for(int x=0; x<1; x++){ //DEBUG MODE ***************************************
+        //for(int x=0; x<11; x++){
+        for(int x=0; x<1; x++){ //DEBUG MODE ***************************************
             for(int y=3; y<5; y++){
                 int posX = GAP_LEFT + (x*GAP_BETWEEN_ALIENS);
                 int posY = GAP_TOP + (y*GAP_BETWEEN_ALIENS);
@@ -243,6 +244,7 @@ public class ModelGame implements Commons, ObservableGame{
     public void gameOver(){
         System.out.println("Game Over");
         this.isGameOver = true;
+        this.stopTimers();
         this.notifyObservers();
     }
     
@@ -260,6 +262,7 @@ public class ModelGame implements Commons, ObservableGame{
     public void victory(){
         System.out.println("Victory");
         this.isVictory = true;
+        this.stopTimers();
         this.notifyObservers();
     }
     

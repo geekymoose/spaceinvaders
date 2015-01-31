@@ -16,8 +16,6 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -113,7 +111,7 @@ public class ViewWelcomePanel extends JPanel implements Commons, KeyListener{
         Graphics2D g2d  = (Graphics2D)g;
         
         g2d.drawImage(background, 0, 0, this);
-        g2d.drawImage(title, 0, 20, 650, 130, this);
+        g2d.drawImage(title, 20, 20, title.getWidth(null), title.getHeight(null), this);
         g2d.drawImage(this.imgAlien1, alien1PosX, alien1PosY, this);
         g2d.drawImage(this.imgAlien2, alien2PosX, alien2PosY, this);
         g2d.drawImage(this.imgAlien3, alien3PosX, alien3PosY, this);
@@ -151,7 +149,6 @@ public class ViewWelcomePanel extends JPanel implements Commons, KeyListener{
             try {
                 this.finalize();
             } catch(Throwable ex) {
-                Logger.getLogger(ViewWelcomePanel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

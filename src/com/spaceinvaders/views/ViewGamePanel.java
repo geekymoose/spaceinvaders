@@ -40,6 +40,8 @@ public class ViewGamePanel extends JPanel implements ObserverGame{
     private     JPanel                  panScore;
     private     JPanel                  panCenter;
     
+    private     ModelGame               game;
+    
     
     
     
@@ -55,15 +57,16 @@ public class ViewGamePanel extends JPanel implements ObserverGame{
     public ViewGamePanel(ViewApplication pParent){
         this.parent             = pParent;
         this.setLayout(new BorderLayout());
-        ModelGame           m   = new ModelGame();
-        ControllerGame      c   = new ControllerGame(m);
-        ControllerToolsBar  c2  = new ControllerToolsBar(m);
+        this.game               = new ModelGame();
+        ControllerGame      c   = new ControllerGame(this.game);
+        ControllerToolsBar  c2  = new ControllerToolsBar(this.game);
         ViewGame            v   = new ViewGame(c);
         ViewScorePanel      v2  = new ViewScorePanel();
         
-        m.addObserver(v);
-        m.addObserver(v2);
-        m.initMap();
+        this.game.addObserver(v);
+        this.game.addObserver(v2);
+        this.game.addObserver(this);
+        this.game.initMap();
         
         this.panScore           = v2;
         this.panTop             = new ViewToolsBar(c2);
@@ -97,6 +100,7 @@ public class ViewGamePanel extends JPanel implements ObserverGame{
         if(m.isGameOver()==true){
         }
         else if(m.isVictory()==true){
+            this.parent.displayVictory(this.game);
         }
     }
 
