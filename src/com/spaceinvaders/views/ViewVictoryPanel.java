@@ -8,7 +8,7 @@
 package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -42,7 +42,7 @@ public class ViewVictoryPanel extends JPanel implements Commons{
     private     String              msg;
     
     private     ViewApplication     parent;
-    private     ModelGame           game;
+    private     GameModel           game;
     
     private     ButtonPanel         buttonPanel;
     
@@ -59,7 +59,7 @@ public class ViewVictoryPanel extends JPanel implements Commons{
      * @param pParent 
      * @param pGame Game just done
      */
-    public ViewVictoryPanel(ViewApplication pParent, ModelGame pGame){
+    public ViewVictoryPanel(ViewApplication pParent, GameModel pGame){
         this.setLayout(new BorderLayout());
         this.setPreferredSize(DIM_FRAME);
         this.setFocusable(true);

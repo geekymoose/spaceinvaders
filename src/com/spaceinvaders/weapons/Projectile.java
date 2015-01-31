@@ -7,10 +7,13 @@
 
 package com.spaceinvaders.weapons;
 
-import com.spaceinvaders.behaviors.MoveShootType;
+import com.spaceinvaders.behaviors.FireSmokeType;
+import com.spaceinvaders.behaviors.MoveShotType;
 import com.spaceinvaders.constants.Commons;
+import com.spaceinvaders.models.GameModel;
 import com.spaceinvaders.models.Living;
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.Map;
+import com.spaceinvaders.tools.events.Smoke;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
@@ -40,7 +43,9 @@ public abstract class Projectile implements Commons{
     protected   Image                           img;
     protected   Living                          owner;
     
-    protected   MoveShootType                   moveShootType;
+    protected   MoveShotType                    moveShootType;
+    protected   FireSmokeType                   fireSmokeType;
+    protected   Map                             map; //Map where the projectile is
     
     
     
@@ -66,6 +71,8 @@ public abstract class Projectile implements Commons{
         this.height         = pHeight;
         this.owner          = pOwner;
         this.moveShootType  = null;
+        this.fireSmokeType  = null;
+        this.map            = pOwner.getMap();
     }
     
     
@@ -86,10 +93,10 @@ public abstract class Projectile implements Commons{
     
     /**
      * Check if projectile hit something
-     * @param map map where to check (ModelGame)
+     * @param map map where to check (GameModel)
      * @return object touched, otherwise, return null
      */
-    public abstract Object checkCollision(ModelGame map);
+    public abstract Object checkCollision(GameModel map);
     
     
     /**
@@ -98,6 +105,14 @@ public abstract class Projectile implements Commons{
      */
     public boolean borderlandReached(){
         return (posY<=0 || posY>=GROUND);
+    }
+    
+    /**
+     * Create a new smoke
+     * @return Smoke
+     */
+    public Smoke createFireSmoke(){
+        return this.fireSmokeType.spreadSmoke();
     }
     
     
@@ -145,6 +160,14 @@ public abstract class Projectile implements Commons{
      */
     public Point getUpperLeftCorner(){
         return new Point(this.posX-(this.width/2), this.posY-(this.height/2));
+    }
+    
+    /**
+     * Get the map where projectile is located
+     * @return 
+     */
+    public Map getMap(){
+        return this.map;
     }
     
     /**

@@ -9,7 +9,7 @@ package com.spaceinvaders.views;
 
 import com.spaceinvaders.controllers.ControllerGame;
 import com.spaceinvaders.controllers.ControllerToolsBar;
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 import com.spaceinvaders.observers.ObservableGame;
 import com.spaceinvaders.observers.ObserverGame;
 import java.awt.BorderLayout;
@@ -40,7 +40,7 @@ public class ViewGamePanel extends JPanel implements ObserverGame{
     private     JPanel                  panScore;
     private     JPanel                  panCenter;
     
-    private     ModelGame               game;
+    private     GameModel               game;
     private     ViewToolsBar            tools;
     
     
@@ -65,7 +65,7 @@ public class ViewGamePanel extends JPanel implements ObserverGame{
      * Initialize the components
      */
     private void initComponents(){
-        this.game               = new ModelGame();
+        this.game               = new GameModel();
         ControllerGame      c   = new ControllerGame(this.game);
         ControllerToolsBar  c2  = new ControllerToolsBar(this.game);
         ViewGame            v   = new ViewGame(c);
@@ -105,7 +105,7 @@ public class ViewGamePanel extends JPanel implements ObserverGame{
     //**************************************************************************
     @Override
     public void update(ObservableGame obs){
-        ModelGame m = ((ModelGame)obs);
+        GameModel m = ((GameModel)obs);
         if(m.isGameOver()==true){
             this.parent.displayGameOver(this.game);
         }

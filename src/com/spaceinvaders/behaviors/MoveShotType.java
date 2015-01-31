@@ -19,7 +19,7 @@ import com.spaceinvaders.constants.Movements;
  *
  * @author Constantin MASSON
  */
-public interface MoveShootType extends Movements{
+public interface MoveShotType extends Movements{
     
     /**
      * Process a move

@@ -1,30 +1,29 @@
 /*
- * Class :      MoveShootMissile
- * Creation:    Jan 23, 2015
+ * Class :      Map
+ * Creation:    Jan 31, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.spaceinvaders.behaviors;
-
-import com.spaceinvaders.weapons.Bomb;
-import java.awt.Point;
+package com.spaceinvaders.models;
 
 
 
 
 
 /**
- * <h1>MoveShootBomb</h1>
- * <p>public class MoveShootBomb</p>
+ * <h1>Map</h1>
+ * <p>public class Map</p>
+ * 
+ * <p>This class define every map in the world (Of space invaders, in fact,
+ * there seems to be only one. But for potential extension</p>
  *
  * @author Constantin MASSON
  */
-public class MoveShootBomb implements MoveShootType{
+public abstract class Map {
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     final Bomb       bomb;
     
     
     
@@ -34,12 +33,8 @@ public class MoveShootBomb implements MoveShootType{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    /**
-     * Create a new MoveShootType for a bomb
-     * @param pBomb bomb tie
-     */
-    public MoveShootBomb(Bomb pBomb){
-        this.bomb = pBomb;
+    public Map(){
+    
     }
     
     
@@ -50,12 +45,13 @@ public class MoveShootBomb implements MoveShootType{
     //**************************************************************************
     // Functions
     //**************************************************************************
-    @Override
-    public void move(){
-        this.bomb.setCenter(new Point(this.bomb.getPosX(), this.bomb.getPosY()+BOMB_SPEED ));
-    }
     
-    @Override
-    public void moveDirection(int direction){
-    }
+    
+    
+    
+    
+
+    //**************************************************************************
+    // Getters - Setters
+    //**************************************************************************
 }

@@ -8,9 +8,8 @@
 package com.spaceinvaders.behaviors;
 
 import com.spaceinvaders.models.Living;
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 import com.spaceinvaders.weapons.Bomb;
-import com.spaceinvaders.weapons.Laser;
 import java.awt.Point;
 
 
@@ -60,10 +59,10 @@ public class ShootBomb implements ShootType{
     // Functions
     //**************************************************************************
     @Override
-    public boolean fire(ModelGame world){
+    public boolean fire(GameModel world){
         int posX    = this.owner.getCenter().x+this.barrelPosition.x;
         int posY    = this.owner.getCenter().y+this.barrelPosition.y;
-        world.getAlienShoot().add(new Bomb(posX, posY, this.owner));
+        world.addAlienProjectile(new Bomb(posX, posY, this.owner));
         world.notifyObservers();
         return true;
     }

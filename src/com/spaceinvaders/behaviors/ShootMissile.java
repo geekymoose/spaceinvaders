@@ -8,7 +8,7 @@
 package com.spaceinvaders.behaviors;
 
 import com.spaceinvaders.models.Living;
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 import com.spaceinvaders.weapons.Missile;
 import java.awt.Point;
 
@@ -62,12 +62,12 @@ public class ShootMissile implements ShootType{
     // Functions
     //**************************************************************************
     @Override
-    public boolean fire(ModelGame world){
+    public boolean fire(GameModel world){
         if(this.ammo>0){
             this.ammo--;
             int posX    = this.owner.getCenter().x+this.barrelPosition.x;
             int posY    = this.owner.getCenter().y+this.barrelPosition.y;
-            world.getPlayerShoot().add(new Missile(posX, posY, this.owner));
+            world.addPlayerProjectile(new Missile(posX, posY, this.owner));
             world.notifyObservers();
             return true;
         }

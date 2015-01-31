@@ -7,8 +7,9 @@
 
 package com.spaceinvaders.tools.events;
 
+import com.spaceinvaders.models.GameModel;
 import com.spaceinvaders.tools.timers.TimerManager;
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.Map;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -33,7 +34,7 @@ public abstract class DynamicEvent extends TimerManager{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    protected   ModelGame           model;
+    protected   Map                 map;
     protected   ArrayList<Image>    listImg;
     protected   Image               img;
     protected   int                 currentPosition; //Position in ArrayList
@@ -55,10 +56,10 @@ public abstract class DynamicEvent extends TimerManager{
      * @param pDelay
      * @param pModel model map where explosion is 
      */
-    public DynamicEvent(Point pPosition, int pDelay, ModelGame pModel){
+    public DynamicEvent(Point pPosition, int pDelay, Map pModel){
         super(pDelay);
         this.listImg            = new ArrayList();
-        this.model              = pModel;
+        this.map                = pModel;
         this.posX               = pPosition.x;
         this.posY               = pPosition.y;
         this.currentPosition    = 0;
@@ -75,7 +76,7 @@ public abstract class DynamicEvent extends TimerManager{
     @Override
     public void actionPerformed(ActionEvent e){
         if(this.currentPosition==this.listImg.size()){
-            this.model.removeExplosion(this);
+            ((GameModel)this.map).removeExplosion(this); //To change later
             this.stopTimer();
         }
         else{

@@ -1,5 +1,5 @@
 /*
- * Class :      ModelGame
+ * Class :      GameModel
  * Creation:    Jan 19, 2015
  * Author :     Constantin MASSON
  * 
@@ -18,6 +18,7 @@ import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.observers.ObservableGame;
 import com.spaceinvaders.observers.ObserverGame;
 import com.spaceinvaders.tools.*;
+import com.spaceinvaders.tools.events.Smoke;
 import com.spaceinvaders.weapons.Projectile;
 import java.util.ArrayList;
 
@@ -26,14 +27,17 @@ import java.util.ArrayList;
 
 
 /**
- * <h1>ModelGame</h1>
- * <p>public class ModelGame</p>
+ * <h1>GameModel</h1>
+ * <p>
+ * public class GameModel<br/>
+ * extends Map<br/>
+ * implements Commons, ObservableGame</p>
  * 
  * <p>Data about the game</p>
  *
  * @author Constantin MASSON
  */
-public class ModelGame implements Commons, ObservableGame{
+public class GameModel extends Map implements Commons, ObservableGame{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -70,7 +74,7 @@ public class ModelGame implements Commons, ObservableGame{
      * Create the game model
      * Initialize the map with default value
      */
-    public ModelGame(){
+    public GameModel(){
         this.listObservers      = new ArrayList();
         this.managerCollision   = new ManagerCollision(this);
     }
@@ -83,7 +87,7 @@ public class ModelGame implements Commons, ObservableGame{
      * Then, the timers start
      */
     public void initMap(){
-        this.player             = new Player(DEFAULT_PLAYER_POS_X, DEFAULT_PLAYER_POS_Y);
+        this.player             = new Player(DEFAULT_PLAYER_POS_X, DEFAULT_PLAYER_POS_Y, this);
         this.listAliens         = new ArrayList();
         this.listPlayerShoot    = new ArrayList();
         this.listAlienShoot     = new ArrayList();
@@ -121,7 +125,7 @@ public class ModelGame implements Commons, ObservableGame{
         //for(int x=0; x<11; x++){
         for(int x=0; x<0; x++){ //DEBUG MODE ***************************************
             int posX = GAP_LEFT + (x*GAP_BETWEEN_ALIENS);
-            this.listAliens.add(new Alien1(posX, GAP_TOP));
+            this.listAliens.add(new Alien1(posX, GAP_TOP, this));
         }
         
         //Lines 2-3
@@ -130,7 +134,7 @@ public class ModelGame implements Commons, ObservableGame{
             for(int y=1; y<3; y++){
                 int posX = GAP_LEFT + (x*GAP_BETWEEN_ALIENS);
                 int posY = GAP_TOP + (y*GAP_BETWEEN_ALIENS);
-                this.listAliens.add(new Alien2(posX, posY));
+                this.listAliens.add(new Alien2(posX, posY, this));
             }
         }
         
@@ -140,7 +144,7 @@ public class ModelGame implements Commons, ObservableGame{
             for(int y=3; y<5; y++){
                 int posX = GAP_LEFT + (x*GAP_BETWEEN_ALIENS);
                 int posY = GAP_TOP + (y*GAP_BETWEEN_ALIENS);
-                this.listAliens.add(new Alien3(posX, posY));
+                this.listAliens.add(new Alien3(posX, posY, this));
             }
         }
     }
@@ -239,7 +243,7 @@ public class ModelGame implements Commons, ObservableGame{
     }
     
     /**
-     * Add an explosion in the ModelGame
+     * Add an explosion in the GameModel
      * @param pExplosion explosion to add
      */
     public void projectileExplode(DynamicEvent pExplosion){
@@ -260,6 +264,10 @@ public class ModelGame implements Commons, ObservableGame{
      * @param pProjectile projectile launched
      */
     public void addAlienProjectile(Projectile pProjectile){
+        Smoke s = pProjectile.createFireSmoke();
+        if(s != null){
+            this.listExplosions.add(s);
+        }
         this.listAlienShoot.add(pProjectile);
     }
     
@@ -268,7 +276,11 @@ public class ModelGame implements Commons, ObservableGame{
      * @param pProjectile projectile launched
      */
     public void addPlayerProjectile(Projectile pProjectile){
-        this.listAlienShoot.add(pProjectile);
+        Smoke s = pProjectile.createFireSmoke();
+        if(s != null){
+            this.listExplosions.add(s);
+        }
+        this.listPlayerShoot.add(pProjectile);
     }
     
     

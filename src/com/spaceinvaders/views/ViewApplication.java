@@ -8,7 +8,7 @@
 package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -94,7 +94,7 @@ public class ViewApplication extends JFrame implements Commons{
      * Display victory panel after closing the current one (The game)
      * @param game Game just finished
      */
-    public void displayVictory(ModelGame game){
+    public void displayVictory(GameModel game){
         this.getContentPane().removeAll();
         this.mainContent = new ViewVictoryPanel(this, game);
         this.getContentPane().add(this.mainContent);
@@ -107,7 +107,7 @@ public class ViewApplication extends JFrame implements Commons{
      * Display the game over panel
      * @param game Game just finished
      */
-    public void displayGameOver(ModelGame game){
+    public void displayGameOver(GameModel game){
         this.getContentPane().removeAll();
         this.mainContent = new ViewGameOverPanel(this, game);
         this.getContentPane().add(this.mainContent);

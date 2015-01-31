@@ -40,7 +40,7 @@ public abstract class Living implements Commons, ObservableCharacter{
     // Constants - Variables
     //**************************************************************************
     private     ArrayList<ObserverCharacter>    listObservers;
-    protected   MoveLivingType                        moveType;
+    protected   MoveLivingType                  moveType;
     protected   ShootType                       shootType;
     
     protected   boolean                         isAlive;
@@ -50,6 +50,8 @@ public abstract class Living implements Commons, ObservableCharacter{
     protected   int                             height;
     protected   Image                           img;
     protected   int                             nbShootActive;
+    
+    protected   Map                             map;//Map where he is currently
     
     
     
@@ -63,9 +65,11 @@ public abstract class Living implements Commons, ObservableCharacter{
      * Create a new character at the position x, y (x:y is the center coordinates)
      * @param pX x coordinate
      * @param pY y coordinate
+     * @param pMap Where the current living character is positioned
      */
-    public Living(int pX, int pY){
+    public Living(int pX, int pY, Map pMap){
         this.listObservers      = new ArrayList();
+        this.map                = pMap;
         this.isAlive            = true;
         this.img                = null;
         this.posX               = pX;
@@ -141,7 +145,7 @@ public abstract class Living implements Commons, ObservableCharacter{
      * Perform one shoot
      * @param world Where to perform the shoot
      */
-    public void fire(ModelGame world){
+    public void fire(GameModel world){
         shootType.fire(world);
     }
     
@@ -191,6 +195,22 @@ public abstract class Living implements Commons, ObservableCharacter{
      */
     public int getWidth(){
         return this.width;
+    }
+    
+    /**
+     * Get the current map where this living character is
+     * @return 
+     */
+    public Map getMap(){
+        return this.map;
+    }
+    
+    /**
+     * Set a new map for this living character
+     * @param pMap 
+     */
+    public void setMap(Map pMap){
+        this.map = pMap;
     }
     
     /**
