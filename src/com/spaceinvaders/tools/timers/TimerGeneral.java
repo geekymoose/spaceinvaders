@@ -5,7 +5,7 @@
  * 
  */
 
-package com.spaceinvaders.tools;
+package com.spaceinvaders.tools.timers;
 
 import com.spaceinvaders.models.ModelGame;
 import java.awt.event.ActionEvent;

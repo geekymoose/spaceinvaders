@@ -5,7 +5,7 @@
  * 
  */
 
-package com.spaceinvaders.tools;
+package com.spaceinvaders.tools.timers;
 
 import com.spaceinvaders.constants.Commons;
 import java.awt.event.ActionListener;

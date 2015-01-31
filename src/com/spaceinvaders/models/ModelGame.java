@@ -7,12 +7,18 @@
 
 package com.spaceinvaders.models;
 
+import com.spaceinvaders.tools.events.DynamicEvent;
+import com.spaceinvaders.tools.events.ExplosionAlien;
+import com.spaceinvaders.tools.timers.TimerShoot;
+import com.spaceinvaders.tools.timers.TimerBreak;
+import com.spaceinvaders.tools.timers.TimerGeneral;
+import com.spaceinvaders.tools.timers.TimerAlien;
+import com.spaceinvaders.tools.timers.TimerPlayer;
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.observers.ObservableGame;
 import com.spaceinvaders.observers.ObserverGame;
 import com.spaceinvaders.tools.*;
 import com.spaceinvaders.weapons.Projectile;
-import java.awt.Point;
 import java.util.ArrayList;
 
 
@@ -35,7 +41,7 @@ public class ModelGame implements Commons, ObservableGame{
     private     ArrayList<Alien>        listAliens; //Only alien inside
     private     ArrayList<Projectile>   listAlienShoot;
     private     ArrayList<Projectile>   listPlayerShoot;
-    private     ArrayList<Explosion>    listExplosions; //Tmp object: explosion
+    private     ArrayList<DynamicEvent>    listExplosions; //Tmp object: explosion
     private     ArrayList<ObserverGame> listObservers;
     
     private     int                     currentScore;
@@ -179,7 +185,7 @@ public class ModelGame implements Commons, ObservableGame{
     
     
     //**************************************************************************
-    // Functions
+    // Functions Player - Alien management
     //**************************************************************************
     /**
      * Kill one alien. This alien will be removed from the list
@@ -190,32 +196,6 @@ public class ModelGame implements Commons, ObservableGame{
         this.listAliens.remove(pAlien);
         this.nbAliens--;
         this.listExplosions.add(new ExplosionAlien(pAlien.getCenter(), this));
-    }
-    
-    /**
-     * Destroy this projectile
-     * @param p projectile to destroy
-     */
-    public void destroyeProjectile(Projectile p){
-        this.listPlayerShoot.remove(p);
-        this.listAlienShoot.remove(p);
-    }
-    
-    /**
-     * Add an explosion in the ModelGame
-     * @param pExplosion explosion to add
-     */
-    public void projectileExplode(Explosion pExplosion){
-        this.listExplosions.add(pExplosion);
-    }
-    
-    /**
-     * Remove an explosion
-     * @param pExplosion 
-     */
-    public void removeExplosion(Explosion pExplosion){
-        this.listExplosions.remove(pExplosion);
-        //this.notifyObservers();
     }
     
     /**
@@ -240,6 +220,55 @@ public class ModelGame implements Commons, ObservableGame{
             }
         });
         t.start();
+    }
+    
+    
+    
+    
+    
+    //**************************************************************************
+    // Functions Explosion and dynamics events
+    //**************************************************************************
+    /**
+     * Destroy this projectile
+     * @param p projectile to destroy
+     */
+    public void destroyeProjectile(Projectile p){
+        this.listPlayerShoot.remove(p);
+        this.listAlienShoot.remove(p);
+    }
+    
+    /**
+     * Add an explosion in the ModelGame
+     * @param pExplosion explosion to add
+     */
+    public void projectileExplode(DynamicEvent pExplosion){
+        this.listExplosions.add(pExplosion);
+    }
+    
+    /**
+     * Remove an explosion
+     * @param pExplosion 
+     */
+    public void removeExplosion(DynamicEvent pExplosion){
+        this.listExplosions.remove(pExplosion);
+        //this.notifyObservers();
+    }
+    
+    /**
+     * Create a new alien's projectile in the map
+     * @param pProjectile projectile launched
+     */
+    public void addAlienProjectile(Projectile pProjectile){
+        this.listAlienShoot.add(pProjectile);
+    }
+    
+    /**
+     * Create a new alien's projectile in the map
+     * @param pProjectile projectile launched
+     */
+    public void addPlayerProjectile(Projectile pProjectile){
+        this.listAlienShoot.add(pProjectile);
     }
     
     
@@ -343,7 +372,7 @@ public class ModelGame implements Commons, ObservableGame{
      * Get the explosion list
      * @return 
      */
-    public ArrayList<Explosion> getListExplosions(){
+    public ArrayList<DynamicEvent> getListExplosions(){
         return this.listExplosions;
     }
     

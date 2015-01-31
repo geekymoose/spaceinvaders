@@ -1,12 +1,13 @@
 /*
- * Class :      Explosion
+ * Class :      DynamicEvent
  * Creation:    Jan 25, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.spaceinvaders.tools;
+package com.spaceinvaders.tools.events;
 
+import com.spaceinvaders.tools.timers.TimerManager;
 import com.spaceinvaders.models.ModelGame;
 import java.awt.Image;
 import java.awt.Point;
@@ -18,9 +19,9 @@ import java.util.ArrayList;
 
 
 /**
- * <h1>Explosion</h1>
+ * <h1>DynamicEvent</h1>
  * <p>
- * public abstract class Explosion<br/>
+ public abstract class DynamicEvent<br/>
  * extends TimerManager
  * </p>
  * 
@@ -28,7 +29,7 @@ import java.util.ArrayList;
  *
  * @author Constantin MASSON
  */
-public abstract class Explosion extends TimerManager{
+public abstract class DynamicEvent extends TimerManager{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -54,7 +55,7 @@ public abstract class Explosion extends TimerManager{
      * @param pDelay
      * @param pModel model map where explosion is 
      */
-    public Explosion(Point pPosition, int pDelay, ModelGame pModel){
+    public DynamicEvent(Point pPosition, int pDelay, ModelGame pModel){
         super(pDelay);
         this.listImg            = new ArrayList();
         this.model              = pModel;

@@ -5,11 +5,12 @@
  * 
  */
 
-package com.spaceinvaders.tools;
+package com.spaceinvaders.tools.timers;
 
 import com.spaceinvaders.constants.Movements;
 import com.spaceinvaders.models.Alien;
 import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.tools.RandomManager;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;

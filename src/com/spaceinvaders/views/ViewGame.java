@@ -18,7 +18,7 @@ import com.spaceinvaders.observers.ObservableCharacter;
 import com.spaceinvaders.observers.ObservableGame;
 import com.spaceinvaders.observers.ObserverCharacter;
 import com.spaceinvaders.observers.ObserverGame;
-import com.spaceinvaders.tools.Explosion;
+import com.spaceinvaders.tools.events.DynamicEvent;
 import com.spaceinvaders.tools.ManagerKeyPlayer;
 import com.spaceinvaders.weapons.Projectile;
 import java.awt.BasicStroke;
@@ -59,7 +59,7 @@ public class ViewGame extends JPanel implements Commons,
     private     ArrayList<Alien>        listAlien;
     private     ArrayList<Projectile>   listPlayerShoot;
     private     ArrayList<Projectile>   listAlienShoot;
-    private     ArrayList<Explosion>    listExplosions;
+    private     ArrayList<DynamicEvent>    listExplosions;
     private     Player                  player;
     
     private     Image                   background;
@@ -118,9 +118,6 @@ public class ViewGame extends JPanel implements Commons,
         g2d.drawImage(player.getImage(), player.getUpperLeftCorner().x, player.getUpperLeftCorner().y, this);
         g2d.setColor(Color.red);
         
-        //BasicStroke bs1 = new BasicStroke(1,BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);
-        //g2d.setStroke(null);
-        //g2d.drawLine(0, GROUND, GAME_WIDTH, GROUND); //Ground line
         drawSubLine(g);
         
         /*
@@ -138,7 +135,7 @@ public class ViewGame extends JPanel implements Commons,
         for(Projectile p : this.listPlayerShoot){
             g2d.drawImage(p.getImage(), p.getUpperLeftCorner().x, p.getUpperLeftCorner().y, this);
         }
-        for(Explosion e : this.listExplosions){
+        for(DynamicEvent e : this.listExplosions){
             g2d.drawImage(e.getImage(), e.getUpperLeftCorner().x, e.getUpperLeftCorner().y, this);
         }
         

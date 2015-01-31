@@ -1,6 +1,7 @@
 
 package com.spaceinvaders.tools;
 
+import com.spaceinvaders.tools.events.ExplosionAlien;
 import com.spaceinvaders.models.Alien;
 import com.spaceinvaders.models.ModelGame;
 import com.spaceinvaders.models.Player;

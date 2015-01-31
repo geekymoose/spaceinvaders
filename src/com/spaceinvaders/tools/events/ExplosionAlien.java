@@ -5,7 +5,7 @@
  * 
  */
 
-package com.spaceinvaders.tools;
+package com.spaceinvaders.tools.events;
 
 import com.spaceinvaders.models.ModelGame;
 import java.awt.Point;
@@ -19,12 +19,12 @@ import javax.swing.ImageIcon;
  * <h1>ExplosionAlien</h1>
  * <p>
  * public class ExplosionAlien<br/>
- * extends Explosion
+ * extends DynamicEvent
  * </p>
  *
  * @author Constantin MASSON
  */
-public class ExplosionAlien extends Explosion{
+public class ExplosionAlien extends DynamicEvent{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************

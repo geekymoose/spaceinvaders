@@ -1,33 +1,34 @@
 /*
- * Class :      TimerPlayer
- * Creation:    Jan 23, 2015
+ * Class :      SmokeShootBomb
+ * Creation:    Jan 31, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.spaceinvaders.tools;
+package com.spaceinvaders.tools.events;
 
-import com.spaceinvaders.models.Player;
-import java.awt.event.ActionEvent;
+import com.spaceinvaders.models.ModelGame;
+import java.awt.Point;
 
 
 
 
 
 /**
- * <h1>TimerPlayer</h1>
+ * <h1>SmokeShootBomb</h1>
  * <p>
- * public class TimerPlayer
+ public class SmokeShootBomb<br/>
+ * extends DynamicEvent
  * </p>
- * <p>Timer for the player actions</p>
+ * 
+ * <p>This class create smoke event like the one behind a fire or a projectile
  *
  * @author Constantin MASSON
  */
-public class TimerPlayer extends TimerManager{
+public class SmokeShootBomb extends DynamicEvent{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     Player  player;
     
     
     
@@ -37,9 +38,14 @@ public class TimerPlayer extends TimerManager{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public TimerPlayer(Player pPlayer){
-        super(DELAY_PLAYER);
-        this.player     = pPlayer;
+    /**
+     * Create new smoke
+     * @param pPosition
+     * @param pDelay
+     * @param pModel 
+     */
+    public SmokeShootBomb(Point pPosition, int pDelay, ModelGame pModel){
+        super(pPosition, pDelay, pModel);
     }
     
     
@@ -59,8 +65,4 @@ public class TimerPlayer extends TimerManager{
     //**************************************************************************
     // Getters - Setters
     //**************************************************************************
-    @Override
-    public void actionPerformed(ActionEvent e){
-        this.player.move();
-    }
 }
