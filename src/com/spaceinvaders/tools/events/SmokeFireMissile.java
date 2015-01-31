@@ -1,13 +1,14 @@
 /*
- * Class :      ExplosionAlien
- * Creation:    Jan 24, 2015
+ * Class :      SmokeFireMissile
+ * Creation:    Jan 31, 2015
  * Author :     Constantin MASSON
  * 
  */
 
 package com.spaceinvaders.tools.events;
 
-import com.spaceinvaders.models.GameModel;
+import static com.spaceinvaders.constants.Commons.PATH_IMG_EXPLOSION;
+import com.spaceinvaders.models.Map;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 
@@ -16,25 +17,36 @@ import javax.swing.ImageIcon;
 
 
 /**
- * <h1>ExplosionAlien</h1>
+ * <h1>SmokeFireMissile</h1>
  * <p>
- * public class ExplosionAlien<br/>
+ * public class SmokeFireMissile<br/>
  * extends DynamicEvent
  * </p>
+ * 
+ * <p>Smoke for a missile shot</p>
  *
  * @author Constantin MASSON
  */
-public class ExplosionAlien extends DynamicEvent{
+public class SmokeFireMissile extends Smoke{
+    //**************************************************************************
+    // Constants - Variables
+    //**************************************************************************
+    
+    
+    
+    
+    
+
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
     /**
-     * Create a new explosion for alien
-     * @param pCenter Center position
-     * @param pModel model map where explosion is 
+     * Create new smoke
+     * @param pPosition
+     * @param pMap
      */
-    public ExplosionAlien(Point pCenter, GameModel pModel){
-        super(pCenter, DELAY_EXPLOSION, pModel);
+    public SmokeFireMissile(Point pPosition, Map pMap){
+        super(pPosition, DELAY_SMOKE_FIRE_MISSILE, pMap);
         
         ImageIcon i1    = new ImageIcon(PATH_IMG_EXPLOSION+"explosion1.png");
         ImageIcon i2    = new ImageIcon(PATH_IMG_EXPLOSION+"explosion2.png");
@@ -66,4 +78,22 @@ public class ExplosionAlien extends DynamicEvent{
         
         this.startTimer();
     }
+    
+    
+    
+    
+    
+
+    //**************************************************************************
+    // Functions
+    //**************************************************************************
+    
+    
+    
+    
+    
+
+    //**************************************************************************
+    // Getters - Setters
+    //**************************************************************************
 }

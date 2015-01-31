@@ -43,9 +43,10 @@ public abstract class Alien extends Living{
      * @param pX x coordinate
      * @param pY y coordinate
      * @param pScoreValue
+     * @param pMap Map where this alien is currently
      */
-    public Alien(int pX, int pY, int pScoreValue){
-        super(pX, pY);
+    public Alien(int pX, int pY, int pScoreValue, Map pMap){
+        super(pX, pY, pMap);
         this.scoreValue     = pScoreValue;
     }
     

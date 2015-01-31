@@ -7,7 +7,7 @@
 
 package com.spaceinvaders.controllers;
 
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 import com.spaceinvaders.models.Player;
 
 
@@ -25,7 +25,7 @@ public class ControllerPlayer {
     // Constants - Variables
     //**************************************************************************
     private     Player      model;
-    private     ModelGame   world;
+    private     GameModel   world;
     
     
     
@@ -40,7 +40,7 @@ public class ControllerPlayer {
      * @param pModel player model
      * @param pWorld Where the player is
      */
-    public ControllerPlayer(Player pModel, ModelGame pWorld){
+    public ControllerPlayer(Player pModel, GameModel pWorld){
         this.model  = pModel;
         this.world  = pWorld;
     }

@@ -31,6 +31,7 @@ public interface Commons {
     public static final int DELAY_ALIEN                     = 400;
     public static final int DELAY_SHOOT                     = 5;
     public static final int DELAY_EXPLOSION                 = 15;
+    public static final int DELAY_SMOKE_FIRE_MISSILE        = 15;
     
     public static final int DELAY_BREAK                     = 1000;
     

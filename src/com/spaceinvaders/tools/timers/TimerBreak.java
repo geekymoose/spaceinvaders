@@ -7,7 +7,7 @@
 
 package com.spaceinvaders.tools.timers;
 
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 import java.awt.event.ActionEvent;
 
 
@@ -29,7 +29,7 @@ public class TimerBreak extends TimerManager{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     ModelGame   model;
+    private     GameModel   model;
     
     
     
@@ -43,7 +43,7 @@ public class TimerBreak extends TimerManager{
      * Create a break timer
      * @param pModel 
      */
-    public TimerBreak(ModelGame pModel){
+    public TimerBreak(GameModel pModel){
         super(DELAY_BREAK);
         this.model = pModel;
     }

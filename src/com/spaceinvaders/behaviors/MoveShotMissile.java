@@ -1,5 +1,5 @@
 /*
- * Class :      MoveShootMissile
+ * Class :      MoveShotMissile
  * Creation:    Jan 23, 2015
  * Author :     Constantin MASSON
  * 
@@ -7,7 +7,7 @@
 
 package com.spaceinvaders.behaviors;
 
-import com.spaceinvaders.weapons.Laser;
+import com.spaceinvaders.weapons.Missile;
 import java.awt.Point;
 
 
@@ -15,16 +15,16 @@ import java.awt.Point;
 
 
 /**
- * <h1>MoveShootBomb</h1>
- * <p>public class MoveShootBomb</p>
+ * <h1>MoveShotMissile</h1>
+ * <p>public class MoveShotMissile</p>
  *
  * @author Constantin MASSON
  */
-public class MoveShootLaser implements MoveShootType{
+public class MoveShotMissile implements MoveShotType{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     final Laser       laser;
+    private     final Missile       missile;
     
     
     
@@ -35,11 +35,11 @@ public class MoveShootLaser implements MoveShootType{
     // Constructor - Initialization
     //**************************************************************************
     /**
-     * Create a new MoveShootType for a laser
-     * @param pLaser laser tie
+     * Create a new MoveShotType for a missile
+     * @param pMissile missile tie
      */
-    public MoveShootLaser(Laser pLaser){
-        this.laser = pLaser;
+    public MoveShotMissile(Missile pMissile){
+        this.missile = pMissile;
     }
     
     
@@ -52,7 +52,7 @@ public class MoveShootLaser implements MoveShootType{
     //**************************************************************************
     @Override
     public void move(){
-        this.laser.setCenter(new Point(this.laser.getPosX(), this.laser.getPosY()+LASER_SPEED ));
+        this.missile.setCenter(new Point(this.missile.getPosX(), this.missile.getPosY()-MISSILE_SPEED ));
     }
     
     @Override

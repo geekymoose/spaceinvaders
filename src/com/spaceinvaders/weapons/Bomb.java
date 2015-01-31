@@ -7,9 +7,10 @@
 
 package com.spaceinvaders.weapons;
 
-import com.spaceinvaders.behaviors.MoveShootBomb;
+import com.spaceinvaders.behaviors.FireSmokeBomb;
+import com.spaceinvaders.behaviors.MoveShotBomb;
 import com.spaceinvaders.models.Living;
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
@@ -49,7 +50,8 @@ public class Bomb extends Projectile{
         super(pX, pY, MISSILE_WIDTH, MISSILE_WIDTH, pOwner);
         ImageIcon i         = new ImageIcon(IMG_WEAPONS+"bomb.png");
         this.img            = i.getImage();
-        this.moveShootType  = new MoveShootBomb(this);
+        this.moveShootType  = new MoveShotBomb(this);
+        this.fireSmokeType  = new FireSmokeBomb();
     }
     
     
@@ -61,7 +63,7 @@ public class Bomb extends Projectile{
     // Functions
     //**************************************************************************
     @Override
-    public Object checkCollision(ModelGame map){
+    public Object checkCollision(GameModel map){
         Rectangle r1 = this.getBounds();
         return r1.intersects(map.getPlayer().getBounds()) ? map.getPlayer() : null;
     }

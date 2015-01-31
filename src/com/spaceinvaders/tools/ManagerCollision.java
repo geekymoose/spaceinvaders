@@ -3,7 +3,7 @@ package com.spaceinvaders.tools;
 
 import com.spaceinvaders.tools.events.ExplosionAlien;
 import com.spaceinvaders.models.Alien;
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 import com.spaceinvaders.models.Player;
 import com.spaceinvaders.weapons.Projectile;
 
@@ -30,7 +30,7 @@ public class ManagerCollision {
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     ModelGame       map;
+    private     GameModel       map;
     
     
     
@@ -44,7 +44,7 @@ public class ManagerCollision {
      * Create a new ManagerCollision
      * @param pMap where the collision are processed
      */
-    public ManagerCollision(ModelGame pMap){
+    public ManagerCollision(GameModel pMap){
         this.map = pMap;
     }
     

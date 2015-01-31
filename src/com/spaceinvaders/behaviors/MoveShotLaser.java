@@ -7,7 +7,7 @@
 
 package com.spaceinvaders.behaviors;
 
-import com.spaceinvaders.weapons.Missile;
+import com.spaceinvaders.weapons.Laser;
 import java.awt.Point;
 
 
@@ -15,16 +15,16 @@ import java.awt.Point;
 
 
 /**
- * <h1>MoveShootMissile</h1>
- * <p>public class MoveShootMissile</p>
+ * <h1>MoveShootBomb</h1>
+ * <p>public class MoveShootBomb</p>
  *
  * @author Constantin MASSON
  */
-public class MoveShootMissile implements MoveShootType{
+public class MoveShotLaser implements MoveShotType{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     final Missile       missile;
+    private     final Laser       laser;
     
     
     
@@ -35,11 +35,11 @@ public class MoveShootMissile implements MoveShootType{
     // Constructor - Initialization
     //**************************************************************************
     /**
-     * Create a new MoveShootType for a missile
-     * @param pMissile missile tie
+     * Create a new MoveShotType for a laser
+     * @param pLaser laser tie
      */
-    public MoveShootMissile(Missile pMissile){
-        this.missile = pMissile;
+    public MoveShotLaser(Laser pLaser){
+        this.laser = pLaser;
     }
     
     
@@ -52,7 +52,7 @@ public class MoveShootMissile implements MoveShootType{
     //**************************************************************************
     @Override
     public void move(){
-        this.missile.setCenter(new Point(this.missile.getPosX(), this.missile.getPosY()-MISSILE_SPEED ));
+        this.laser.setCenter(new Point(this.laser.getPosX(), this.laser.getPosY()+LASER_SPEED ));
     }
     
     @Override

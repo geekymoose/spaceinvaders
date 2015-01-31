@@ -8,7 +8,7 @@
 package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 import com.spaceinvaders.observers.ObservableGame;
 import com.spaceinvaders.observers.ObserverGame;
 import java.awt.BorderLayout;
@@ -123,7 +123,7 @@ public class ViewScorePanel extends JPanel implements Commons, ObserverGame{
     
     @Override
     public void update(ObservableGame obs){
-        ModelGame m = ((ModelGame)obs);
+        GameModel m = ((GameModel)obs);
         this.labelScore             .setForeground(Color.WHITE);
         this.labelScoreValue        .setForeground(Color.WHITE);
         this.labelScoreValue.setText(String.valueOf(m.getScore()));

@@ -7,7 +7,7 @@
 
 package com.spaceinvaders.controllers;
 
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 
 
 
@@ -27,7 +27,7 @@ public class ControllerToolsBar {
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     ModelGame   model;
+    private     GameModel   model;
     
     
     
@@ -37,7 +37,7 @@ public class ControllerToolsBar {
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public ControllerToolsBar(ModelGame pModel){
+    public ControllerToolsBar(GameModel pModel){
         this.model  = pModel;
     }
     

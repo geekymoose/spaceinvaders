@@ -7,7 +7,7 @@
 
 package com.spaceinvaders.behaviors;
 
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 
 
 
@@ -26,7 +26,7 @@ public interface ShootType {
      * @param world Where to add a shoot
      * @return true if shoot performed, otherwise, return false
      */
-    public abstract boolean fire(ModelGame world);
+    public abstract boolean fire(GameModel world);
     
     /**
      * Reload the weapon

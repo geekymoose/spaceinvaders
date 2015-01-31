@@ -7,7 +7,7 @@
 
 package com.spaceinvaders.controllers;
 
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 
 
 
@@ -25,7 +25,7 @@ public class ControllerGame {
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     ModelGame   model;
+    private     GameModel   model;
     
     
     
@@ -35,7 +35,7 @@ public class ControllerGame {
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public ControllerGame(ModelGame pModel){
+    public ControllerGame(GameModel pModel){
         this.model  = pModel;
     }
     
@@ -64,7 +64,7 @@ public class ControllerGame {
      * Get the model
      * @return 
      */
-    public ModelGame getModelGame(){
+    public GameModel getModelGame(){
         return this.model;
     }
 }

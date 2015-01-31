@@ -7,7 +7,7 @@
 
 package com.spaceinvaders.tools.timers;
 
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 import java.awt.event.ActionEvent;
 
 
@@ -30,7 +30,7 @@ public class TimerGeneral extends TimerManager{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     ModelGame   model;
+    private     GameModel   model;
     
     
     
@@ -40,7 +40,7 @@ public class TimerGeneral extends TimerManager{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    public TimerGeneral(ModelGame pModel){
+    public TimerGeneral(GameModel pModel){
         super(DELAY_GENERAL);
         this.model   = pModel;
     }

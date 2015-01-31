@@ -11,7 +11,7 @@ import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.controllers.ControllerGame;
 import com.spaceinvaders.controllers.ControllerPlayer;
 import com.spaceinvaders.models.Alien;
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 import com.spaceinvaders.models.Player;
 import com.spaceinvaders.models.Living;
 import com.spaceinvaders.observers.ObservableCharacter;
@@ -171,7 +171,7 @@ public class ViewGame extends JPanel implements Commons,
     //**************************************************************************
     @Override
     public void updateInitMap(ObservableGame obs){
-        ModelGame m = ((ModelGame)obs);
+        GameModel m = ((GameModel)obs);
         this.listAlien          = m.getListAliens();
         this.listAlienShoot     = m.getAlienShoot();
         this.listPlayerShoot    = m.getPlayerShoot();
@@ -189,7 +189,7 @@ public class ViewGame extends JPanel implements Commons,
     
     @Override
     public void update(ObservableGame obs){
-        ModelGame m = ((ModelGame)obs);
+        GameModel m = ((GameModel)obs);
         this.listAlien          = m.getListAliens();
         this.listAlienShoot     = m.getAlienShoot();
         this.listPlayerShoot    = m.getPlayerShoot();

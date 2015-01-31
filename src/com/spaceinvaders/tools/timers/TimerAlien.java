@@ -9,7 +9,7 @@ package com.spaceinvaders.tools.timers;
 
 import com.spaceinvaders.constants.Movements;
 import com.spaceinvaders.models.Alien;
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 import com.spaceinvaders.tools.RandomManager;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -38,7 +38,7 @@ public class TimerAlien extends TimerManager implements Movements{
     // Constants - Variables
     //**************************************************************************
     private     ArrayList<Alien>    listAliens;
-    private     ModelGame           modelMap;
+    private     GameModel           modelMap;
     
     
     
@@ -52,7 +52,7 @@ public class TimerAlien extends TimerManager implements Movements{
      * Create a timer for alien movement
      * @param pModel
      */
-    public TimerAlien(ModelGame pModel){
+    public TimerAlien(GameModel pModel){
         super(DELAY_ALIEN);
         this.listAliens     = pModel.getListAliens();
         this.modelMap       = pModel;

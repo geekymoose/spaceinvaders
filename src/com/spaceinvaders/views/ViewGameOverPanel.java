@@ -8,7 +8,7 @@
 package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.GameModel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -42,7 +42,7 @@ public class ViewGameOverPanel extends JPanel implements Commons, KeyListener{
     private     String              msg;
     
     private     ViewApplication     parent;
-    private     ModelGame           game;
+    private     GameModel           game;
     
     
     
@@ -56,7 +56,7 @@ public class ViewGameOverPanel extends JPanel implements Commons, KeyListener{
      * @param pParent 
      * @param pGame Game just done
      */
-    public ViewGameOverPanel(ViewApplication pParent, ModelGame pGame){
+    public ViewGameOverPanel(ViewApplication pParent, GameModel pGame){
         this.setPreferredSize(DIM_FRAME);
         this.setFocusable(true);
         this.setDoubleBuffered(true);
