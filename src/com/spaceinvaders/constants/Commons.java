@@ -109,11 +109,12 @@ public interface Commons {
     // Paths constants
     //**************************************************************************
     public static final String PATH_IMG_EXPLOSION   = "img/explosions/miniatures/";
+    public static final String PATH_IMG_SMOKE       = "img/smoke/miniatures/";
     public static final String PATH_IMG_ICON_TOOLS  = "img/icons/miniatures/";
     public static final String PATH_PLAYER_IMG      = "img/player/miniatures/";
     public static final String PATH_ALIENS_IMG      = "img/aliens/miniatures/";
     public static final String IMG_WEAPONS          = "img/weapons/miniatures/";
-    public static final String IMG_THEME            = "img/";
+    public static final String IMG_THEME            = "img/theme/miniatures/";
     
 }
 /*
