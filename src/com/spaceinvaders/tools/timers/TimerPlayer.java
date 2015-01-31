@@ -1,13 +1,13 @@
 /*
- * Class :      TimerBreak
- * Creation:    Jan 28, 2015
+ * Class :      TimerPlayer
+ * Creation:    Jan 23, 2015
  * Author :     Constantin MASSON
  * 
  */
 
-package com.spaceinvaders.tools;
+package com.spaceinvaders.tools.timers;
 
-import com.spaceinvaders.models.ModelGame;
+import com.spaceinvaders.models.Player;
 import java.awt.event.ActionEvent;
 
 
@@ -15,21 +15,19 @@ import java.awt.event.ActionEvent;
 
 
 /**
- * <h1>TimerBreak</h1>
+ * <h1>TimerPlayer</h1>
  * <p>
- * public class TimerBreak<br/>
- * extends TimerManager
+ * public class TimerPlayer
  * </p>
- * 
- * <p>Create a break</p>
+ * <p>Timer for the player actions</p>
  *
  * @author Constantin MASSON
  */
-public class TimerBreak extends TimerManager{
+public class TimerPlayer extends TimerManager{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
-    private     ModelGame   model;
+    private     Player  player;
     
     
     
@@ -39,13 +37,9 @@ public class TimerBreak extends TimerManager{
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
-    /**
-     * Create a break timer
-     * @param pModel 
-     */
-    public TimerBreak(ModelGame pModel){
-        super(DELAY_BREAK);
-        this.model = pModel;
+    public TimerPlayer(Player pPlayer){
+        super(DELAY_PLAYER);
+        this.player     = pPlayer;
     }
     
     
@@ -56,13 +50,6 @@ public class TimerBreak extends TimerManager{
     //**************************************************************************
     // Functions
     //**************************************************************************
-    /**
-     * Process a break
-     */
-    public void makeBreak(){
-        this.model.stopGameTimers();
-        this.startTimer();
-    }
     
     
     
@@ -74,7 +61,6 @@ public class TimerBreak extends TimerManager{
     //**************************************************************************
     @Override
     public void actionPerformed(ActionEvent e){
-        this.model.startGameTimers();
-        this.stopTimer(); //Only a break, must be stop at the first actionPerformed
+        this.player.move();
     }
 }

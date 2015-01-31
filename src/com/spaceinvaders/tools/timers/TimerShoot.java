@@ -5,8 +5,9 @@
  * 
  */
 
-package com.spaceinvaders.tools;
+package com.spaceinvaders.tools.timers;
 
+import com.spaceinvaders.tools.ManagerCollision;
 import com.spaceinvaders.weapons.Projectile;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
