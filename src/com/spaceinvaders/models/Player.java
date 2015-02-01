@@ -47,8 +47,10 @@ public class Player extends Living{
      * Create a Player at position x, y
      * @param pX x coordinate
      * @param pY y coordinate
+     * @param pMap
+     * @param pNbLives
      */
-    public Player(int pX, int pY, Map pMap){
+    public Player(int pX, int pY, Map pMap, int pNbLives){
         super(pX, pY, pMap);
         this.barrel         = new Point(0, -(PLAYER_HEIGHT/2));
         this.shootType      = new ShootMissile(((Living)this), barrel, 1); //Ammo = 1
@@ -62,7 +64,7 @@ public class Player extends Living{
         this.img2           = ii.getImage();
         this.img            = this.img1;
         
-        this.nbLife         = NB_LIVES;
+        this.nbLife         = pNbLives;
     }
     
     

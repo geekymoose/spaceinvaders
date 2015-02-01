@@ -50,6 +50,7 @@ public class GameModel extends Map implements Commons, ObservableGame{
     
     private     int                     currentScore;
     private     int                     nbAliens;
+    private     int                     mode;
     
     private     TimerPlayer             timerPlayer;
     private     TimerShoot              timerShoot;
@@ -73,10 +74,12 @@ public class GameModel extends Map implements Commons, ObservableGame{
     /**
      * Create the game model
      * Initialize the map with default value
+     * @param pMode Game mode
      */
-    public GameModel(){
+    public GameModel(int pMode){
         this.listObservers      = new ArrayList();
         this.managerCollision   = new ManagerCollision(this);
+        this.mode               = pMode;
     }
     
     
@@ -87,7 +90,7 @@ public class GameModel extends Map implements Commons, ObservableGame{
      * Then, the timers start
      */
     public void initMap(){
-        this.player             = new Player(DEFAULT_PLAYER_POS_X, DEFAULT_PLAYER_POS_Y, this);
+        this.player             = new Player(DEFAULT_PLAYER_POS_X, DEFAULT_PLAYER_POS_Y, this, this.mode);
         this.listAliens         = new ArrayList();
         this.listPlayerShoot    = new ArrayList();
         this.listAlienShoot     = new ArrayList();
@@ -390,6 +393,14 @@ public class GameModel extends Map implements Commons, ObservableGame{
      */
     public ArrayList<DynamicEvent> getListExplosions(){
         return this.listExplosions;
+    }
+    
+    /**
+     * Get current game mode
+     * @return current mode
+     */
+    public int getMode(){
+        return this.mode;
     }
     
     

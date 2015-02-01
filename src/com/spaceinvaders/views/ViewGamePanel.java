@@ -54,18 +54,19 @@ public class ViewGamePanel extends JPanel implements ObserverGame{
     /**
      * Create a new Game panel which will display the game map and data
      * @param pParent Parent container
+     * @param pMode Game mode
      */
-    public ViewGamePanel(ViewApplication pParent){
+    public ViewGamePanel(ViewApplication pParent, int pMode){
         this.setLayout(new BorderLayout());
         this.parent             = pParent;
-        this.initComponents();
+        this.initComponents(pMode);
     }
     
     /*
      * Initialize the components
      */
-    private void initComponents(){
-        this.game               = new GameModel();
+    private void initComponents(int pMode){
+        this.game               = new GameModel(pMode);
         ControllerGame      c   = new ControllerGame(this.game);
         ControllerToolsBar  c2  = new ControllerToolsBar(this.game);
         ViewGame            v   = new ViewGame(c);

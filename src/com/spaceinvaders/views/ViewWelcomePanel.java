@@ -11,13 +11,18 @@ import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.tools.SoundEffect;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 
@@ -27,15 +32,16 @@ import javax.swing.JPanel;
 /**
  * <h1>ViewWelcomePanel</h1>
  * <p>
- public class ViewWelcomePanel<br/>
- * extends JPanel
+ * public class ViewWelcomePanel<br/>
+ * extends JPanel<br/>
+ * implements Commons
  * </p>
  * 
  * <p>This is the welcome page displayed when user start the game</p>
  *
  * @author Constantin MASSON
  */
-public class ViewWelcomePanel extends JPanel implements Commons, KeyListener{
+public class ViewWelcomePanel extends JPanel implements Commons{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
@@ -45,6 +51,7 @@ public class ViewWelcomePanel extends JPanel implements Commons, KeyListener{
     
     private     Image               background;
     private     Image               title;
+    private     ModePanel           modePanel;
     
     private     int                 alien1PosX;
     private     int                 alien1PosY;
@@ -74,9 +81,12 @@ public class ViewWelcomePanel extends JPanel implements Commons, KeyListener{
         this.setDoubleBuffered(true);
         this.requestFocus();
         this.parent = pParent;
-        this.addKeyListener(this);
         
         this.initComponents();
+        
+        this.modePanel  = new ModePanel();
+        this.add(this.modePanel, BorderLayout.SOUTH);
+        
         SoundEffect.WELCOME.play();
     }
     
@@ -124,34 +134,78 @@ public class ViewWelcomePanel extends JPanel implements Commons, KeyListener{
         g2d.drawString(" = 40 Points", 250, alien1PosY+25);
         g2d.drawString(" = 20 Points", 250, alien2PosY+25);
         g2d.drawString(" = 10 Points", 250, alien3PosY+25);
+    }
+    
+    
+    
+    
+    
+    //**************************************************************************
+    // Intern class
+    //**************************************************************************
+    /*
+     * Intern class: new button for restart the game
+     */
+    public class ModePanel extends JPanel{
+        private     JButton         buttonWeak;
+        private     JButton         buttonNormal;
+        private     JButton         buttonhardcore;
         
-        g2d.drawString("Press space to start the game", 100, alien3PosY+125);
-    }
-
-
-
-    @Override
-    public void keyTyped(KeyEvent e){
-    }
-
-
-
-    @Override
-    public void keyPressed(KeyEvent e){
-    }
-
-
-
-    @Override
-    public void keyReleased(KeyEvent e){
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_SPACE) {
-            this.parent.startGame();
-            try {
-                this.finalize();
-            } catch(Throwable ex) {
-                //Nothing
+        
+        
+        /**
+         * Create the button start
+         */
+        public ModePanel() {
+            this.setOpaque(false);
+            this.setLayout(new FlowLayout());
+            this.setPreferredSize(new Dimension(250, 100));
+            this.initcomponents();
+        }
+        
+        /*
+         * Init components
+         */
+        private void initcomponents(){
+            this.buttonWeak         = new JButton("For the Weaks");
+            this.buttonNormal       = new JButton("Normal");
+            this.buttonhardcore     = new JButton("Hardcore");
+            
+            this.buttonWeak         .setPreferredSize(new Dimension(150, 50));
+            this.buttonNormal       .setPreferredSize(new Dimension(150, 50));
+            this.buttonhardcore     .setPreferredSize(new Dimension(150, 50));
+            
+            ActionButtonWeak        mode1 = new ActionButtonWeak();
+            ActionButtonNormal      mode2 = new ActionButtonNormal();
+            ActionButtonhardCore    mode3 = new ActionButtonhardCore();
+            
+            
+            this.buttonWeak         .addActionListener(mode1);
+            this.buttonNormal       .addActionListener(mode2);
+            this.buttonhardcore     .addActionListener(mode3);
+            
+            this.add(this.buttonWeak);
+            this.add(this.buttonNormal);
+            this.add(this.buttonhardcore);
+        }
+        
+        public class ActionButtonWeak implements ActionListener{
+            @Override
+            public void actionPerformed(ActionEvent e){
+                parent.startGame(MODE_WEAK);
+            }
+        }
+        
+        public class ActionButtonNormal implements ActionListener{
+            @Override
+            public void actionPerformed(ActionEvent e){
+                parent.startGame(MODE_NORMAL);
+            }
+        }
+        public class ActionButtonhardCore implements ActionListener{
+            @Override
+            public void actionPerformed(ActionEvent e){
+                parent.startGame(MODE_HARDCORE);
             }
         }
     }

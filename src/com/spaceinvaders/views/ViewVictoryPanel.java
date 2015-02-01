@@ -178,7 +178,7 @@ public class ViewVictoryPanel extends JPanel implements Commons{
             @Override
             public void actionPerformed(ActionEvent e){
                 SoundEffect.VICTORY.stop();
-                ViewVictoryPanel.this.parent.startGame();
+                ViewVictoryPanel.this.parent.startGame(game.getMode());
             }
         }
         
