@@ -20,6 +20,7 @@ import com.spaceinvaders.observers.ObserverCharacter;
 import com.spaceinvaders.observers.ObserverGame;
 import com.spaceinvaders.tools.events.DynamicEvent;
 import com.spaceinvaders.tools.ManagerKeyPlayer;
+import com.spaceinvaders.tools.SoundEffect;
 import com.spaceinvaders.weapons.Projectile;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
@@ -184,6 +185,7 @@ public class ViewGame extends JPanel implements Commons,
         this.player.addObserver(this);
         this.repaint();
         this.requestFocusInWindow();
+        SoundEffect.START.play();
     }
     
     

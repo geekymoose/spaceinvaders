@@ -9,6 +9,7 @@ package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.models.GameModel;
+import com.spaceinvaders.tools.SoundEffect;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -61,6 +62,7 @@ public class ViewApplication extends JFrame implements Commons{
     private void initComponents(){
         this.mainContent = new ViewWelcomePanel(this);
         this.getContentPane().add(this.mainContent);
+        SoundEffect.init(); //Load sounds
     }
     
     

@@ -11,6 +11,7 @@ import com.spaceinvaders.constants.Movements;
 import com.spaceinvaders.models.Alien;
 import com.spaceinvaders.models.GameModel;
 import com.spaceinvaders.tools.RandomManager;
+import com.spaceinvaders.tools.SoundEffect;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -69,6 +70,7 @@ public class TimerAlien extends TimerManager implements Movements{
     @Override
     public void actionPerformed(ActionEvent e){
         boolean moveDown    = false;
+        SoundEffect.INVADER_MOVE.play();
         
         /*
          * If there is no more alien, player win

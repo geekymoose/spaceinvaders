@@ -106,7 +106,7 @@ public interface Commons {
     
     
     //**************************************************************************
-    // Paths constants
+    // Paths constants for image
     //**************************************************************************
     public static final String PATH_IMG_EXPLOSION   = "img/explosions/miniatures/";
     public static final String PATH_IMG_SMOKE       = "img/smoke/miniatures/";
@@ -116,17 +116,11 @@ public interface Commons {
     public static final String IMG_WEAPONS          = "img/weapons/miniatures/";
     public static final String IMG_THEME            = "img/theme/miniatures/";
     
+    
+    
+    //**************************************************************************
+    // Paths constants for sounds
+    //**************************************************************************
+    public static final String PATH_SOUNDS          = "/sounds/";
+    
 }
-/*
-
-    public static final String PATH_PLAYER_IMG      = "img/resized/player.png";
-    public static final String PATH_ALIEN1_IMG  = "img/resized/alien1_pos1.png";
-    public static final String PATH_ALIEN1_IMG2 = "img/resized/alien1_pos2.png";
-    public static final String PATH_ALIEN2_IMG  = "img/resized/alien2_pos1.png";
-    public static final String PATH_ALIEN2_IMG2 = "img/resized/alien2_pos2.png";
-    public static final String PATH_ALIEN3_IMG  = "img/resized/alien3_pos1.png";
-    public static final String PATH_ALIEN3_IMG2 = "img/resized/alien3_pos2.png";
-    public static final String IMG_MISSILE      = "img/resized/missile.png";
-    public static final String IMG_BACKGROUND   = "img/resized/background.png";
-    * 
-    */

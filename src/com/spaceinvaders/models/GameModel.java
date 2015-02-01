@@ -198,6 +198,7 @@ public class GameModel extends Map implements Commons, ObservableGame{
     public void killOneAlien(Alien pAlien){
         this.currentScore += pAlien.getScoreValue();
         this.listAliens.remove(pAlien);
+        SoundEffect.INVADER_KILLED.play();
         this.nbAliens--;
         this.listExplosions.add(new ExplosionAlien(pAlien.getCenter(), this));
     }
@@ -206,6 +207,7 @@ public class GameModel extends Map implements Commons, ObservableGame{
      * Player lost one life and, player hurt image displayed during a small break
      */
     public void playerHurt(){
+        SoundEffect.EXPLOSION.play();
         this.player.lostOneLife();
         if(!this.player.isAlive){
             this.gameOver();
@@ -295,6 +297,7 @@ public class GameModel extends Map implements Commons, ObservableGame{
      * Finish the game
      */
     public void gameOver(){
+        SoundEffect.GAME_OVER.play();
         this.isGameOver = true;
         this.stopTimers();
         this.notifyObservers();
@@ -312,6 +315,7 @@ public class GameModel extends Map implements Commons, ObservableGame{
      * PLayer is victorious
      */
     public void victory(){
+        SoundEffect.VICTORY.play();
         this.isVictory = true;
         this.stopTimers();
         this.notifyObservers();

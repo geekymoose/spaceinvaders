@@ -9,6 +9,7 @@ package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.models.GameModel;
+import com.spaceinvaders.tools.SoundEffect;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -146,7 +147,7 @@ public class ViewVictoryPanel extends JPanel implements Commons{
         /**
          * Create the button start
          */
-        ButtonPanel() {
+        public ButtonPanel() {
             this.setOpaque(false);
             this.setLayout(new FlowLayout());
             this.setPreferredSize(new Dimension(250, 100));
@@ -176,6 +177,7 @@ public class ViewVictoryPanel extends JPanel implements Commons{
         public class ActionButtonStart implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e){
+                SoundEffect.VICTORY.stop();
                 ViewVictoryPanel.this.parent.startGame();
             }
         }
@@ -183,6 +185,7 @@ public class ViewVictoryPanel extends JPanel implements Commons{
         public class ActionButtonStop implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e){
+                SoundEffect.VICTORY.stop();
                 ViewVictoryPanel.this.parent.returnMenu();
             }
         }
