@@ -10,8 +10,18 @@ package com.spaceinvaders.views;
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.models.GameModel;
 import com.spaceinvaders.tools.SoundEffect;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.KeyStroke;
 
 
 
@@ -33,11 +43,21 @@ public class ViewApplication extends JFrame implements Commons{
     //**************************************************************************
     private     JPanel                  mainContent;
     
+    //Menu bar
+    private     JMenuBar                menuBar;
+    
+    private     JMenu                   file;
+    private     JMenuItem               file_close;
+    
+    private     JMenu                   option;
+    private     JMenu                   option_sound;
+    private     JRadioButtonMenuItem    options_soundOn;
+    private     JRadioButtonMenuItem    options_soundOff;
     
     
     
     
-
+    
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
@@ -53,6 +73,8 @@ public class ViewApplication extends JFrame implements Commons{
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.initComponents();
+        this.initMenu();
+        this.initMenuKeyBinding();
     }
     
     
@@ -65,7 +87,61 @@ public class ViewApplication extends JFrame implements Commons{
         SoundEffect.init(); //Load sounds
     }
     
+    /*
+     * Create the menu
+     */
+    private void initMenu(){
+        this.menuBar            = new JMenuBar();
+        
+        //Menu File
+        this.file               = new JMenu("File");
+        this.file_close         = new JMenuItem("Close");
+        this.file_close.addActionListener(new CloseListener());
+        this.file.add(this.file_close);
+        
+        //Menu Options
+        this.option             = new JMenu("Options");
+        this.option_sound       = new JMenu("Sound");
+        this.options_soundOn    = new JRadioButtonMenuItem("on");
+        this.options_soundOff   = new JRadioButtonMenuItem("off");
+        
+        ButtonGroup soundGroup  = new ButtonGroup();
+        soundGroup.add(options_soundOn);
+        soundGroup.add(options_soundOff);
+        SoundListener soundListener = new SoundListener(); 
+        options_soundOn.addActionListener(soundListener);
+        options_soundOff.addActionListener(soundListener);
+        
+        options_soundOn.setSelected(true);
+        
+        this.option_sound.add(options_soundOn);
+        this.option_sound.add(options_soundOff);
+        this.option.add(option_sound);
+        
+        //Create the general menu with each JMenu
+        this.menuBar.add(file);
+        this.menuBar.add(option);
+        this.setJMenuBar(menuBar);
+    }
     
+    /*
+     * Create keyBinding for the menu
+     */
+    private void initMenuKeyBinding(){
+        this.file.setMnemonic('f');
+        this.option.setMnemonic('o');
+        this.options_soundOn.setAccelerator(KeyStroke.getKeyStroke('m'));
+        this.options_soundOff.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, KeyEvent.CTRL_DOWN_MASK));
+    }
+    
+    
+    
+    
+    
+
+    //**************************************************************************
+    // Functions
+    //**************************************************************************
     /**
      * Display the menu page
      */
@@ -116,5 +192,46 @@ public class ViewApplication extends JFrame implements Commons{
         this.getContentPane().revalidate();
         this.pack();
         this.setLocationRelativeTo(null);
+    }
+    
+    
+    
+    
+    
+
+    //**************************************************************************
+    // Menu Listener and actions
+    //**************************************************************************
+    /*
+     * Intern class for close button
+     */
+    private class CloseListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            JOptionPane confirm = new JOptionPane();
+            int choice;
+            choice = confirm.showConfirmDialog(null,
+                    "Sure? You want to leave?",
+                    "Noooo",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.ERROR_MESSAGE);
+            if(choice == JOptionPane.OK_OPTION){
+                System.exit(0);
+            }
+        }
+    }
+    
+    /*
+     * Intern class for the soundListener
+     */
+    private class SoundListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            if(options_soundOn.isSelected()){
+                SoundEffect.volume = SoundEffect.Volume.ON;
+            } else {
+                SoundEffect.volume = SoundEffect.Volume.MUTE;
+            }
+        }
     }
 }
