@@ -9,6 +9,7 @@ package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.models.GameModel;
+import com.spaceinvaders.tools.SoundEffect;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -139,6 +140,7 @@ public class ViewGameOverPanel extends JPanel implements Commons, KeyListener{
     public void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_SPACE) {
+            SoundEffect.GAME_OVER.stop();
             this.parent.returnMenu();
             try {
                 this.finalize();

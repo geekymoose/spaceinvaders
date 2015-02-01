@@ -9,6 +9,7 @@ package com.spaceinvaders.behaviors;
 
 import com.spaceinvaders.models.Living;
 import com.spaceinvaders.models.GameModel;
+import com.spaceinvaders.tools.SoundEffect;
 import com.spaceinvaders.weapons.Missile;
 import java.awt.Point;
 
@@ -69,6 +70,7 @@ public class ShootMissile implements ShootType{
             int posY    = this.owner.getCenter().y+this.barrelPosition.y;
             world.addPlayerProjectile(new Missile(posX, posY, this.owner));
             world.notifyObservers();
+            SoundEffect.SHOOT.play();
             return true;
         }
         else{

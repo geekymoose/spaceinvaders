@@ -8,6 +8,7 @@
 package com.spaceinvaders.controllers;
 
 import com.spaceinvaders.models.GameModel;
+import com.spaceinvaders.tools.SoundEffect;
 
 
 
@@ -54,6 +55,7 @@ public class ControllerToolsBar {
      */
     public void startGame(){
         this.model.startTimers();
+        SoundEffect.START.play();
     }
     
     /**
@@ -61,6 +63,7 @@ public class ControllerToolsBar {
      */
     public void stopGame(){
         this.model.stopTimers();
+        SoundEffect.STOP.play();
     }
     
     /*

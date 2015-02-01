@@ -36,7 +36,6 @@ public class ManagerCollision {
     
     
     
-
     //**************************************************************************
     // Constructor - Initialization
     //**************************************************************************
@@ -52,7 +51,6 @@ public class ManagerCollision {
     
     
     
-
     //**************************************************************************
     // Functions
     //**************************************************************************
@@ -80,6 +78,7 @@ public class ManagerCollision {
                     this.map.projectileExplode(new ExplosionAlien(p.getCenter(),this.map));
                     this.map.destroyeProjectile(p);
                     this.map.getPlayer().reload();
+                    SoundEffect.FIRE_LOOSE.play();
                     k--;
                 }
             }
@@ -122,6 +121,7 @@ public class ManagerCollision {
                 if(p.borderlandReached()){
                     this.map.projectileExplode(new ExplosionAlien(p.getCenter(),this.map));
                     this.map.destroyeProjectile(p);
+                    SoundEffect.FIRE_LOOSE.play();
                     k--;
                 }
             }

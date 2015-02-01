@@ -8,6 +8,7 @@
 package com.spaceinvaders.views;
 
 import com.spaceinvaders.constants.Commons;
+import com.spaceinvaders.tools.SoundEffect;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -76,6 +77,7 @@ public class ViewWelcomePanel extends JPanel implements Commons, KeyListener{
         this.addKeyListener(this);
         
         this.initComponents();
+        SoundEffect.WELCOME.play();
     }
     
     /**
