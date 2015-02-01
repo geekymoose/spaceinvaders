@@ -10,14 +10,18 @@ package com.spaceinvaders.views;
 import com.spaceinvaders.constants.Commons;
 import com.spaceinvaders.models.GameModel;
 import com.spaceinvaders.tools.SoundEffect;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 
@@ -29,18 +33,19 @@ import javax.swing.JPanel;
  * <p>
  * public class ViewGameOverPanel<br/>
  * extends JPanel<br/>
- * implements Commons, KeyListener
+ * implements Commons
  * </p>
  *
  * @author Constantin MASSON
  */
-public class ViewGameOverPanel extends JPanel implements Commons, KeyListener{
+public class ViewGameOverPanel extends JPanel implements Commons{
     //**************************************************************************
     // Constants - Variables
     //**************************************************************************
     private     Image               background;
     private     Image               title;
     private     String              msg;
+    private     ButtonPanel         panButton;
     
     private     ViewApplication     parent;
     private     GameModel           game;
@@ -58,15 +63,14 @@ public class ViewGameOverPanel extends JPanel implements Commons, KeyListener{
      * @param pGame Game just done
      */
     public ViewGameOverPanel(ViewApplication pParent, GameModel pGame){
+        this.setLayout(new BorderLayout());
         this.setPreferredSize(DIM_FRAME);
-        this.setFocusable(true);
         this.setDoubleBuffered(true);
         
         this.parent = pParent;
         this.game   = pGame;
         
         this.initComponents();
-        this.addKeyListener(this);
     }
     
     
@@ -81,6 +85,9 @@ public class ViewGameOverPanel extends JPanel implements Commons, KeyListener{
         this.msg                = "Ooooh my god!!!! You so bad!!!\n"
                                     + "Are you afraid by a little teddy space invaders?\n"
                                     + "Hum... Try again!! (Or get out and eat a rabbit)";
+        
+        this.panButton        = new ButtonPanel();
+        this.add(this.panButton, BorderLayout.SOUTH);
     }
     
     
@@ -96,8 +103,6 @@ public class ViewGameOverPanel extends JPanel implements Commons, KeyListener{
         g2d.setFont(f2);
         g2d.setColor(Color.LIGHT_GRAY);
         this.drawString(g, this.msg, 75, 200);
-        
-        g2d.drawString("Press space to start the game", 75, 300);
     }
     
     
@@ -124,28 +129,62 @@ public class ViewGameOverPanel extends JPanel implements Commons, KeyListener{
     
     
     //**************************************************************************
-    // Key Listener
+    // Intern class
     //**************************************************************************
-    @Override
-    public void keyTyped(KeyEvent e){
-    
-    }
-    
-    @Override
-    public void keyPressed(KeyEvent e){
-    
-    }
-    
-    @Override
-    public void keyReleased(KeyEvent e){
-        int key = e.getKeyCode();
-        if (key == KeyEvent.VK_SPACE) {
-            SoundEffect.GAME_OVER.stop();
-            this.parent.returnMenu();
-            try {
-                this.finalize();
-            } catch(Throwable ex) { 
-                //Nothing
+    /*
+     * Intern class: new button for restart the game
+     */
+    public class ButtonPanel extends JPanel{
+        private     JButton         buttonRestart;
+        private     JButton         buttonMenu;
+        private     ActionListener  actionButtonRestart;
+        private     ActionListener  actionButtonMenu;
+        
+        
+        
+        /**
+         * Create the button start
+         */
+        public ButtonPanel() {
+            this.setOpaque(false);
+            this.setLayout(new FlowLayout());
+            this.setPreferredSize(new Dimension(250, 100));
+            this.initcomponents();
+        }
+        
+        /*
+         * Init components
+         */
+        private void initcomponents(){
+            this.buttonRestart      = new JButton("Retry");
+            this.buttonMenu         = new JButton("Return menu");
+            
+            this.buttonRestart      .setPreferredSize(new Dimension(150, 50));
+            this.buttonMenu         .setPreferredSize(new Dimension(150, 50));
+            
+            this.actionButtonRestart= new ActionButtonRestart();
+            this.actionButtonMenu   = new ActionButtonMenu();
+            
+            this.buttonRestart      .addActionListener(actionButtonRestart);
+            this.buttonMenu         .addActionListener(actionButtonMenu);
+            
+            this.add(this.buttonRestart);
+            this.add(this.buttonMenu);
+        }
+        
+        public class ActionButtonRestart implements ActionListener{
+            @Override
+            public void actionPerformed(ActionEvent e){
+                SoundEffect.GAME_OVER.stop();
+                ViewGameOverPanel.this.parent.startGame(game.getMode());
+            }
+        }
+        
+        public class ActionButtonMenu implements ActionListener{
+            @Override
+            public void actionPerformed(ActionEvent e){
+                SoundEffect.GAME_OVER.stop();
+                ViewGameOverPanel.this.parent.returnMenu();
             }
         }
     }
