@@ -77,9 +77,7 @@ public class ViewWelcomePanel extends JPanel implements Commons{
     public ViewWelcomePanel(ViewApplication pParent){
         this.setLayout(new BorderLayout());
         this.setPreferredSize(DIM_FRAME);
-        this.setFocusable(true);
         this.setDoubleBuffered(true);
-        this.requestFocus();
         this.parent = pParent;
         
         this.initComponents();
@@ -183,6 +181,7 @@ public class ViewWelcomePanel extends JPanel implements Commons{
             this.buttonWeak         .addActionListener(mode1);
             this.buttonNormal       .addActionListener(mode2);
             this.buttonhardcore     .addActionListener(mode3);
+            
             
             this.add(this.buttonWeak);
             this.add(this.buttonNormal);
