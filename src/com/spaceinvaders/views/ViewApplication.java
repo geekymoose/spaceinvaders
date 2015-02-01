@@ -158,10 +158,11 @@ public class ViewApplication extends JFrame implements Commons{
     /**
      * Start the game
      * Close welcome page and display the game one
+     * @param pMode game mode
      */
-    public void startGame(){
+    public void startGame(int pMode){
         this.getContentPane().removeAll();
-        this.mainContent = new ViewGamePanel(this);
+        this.mainContent = new ViewGamePanel(this, pMode);
         this.getContentPane().add(this.mainContent);
         this.getContentPane().revalidate();
         this.pack();

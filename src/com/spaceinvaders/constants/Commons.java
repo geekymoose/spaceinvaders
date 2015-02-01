@@ -45,6 +45,11 @@ public interface Commons {
     public static final int SCORE_VALUE_ALIEN2              = 20;
     public static final int SCORE_VALUE_ALIEN3              = 40;
     
+    //Mode game
+    public static final int MODE_WEAK                       = 5;
+    public static final int MODE_NORMAL                     = 3;
+    public static final int MODE_HARDCORE                   = 1;
+    
     
     
     //**************************************************************************
