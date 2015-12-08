@@ -113,13 +113,13 @@ public interface Commons {
     //**************************************************************************
     // Paths constants for image
     //**************************************************************************
-    public static final String PATH_IMG_EXPLOSION   = "src/img/explosions/miniatures/";
-    public static final String PATH_IMG_SMOKE       = "src/img/smoke/miniatures/";
-    public static final String PATH_IMG_ICON_TOOLS  = "src/img/icons/miniatures/";
-    public static final String PATH_PLAYER_IMG      = "src/img/player/miniatures/";
-    public static final String PATH_ALIENS_IMG      = "src/img/aliens/miniatures/";
-    public static final String IMG_WEAPONS          = "src/img/weapons/miniatures/";
-    public static final String IMG_THEME            = "src/img/theme/miniatures/";
+    public static final String PATH_IMG_EXPLOSION   = "data/img/explosions/miniatures/";
+    public static final String PATH_IMG_SMOKE       = "data/img/smoke/miniatures/";
+    public static final String PATH_IMG_ICON_TOOLS  = "data/img/icons/miniatures/";
+    public static final String PATH_PLAYER_IMG      = "data/img/player/miniatures/";
+    public static final String PATH_ALIENS_IMG      = "data/img/aliens/miniatures/";
+    public static final String IMG_WEAPONS          = "data/img/weapons/miniatures/";
+    public static final String IMG_THEME            = "data/img/theme/miniatures/";
     
     
     
